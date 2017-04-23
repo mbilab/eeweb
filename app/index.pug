@@ -20,37 +20,37 @@ html
           h1 Electronic Engineering
         span ELECTRONIC
       #activity.page 
-        div
+        .left
           div
             p.letter NEWS
             p.letter.indent.yellow  & EVENTS
             //.box
             span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           span ACTIVITY
-        div
+        .right
           .board(data-content="title")
-            .outline.style-1
-              div
+            .outline.scrollbar
+              .header
                 i.fa.fa-trophy.fa-4x
-                .blank DECEMBER 23,2017
-                .blank.gray.blank_detail Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-              div
+                .date DECEMBER 23,2017
+                .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
+              .header
                 i.fa.fa-camera-retro.fa-4x
-                .blank JULY 18,2017
-                .blank.gray.blank_detail Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-              div
+                .date JULY 18,2017
+                .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
+              .header
                 i.fa.fa-cog.fa-4x
-                .blank MAY 5,2017
-                .blank.gray.blank_detail Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-              div
+                .date MAY 5,2017
+                .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
+              .header
                 i.fa.fa-lightbulb-o.fa-4x
-                .blank APRIL 4,2017
-                .blank.gray.blank_detail Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-              div
+                .date APRIL 4,2017
+                .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
+              .header
                 i.fa.fa-handshake-o.fa-4x
-                .blank JANUARY 1,2017
-                .blank.gray.blank_detail Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-            .detail.style-1
+                .date JANUARY 1,2017
+                .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
+            .detail.scrollbar
               p I DON'T WANT TO MISS A THING
               p I could stay awake just to hear you breathing Watch you smile while you are sleeping While far away and dreaming I could spend my life in this sweet surrender I could stay lost in this moment forever Every moment I spend with you is a moment I treasure Don't want to close my eyes Don't want to fall asleep 'Cuz I'd miss you baby And I don't wanna miss a thing 'Cuz even when I dream of you The sweetest dream would never do I'd still miss you baby And I don't want to miss a thing 
               .detail_pic
@@ -63,7 +63,7 @@ html
             .redo
               img(src='http://i.imgur.com/LEM7HgJ.png')
       #course.page 
-        div
+        .left
           div
             p.letter.inednt.yellow OUR
             p.letter.black  COURSES
@@ -71,16 +71,16 @@ html
             span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           span ACTIVITY
       #lab.page 
-        div
+        .left
           div
             p.letter FACULTY
             p.letter.indent.yellow  & RESEARCH 
             //.box
             span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           span RESEARCH
-        div
+        .right
           .board.lab_board(data-status="group")
-            #group.style-1
+            #group.scrollbar
               .member.group.bc-white
                 span.small Instrument System and Chip
               .member.group.bc-white
@@ -99,7 +99,7 @@ html
                 span Material
               .member.group.bc-white
                 span Nano
-            #member.style-1
+            #member.scrollbar
               .member.prof
                 img(src='http://i.imgur.com/bZuW6Wg.png')
               .member.prof
