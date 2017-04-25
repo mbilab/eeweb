@@ -117,10 +117,11 @@ body
   width 80px
 
 #menu
-  display inline
-  left 20%
+  display inline-block
+  left 43%
   position relative
   top 1.78rem
+  transform translateX(-50%)
 
   &>li
     border-bottom-color rgba(226, 219, 26, 0)
@@ -134,19 +135,19 @@ body
     transition all ease-in-out 0.3s
 
     &:first-child
-      margin-left 0!important
-      margin-right 0
+      margin-left 0
 
     &:hover
       border-bottom 2.5px solid rgba(226, 219, 26, 1)
       padding-bottom 0
 
 .nav
-  left 2%
+  box-sizing border-box      
+  padding-left 2%
   position fixed
   top 4%
-  width 93%
-  z-index 4 
+  width 100%
+  z-index 100
 
 .panel
   background rgba(68, 63, 70, 0.9)
