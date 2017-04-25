@@ -5,28 +5,22 @@ import './index.pug'
 
 const $ = require('jquery')
 
+
 $("#logo").click( () => {
   $("body").attr("data-content","landing")
   $(".nav").attr("data-status","")
 }
 )
 
-$("#An").click( () => {
-  $("body").attr("data-content","activity")
+$("#menu>li").click( function(){
+  $("body").attr("data-content",$(this).attr("id"))
   $(".board").attr("data-content","title")
-  $(".nav").attr("data-status","")
+  $(".lab_board").attr("data-status","group")
 }
 )
 
 $(".redo").click( () => {
   $(".board").attr("data-content","title")
-}    
-)
-
-$("#La").click( () => {
-  $("body").attr("data-content","lab")
-  $(".nav").attr("data-status","")
-  $(".lab_board").attr("data-status","group")
 }    
 )
 
