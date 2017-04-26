@@ -7,7 +7,7 @@ import ProgressBarPlugin from 'progress-bar-webpack-plugin'
 import webpack from 'webpack'
 
 // config
-const opt = JSON.parse(fs.readFileSync('./option.json'))
+const opt = JSON.parse(fs.readFileSync(fs.existsSync('./option.json') ? './option.json' : './option.sample.json'))
 
 export default {
   devServer: {
@@ -52,12 +52,12 @@ export default {
         use: 'pug-loader'
       },
       {
-        test: /\.styl$/,
+        test: /\.sass$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             'css-loader',
-            'stylus-loader'
+            'sass-loader'
           ]
         })
       }
@@ -78,13 +78,6 @@ export default {
       format: `:msg build [${chalk.yellow.bold(':bar')}] ${chalk.green.bold(':percent')} (:elapsed seconds)`
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      stylus: {
-        default: {
-          use: [require('nib')()]
-        }
-      }
-    }),
     new webpack.NoEmitOnErrorsPlugin()
   ],
   resolve: {

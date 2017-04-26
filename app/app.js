@@ -1,6 +1,6 @@
 import 'font-awesome/css/font-awesome.min.css'
 
-import './app.styl'
+import './app.sass'
 import './index.pug'
 
 const $ = require('jquery')
@@ -21,12 +21,12 @@ $("#menu>li").click( function(){
 
 $(".redo").click( () => {
   $(".board").attr("data-content","title")
-}    
+}
 )
 
 $(".outline>div").click( () => {
     $(".board").attr("data-content","content")
-}    
+}
 )
 
 $(".group").click( () => {
