@@ -1,0 +1,422 @@
+// global
+
+html
+  height: 100%;
+  width: 100%;
+
+body
+  background: #000 url('http://i.imgur.com/Fbu28kR.jpg')  no-repeat;
+  background-size: 100% 100%;
+  margin: 0;
+
+.page
+  box-sizing: border-box;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  padding: 8.5% 6% 4% 3.5%;
+  top: 0;
+  transition: opacity 0.6s;
+  width: 100%;
+
+  >span
+
+    &:first-child
+      color: rgba(92, 86, 92, 0.47);
+      font-family: 'mon';
+      font-size: 12.5rem;
+      font-weight: 900;
+      position: absolute;
+      top: 75%; 
+
+.fa
+  color: #e2db1a;        
+
+.left,.right
+  float: left;
+  height: 100%;
+  position: relative;
+  width: 67%;
+
+.left
+  margin-right: 0.5%;
+  width: 32%;
+
+  >div
+    box-sizing: border-box;
+    height: 70%;
+    padding: 0% 30% 0% 8%;
+    position: relative;
+    width: 100%;
+
+  >span
+    color: rgba(92, 86, 92, 0.47);
+    float: right;
+    font-family: 'mon';
+    font-size: 12.5rem;
+    font-weight: 900;
+    position: relative;
+    
+.pointer
+  cursor: pointer;
+  
+// panel
+
+.box
+  border: 12px solid rgba(92, 86 ,92 ,0.47);
+  height: 10.5rem;
+  left: 24%;
+  position: absolute;
+  top: 9%;
+  width: 18.5rem;
+
+.intro
+  color: #bdb2c3;
+  float: left;
+  font-family: 'mon';
+  font-size: 1rem;
+  line-height: 1.625rem;
+  position: relative;
+  top: 27%;
+  transition: opacity 0.6s;
+  z-index: 1;
+
+.letter
+  color: #fff;
+  display: inline-block;
+  font-family: 'mon';
+  font-size: 3.7rem;
+  font-weight: 700;
+  margin-bottom: 4%;
+  position: relative;
+  top: 14%;
+  transition: opacity 0.6s;
+  z-index: 1;
+
+  &.indent
+    white-space: pre;
+  
+#logo
+  align-items: center;
+  background-color: #e2db1a;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  float: left;
+  font-family: 'Cabin',sans-serif;
+  font-size: 3rem;
+  height: 80px;
+  justify-content: center;
+  position: relative;
+  width: 80px;
+
+#menu
+  display: inline-block;
+  left: 43%;
+  position: relative;
+  top: 1.78rem;
+  transform: translateX(-50%);
+
+  &>li
+    border-bottom-color: rgba(226, 219, 26, 0);
+    color: #fff;
+    cursor: pointer;
+    display: inline;
+    font-family: 'mon';
+    font-size: medium;
+    margin-left: 4rem;
+    padding-bottom: 1.5%;
+    transition: all ease-in-out 0.3s;
+
+    &:first-child
+      margin-left: 0;
+
+    &:hover
+      border-bottom: 2.5px solid rgba(226, 219, 26, 1);
+      padding-bottom: 0;
+
+.nav
+  box-sizing: border-box;  
+  padding-left: 2%;
+  position: fixed;
+  top: 4%;
+  width: 100%;
+  z-index: 100;
+
+.panel
+  background: rgba(68, 63, 70, 0.9);
+  float: left;
+  height: 100%;
+  position: absolute;
+  transition: all ease-in-out 0.5s;
+  width: 100%;
+  
+// landing page
+
+body[data-content="landing"]
+  #landing
+    opacity: 1;
+  .panel
+    width: 43%;
+
+#landing
+  
+  &>span
+    color: rgba(92, 86, 92, 0.47);
+    float: right;
+    font-family: 'mon';
+    font-size: 12.5rem;
+    font-weight: 900;
+    position: relative;
+    right: 57%;
+    top: 70%;
+
+.title
+  box-sizing: border-box;      
+  color: #fff;
+  font-family: 'mon';
+  font-size: 2rem;
+  font-weight: 100;
+  padding-left: 20%;
+  position: relative;
+  text-shadow: 2px 2px 10px #000;
+  top: 41.5%; 
+// activity page
+
+body[data-content="News_events"]
+  #activity
+    display: block
+    opacity: 1;
+
+.board[data-content="title"]
+  .outline
+    opacity: 1;
+  .detail
+    pointer-events: none;
+
+  &:hover .scrollbar::-webkit-scrollbar-thumb
+    background-color: #e2db1a;
+
+  & .redo
+    opacity: 0;
+    
+.board[data-content="content"]
+  .outline
+    pointer-events: none;
+  .detail
+    opacity: 1;
+    
+  &:hover .scrollbar::webkit-scrollbar-thumb
+    background-color: rgba(122, 122, 122, 0.65);
+
+.meta
+  color: #000;       
+  height: 4.875rem;
+
+.board
+  background: url('http://i.imgur.com/0TRwFHS.png') no-repeat;
+  background-color: #fff;
+  background-size: 100% 100%;
+  box-sizing: border-box;
+  height: 93%;
+  padding: 8% 3% 8% 3%;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+.date,.meta
+  cursor: pointer;
+  font-family: 'mon';
+  line-height: 1.625rem;
+  margin: 5% 0%;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  width: 95%;
+  
+.detail
+  font-family: 'mon';
+  height: 108%;
+  left: 1%;
+  line-height: 2.5rem;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  text-align: left;
+  top: -108%;
+  transition: opacity 0.6s;
+  width: 94%;
+
+  &>p
+    line-height: 2.5rem;
+    white-space: pre-line;
+
+    &:first-child
+      display: inline-block;
+      font-size: 2rem;
+      line-height: 0; 
+      margin-bottom: 10%;
+
+.detail_pic
+  height: 20%;
+  margin-top: 1.25rem;
+  position: relative;
+  width: 100%;
+
+  >img
+    height: 100%;
+    margin: 0 1%;
+
+    &:first-child
+      margin-left: 0;
+      
+.outline
+  height: 100%;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  transition: opacity 0.6s;
+  width: 100%;
+
+  >.header
+    float: left;
+    margin: 0 3%;
+    margin-bottom: 5%;
+    position: relative;
+    width: 44%;
+
+.record
+  line-height: 1rem;
+  position: relative;
+  right: 2%;
+  text-align: right;
+  top: 5%;
+
+.redo
+  cursor: pointer;
+  font-size: 1.3rem;
+  right: 1%;
+  opacity: 0.6;
+  position: absolute;
+  bottom: 1%;
+  transition: all 0.6s;
+  z-index: 100;
+
+  &>img
+    width: 50px;
+    
+// lab page
+
+body[data-content="Faculty"]
+  #lab
+    display: block;
+    opacity: 1;
+
+    .lab_board
+
+      &[data-status="member"]
+
+        & #group
+          opacity: 0;
+          pointer-events: none;
+
+        & #member
+          opacity: 1;
+
+      &[data-status="group"]
+
+        & #member
+          pointer-events: none;
+    
+#group
+  align-items: center; 
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  opacity: 1;
+  overflow-y: auto; 
+  transition: opacity 0.6s ease-in-out;
+  width: 100%;
+            
+.group
+  color: #000;
+  font-family: 'mon_bold';
+  font-size: 2rem;
+  text-align: center;
+
+.lab_board
+  background: transparent;
+  height: 100%;
+  padding: 2% 13%;
+
+  &:hover .scrollbar::-webkit-scrollbar-thumb
+    background-color: #e2db1a; 
+
+#member
+  display: flex;    
+  height: 100%;
+  justify-content: center;
+  opacity: 0;
+  overflow-y: auto;
+  position: relative;
+  top: -100%;
+  transition: opacity 0.6s ease-in-out;
+  width: 100%;
+
+.member
+  align-items: center;
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  float: left;
+  height: 12.5rem;
+  justify-content: center;
+  margin: 1% 1%;
+  cursor: pointer;
+  width: 12.5rem;
+
+  >img
+    height: 100%;
+    width: 100%;
+    
+// font
+
+@font-face 
+  font-family: mon;
+  src: url('res/font/Montserrat-Light.otf'); 
+
+@font-face
+  font-family: mon_bold;
+  src: url('res/font/Montserrat-Regular.otf');
+  
+// color
+
+.bc-white 
+  background-color: rgba(255, 255, 255, 0.6);
+    
+.yellow
+  color: #e2db1a;
+
+// size
+  
+.small
+  font-size: 1.5rem;
+
+// scroll bar
+.scrollbar
+
+  &::-webkit-scrllbar-track
+    border-radius: 10px
+    background-color: transparent
+
+  &::-webkit-scrollbar
+    width: 4px;
+    background-color: transparent;
+
+  &::-webkit-scrollbar-thumb
+    border-radius: 10px;
+    background-color: transparent;
+      
