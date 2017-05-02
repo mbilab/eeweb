@@ -4,7 +4,15 @@ import './app.sass'
 import './index.pug'
 
 const $ = require('jquery')
+const wdth = $(window).width()
+const height = $(window).height()
 
+if( wdth > height){
+  $("body").attr("data-orientation","lanscape")
+}
+else{
+  $("body").attr("data-orientation","potrait")
+}
 
 $("#logo").click( () => {
   $("body").attr("data-content","landing")
