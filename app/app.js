@@ -11,7 +11,7 @@ if( wdth > height){
   $("body").attr("data-orientation","lanscape")
 }
 else{
-  $("body").attr("data-orientation","potrait")
+  $("body").attr("data-orientation","portrait")
 }
 
 $("#logo").click( () => {

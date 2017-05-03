@@ -4,21 +4,19 @@ html
     link(href="https://fonts.googleapis.com/css?family=Cabin:600")
     script(src="https://d3js.org/d3.v4.js")
   body(data-content = "landing" , data-orientation = "portrait")
-    .panel
-      .nav(data-status="")
-        #logo E
-        ul#menu
-          li#News_events News & Events
-          li#Coures Courses
-          li#Faculty Faculty & Research
-          li#Scholarship Scholarship
-          li Upload
+    .nav(data-status="")
+      #logo E
+      #menu
+        li#News_events News & Events
+        li#Coures Courses
+        li#Faculty Faculty & Research
+        li#Scholarship Scholarship
+        li Upload
     #content
       #landing.page
-        h1.title  National Cheng Kung University
-        h1.title  Electronic Engineering
+        div.title  National Cheng Kung University</br>Electronic Engineering
         span ELECTRONIC
-      #activity.page 
+      #activity.page.none 
         .left
           div
             p.letter NEWS
@@ -61,7 +59,7 @@ html
               p.record edited at 2017.12.23
             .redo
               img(src='http://i.imgur.com/LEM7HgJ.png')
-      #course.page 
+      #course.page.none 
         .left
           div
             p.letter.inednt.yellow OUR
@@ -69,7 +67,7 @@ html
             //.box 
             span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           span ACTIVITY
-      #lab.page 
+      #lab.page.none 
         .left
           div
             p.letter FACULTY
