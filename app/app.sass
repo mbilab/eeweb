@@ -13,13 +13,20 @@ body
 body[data-orientation="portrait"]
   & .page
     padding: 0;
+    transition: none;
+  
+  & #landing
+    & >.title
+      font-size: 5vw;
+      padding: 0;
+      text-align: center;
 
   >.nav
     height: 100%;
     width: auto;
     
-    ::before
-      width: 100%;
+    &::before
+      width: 100%!important;
 
     >#logo
       float: none;
@@ -31,9 +38,10 @@ body[data-orientation="portrait"]
 
       >li
         display: block;
+        font-size: 2vw;
         margin: 5vh 0;
 
-// lanscape
+// landscape
 
 .page
   box-sizing: border-box;
@@ -53,7 +61,7 @@ body[data-orientation="portrait"]
       font-size: 12.5rem;
       font-weight: 900;
       position: absolute;
-      top: 75%; 
+      top: 75%;
 
 .fa
   color: #e2db1a;        
@@ -152,7 +160,7 @@ body[data-orientation="portrait"]
     cursor: pointer;
     display: inline;
     font-family: 'mon';
-    font-size: medium;
+    font-size: 1.2vw;
     margin-left: 4rem;
     padding-bottom: 1.5%;
     transition: all ease-in-out 0.3s;
@@ -185,7 +193,7 @@ body[data-orientation="portrait"]
 
 // landing page
 
-body[data-content="landing"][data-orientation="lanscape"]
+body[data-content="landing"]
   #landing
     opacity: 1;
   .nav
@@ -201,9 +209,10 @@ body[data-content="landing"][data-orientation="lanscape"]
     font-family: 'mon';
     font-size: 10vw;
     font-weight: 900;
-    position: relative;
+    position: absolute;
     right: 57%;
-    top: 62%;
+    bottom: 0;
+    z-index: 100;
 
 .title
   box-sizing: border-box;      
@@ -253,7 +262,7 @@ body[data-content="News_events"]
 .board
   background: url('http://i.imgur.com/0TRwFHS.png') no-repeat;
   background-color: #fff;
-  background-size: 100% 100%;
+  background-size: cover;
   box-sizing: border-box;
   height: 93%;
   padding: 8% 3% 8% 3%;
