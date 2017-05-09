@@ -11,34 +11,70 @@ body
   margin: 0;
   width: 100%;
 
+  &::after
+    content: "";
+    background-color: rgba(68,63,70,0.9);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    transition: all ease-in-out 0.6s
+    width: 100%
+    z-index: -100;
+
+#content
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
 //portrait
 body[data-orientation="portrait"]
+  #content
+    background-color: rgba(68,63,70,0.9);
+  
+  &[data-status="list"]
+    #content  
+      height: 80%;
+      left: 35%;
+      top: 10%;
+      width: 65%;
+
+    #menu
+      transform: translateX(0);
+
   .page
     padding: 0;
-    transition: none;
-  
+
+  &::after
+    width: 100%!important;
+
   #landing
     & >.title
       font-size: 5vw;
       padding: 0;
       text-align: center;
 
-  >#logo
-    &::before
-      width: 100%!important;
+  #logo
+    height: 10vw;
+    float: none;
+    font-size: 5vw;
+    left: 0;
+    top: 0;
+    width: 10vw;
 
-    >#logo
-      float: none;
+  >#menu
+    display: block!important;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    transition: all 0.6s;
 
-    >#menu
-      left: 0;
-      top: 0;
-      transform: none;
-
-      >li
-        display: block;
-        font-size: 2vw;
-        margin: 5vh 0;
+    >li
+      display: block!important;
+      font-size: 3.5vw;
+      margin: 5vh 0;
 
 // landscape
 
@@ -143,18 +179,25 @@ body[data-orientation="portrait"]
   font-size: 2.5vw;
   height: 4.2vw;
   justify-content: center;
+  left: 2vw;
   position: relative;
+  top: 2vw;
   width: 4.2vw;
+  z-index: 100;
 
 #menu
+  display: inline-block;
   left: 43%;
   position: relative;
-  transform: translateX(-50%);
+  top: 4.1vw;
+  transform: translate(-50%,-50%);
+  z-index: 100;
 
   &>li
     border-bottom-color: rgba(226, 219, 26, 0);
     color: #fff;
     cursor: pointer;
+    display: inline;
     font-family: 'mon';
     font-size: 1.2vw;
     margin-left: 4rem;
@@ -165,26 +208,16 @@ body[data-orientation="portrait"]
       border-bottom: 2.5px solid rgba(226, 219, 26, 1);
       padding-bottom: 0;
 
-#logo
-  &::before
-    content: "";
-    background-color: rgba(68,63,70,0.9);
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    transition: all ease-in-out 0.6s
-    width: 100%
-    z-index: -100;
+  
 
 // landing page
 
 body[data-content="landing"]
   #landing
     opacity: 1;
-  #logo
-    &::before
-      width: 43%;
+    
+  &::after
+    width: 43%;
 
 #landing
   display: block;

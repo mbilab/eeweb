@@ -16,7 +16,7 @@ else{
 
 $("#logo").click( () => {
   $("body").attr("data-content","landing")
-  $(".nav").attr("data-status","")
+  $("body").attr("data-status","list")
 }
 )
 
@@ -24,6 +24,7 @@ $("#menu>li").click( function(){
   $("body").attr("data-content",$(this).attr("id"))
   $(".board").attr("data-content","title")
   $(".lab_board").attr("data-status","group")
+  $("body").attr("data-status","")
 }
 )
 
