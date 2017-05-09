@@ -8,7 +8,7 @@ const wdth = $(window).width()
 const height = $(window).height()
 
 if( wdth > height){
-  $("body").attr("data-orientation","lanscape")
+  $("body").attr("data-orientation","landscape")
 }
 else{
   $("body").attr("data-orientation","portrait")
