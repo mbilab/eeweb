@@ -20,7 +20,7 @@ $("#logo").click( () => {
 }
 )
 
-$("#menu>li").click( function(){
+$("#menu>div").click( function(){
   $("body").attr("data-content",$(this).attr("id"))
   $(".board").attr("data-content","title")
   $(".lab_board").attr("data-status","group")
