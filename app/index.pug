@@ -1,21 +1,21 @@
 html
   head
-    title EE Web
     link(href="https://fonts.googleapis.com/css?family=Cabin:600")
-    script(src="https://d3js.org/d3.v4.js")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    title EE Web
   body(data-content = "landing" , data-orientation = "lanscape")
     #logo E
     #menu
-        #News_events News & Events
+        #News_events(data-extend='& Events') News
         #Coures Courses
-        #Faculty Faculty & Research
+        #Faculty(data-extend='& Research') Faculty
         #Scholarship Scholarship
         div Upload
     #content
       #landing.page
         div.title  National Cheng Kung University</br>Electronic Engineering
         span ELECTRONIC
-      #activity.page.none 
+      #activity.page.none
         .left
           div
             p.letter NEWS
@@ -48,7 +48,7 @@ html
                 .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
             .detail.scrollbar
               p I DON'T WANT TO MISS A THING
-              p I could stay awake just to hear you breathing Watch you smile while you are sleeping While far away and dreaming I could spend my life in this sweet surrender I could stay lost in this moment forever Every moment I spend with you is a moment I treasure Don't want to close my eyes Don't want to fall asleep 'Cuz I'd miss you baby And I don't wanna miss a thing 'Cuz even when I dream of you The sweetest dream would never do I'd still miss you baby And I don't want to miss a thing 
+              p I could stay awake just to hear you breathing Watch you smile while you are sleeping While far away and dreaming I could spend my life in this sweet surrender I could stay lost in this moment forever Every moment I spend with you is a moment I treasure Don't want to close my eyes Don't want to fall asleep 'Cuz I'd miss you baby And I don't wanna miss a thing 'Cuz even when I dream of you The sweetest dream would never do I'd still miss you baby And I don't want to miss a thing
               .detail_pic
                 img(src='http://i.imgur.com/f4u6ztF.jpg')
                 img(src='http://i.imgur.com/Unag5cx.jpg')
@@ -58,19 +58,19 @@ html
               p.record edited at 2017.12.23
             .redo
               img(src='http://i.imgur.com/LEM7HgJ.png')
-      #course.page.none 
+      #course.page.none
         .left
           div
             p.letter.inednt.yellow OUR
             p.letter.black  COURSES
-            //.box 
+            //.box
             span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           span ACTIVITY
-      #lab.page.none 
+      #lab.page.none
         .left
           div
             p.letter FACULTY
-            p.letter.indent.yellow  & RESEARCH 
+            p.letter.indent.yellow  & RESEARCH
             //.box
             span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           span RESEARCH

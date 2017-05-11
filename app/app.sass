@@ -7,7 +7,7 @@ html
   width: 100%;
 
 body
-  background: #fff; 
+  background: #fff;
   height: 100%;
   margin: 0;
   width: 100%;
@@ -44,9 +44,12 @@ body
     display: inline;
     font-family: 'mon';
     font-size: 1.2vw;
-    margin-left: 4rem;
+    margin-left: 4.2vw;
     padding-bottom: 1.5%;
     transition: all ease-in-out 0.3s;
+
+    &:after
+      content: " " attr(data-extend);
 
     &:hover
       border-bottom: 2.5px solid rgba(226, 219, 26, 1);
@@ -63,7 +66,7 @@ body
   top: 0;
   transition: all 0.3s ease-in-out;
   width: 100%;
-  
+
   &::after
     content: "";
     background-color: rgba(68,63,70,0.9);
@@ -134,7 +137,7 @@ body
     z-index: 100;
 
 .title
-  box-sizing: border-box;      
+  box-sizing: border-box;
   color: #fff;
   font-family: 'mon';
   font-size: 2vw;
@@ -161,26 +164,23 @@ body
 body[data-orientation="portrait"]
   #content
     background-color: rgba(68,63,70,0.9);
-    
+
     &::after
       width: 100%!important;
 
   &[data-status="list"]
-    #content  
+    #content
       height: 80%;
       left: 35%;
       top: 10%;
       width: 65%;
-      
+
     #menu
       transform: translateX(0);
 
-      >div
-        color: #000;
-
   .page
     padding: 0;
-  
+
   #landing
     & >.title
       font-size: 5vw;
@@ -195,7 +195,7 @@ body[data-orientation="portrait"]
     top: 0;
     width: 10vw;
 
-  >#menu
+  #menu
     display: block!important;
     left: 0;
     top: 0;
@@ -203,11 +203,14 @@ body[data-orientation="portrait"]
     transition: all 0.3s;
 
     >div
+      color: #000;
       display: block!important;
       font-size: 3.5vw;
-      margin: 5vh 0;
+      margin: 5vh 0 5vh 3vw;
 
-
+      &:after
+        display: block;
+        margin-left: 1vw;
 
 // landscape setting
 
@@ -221,24 +224,24 @@ body[data-content="landing"]
 
 // font
 
-@font-face 
+@font-face
   font-family: mon;
-  src: url('res/font/Montserrat-Light.otf'); 
+  src: url('res/font/Montserrat-Light.otf');
 
 @font-face
   font-family: mon_bold;
   src: url('res/font/Montserrat-Regular.otf');
-  
+
 // color
 
-.bc-white 
+.bc-white
   background-color: rgba(255, 255, 255, 0.6);
-    
+
 .yellow
   color: #e2db1a;
 
 // size
-  
+
 .small
   font-size: 1.5rem;
 
@@ -258,7 +261,7 @@ body[data-content="landing"]
     background-color: transparent;
 
 // Haven't been used yet
-  
+
 .box
   border: 12px solid rgba(92, 86 ,92 ,0.47);
   height: 10.5rem;
@@ -291,7 +294,7 @@ body[data-content="landing"]
   z-index: 1;
 
   &.indent
-    white-space: pre; 
+    white-space: pre;
 
 // activity page
 
@@ -311,18 +314,18 @@ body[data-content="News_events"]
 
   & .redo
     opacity: 0;
-    
+
 .board[data-content="content"]
   .outline
     pointer-events: none;
   .detail
     opacity: 1;
-    
+
   &:hover .scrollbar::webkit-scrollbar-thumb
     background-color: rgba(122, 122, 122, 0.65);
 
 .meta
-  color: #000;       
+  color: #000;
   height: 4.875rem;
 
 .board
@@ -345,7 +348,7 @@ body[data-content="News_events"]
   position: relative;
   text-align: left;
   width: 95%;
-  
+
 .detail
   font-family: 'mon';
   height: 108%;
@@ -367,7 +370,7 @@ body[data-content="News_events"]
     &:first-child
       display: inline-block;
       font-size: 2rem;
-      line-height: 0; 
+      line-height: 0;
       margin-bottom: 10%;
 
 .detail_pic
@@ -382,7 +385,7 @@ body[data-content="News_events"]
 
     &:first-child
       margin-left: 0;
-      
+
 .outline
   height: 100%;
   opacity: 0;
@@ -418,7 +421,7 @@ body[data-content="News_events"]
 
   &>img
     width: 50px;
-    
+
 // lab page
 
 body[data-content="Faculty"]
@@ -441,18 +444,18 @@ body[data-content="Faculty"]
 
         & #member
           pointer-events: none;
-    
+
 #group
-  align-items: center; 
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
   opacity: 1;
-  overflow-y: auto; 
+  overflow-y: auto;
   transition: opacity 0.6s ease-in-out;
   width: 100%;
-            
+
 .group
   color: #000;
   font-family: 'mon_bold';
@@ -465,10 +468,10 @@ body[data-content="Faculty"]
   padding: 2% 13%;
 
   &:hover .scrollbar::-webkit-scrollbar-thumb
-    background-color: #e2db1a; 
+    background-color: #e2db1a;
 
 #member
-  display: flex;    
+  display: flex;
   height: 100%;
   justify-content: center;
   opacity: 0;

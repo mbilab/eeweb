@@ -7,12 +7,10 @@ const $ = require('jquery')
 const wdth = $(window).width()
 const height = $(window).height()
 
-if( wdth > height){
-  $("body").attr("data-orientation","landscape")
-}
-else{
-  $("body").attr("data-orientation","portrait")
-}
+// responsive logic
+
+$(window).resize(() => $('body').attr("data-orientation", $(window).width() > $(window).height() ? "landscape" : "portrait"))
+.resize()
 
 $("#logo").click( () => {
   $("body").attr("data-content","landing")
