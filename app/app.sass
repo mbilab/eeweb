@@ -7,7 +7,7 @@ html
   width: 100%;
 
 body
-  background: #fff;
+  background: rgb(68,63,70);
   height: 100%;
   margin: 0;
   width: 100%;
@@ -72,6 +72,7 @@ body
     background-color: rgba(68,63,70,0.9);
     height: 100%;
     left: 0;
+    pointer-events: none; 
     position: absolute;
     top: 0;
     transition: all ease-in-out 0.6s
@@ -164,6 +165,7 @@ body
 body[data-orientation="portrait"]
   #content
     background-color: rgba(68,63,70,0.9);
+    box-shadow: -2vw 2vw 1vw  #000;
 
     &::after
       width: 100%!important;
@@ -197,13 +199,14 @@ body[data-orientation="portrait"]
 
   #menu
     display: block!important;
+    float: left;
     left: 0;
     top: 0;
     transform: translateX(-100%);
     transition: all 0.3s;
+    width: 35vw;
 
     >div
-      color: #000;
       display: block!important;
       font-size: 3.5vw;
       margin: 5vh 0 5vh 3vw;

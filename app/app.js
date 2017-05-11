@@ -12,6 +12,11 @@ const height = $(window).height()
 $(window).resize(() => $('body').attr("data-orientation", $(window).width() > $(window).height() ? "landscape" : "portrait"))
 .resize()
 
+$(".page").click( function(){
+  $("body").attr("data-content",$(this).attr("id"))
+  $("body").attr("data-status","")
+})
+
 $("#logo").click( () => {
   $("body").attr("data-content","landing")
   $("body").attr("data-status","list")
