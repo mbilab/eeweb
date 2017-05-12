@@ -6,15 +6,20 @@ html
   body(data-content = "landing" , data-orientation = "lanscape")
     #logo E
     #menu
-        #News_events(data-extend='& Events') News
-        #Coures Courses
-        #Faculty(data-extend='& Research') Faculty
-        #Scholarship Scholarship
-        div Upload
+      //(data-tab="news & events") News #[span.extend & Events]
+      //#Coures Courses
+      //#Faculty(data-extend='& Research') Faculty
+      //#Scholarship Scholarship
+      //div Upload
+      #News_events(data-extend='& Events') News
+      #Coures Courses
+      #Faculty(data-extend='& Research') Faculty
+      #Scholarship Scholarship
+      div Upload
     #content
       #landing.page
-        div.title  National Cheng Kung University</br>Electronic Engineering
-        span ELECTRONIC
+	.title National Cheng Kung University#[br]Electronic Engineering
+        span.watermark ELECTRONIC
       #activity.page.none
         .left
           div
