@@ -12,36 +12,36 @@ const height = $(window).height()
 $(window).resize(() => $('body').attr("data-orientation", $(window).width() > $(window).height() ? "landscape" : "portrait"))
 .resize()
 
-$(".page").click( function(){
-  $("body").attr("data-content",$(this).attr("id"))
+$(".page").click(function(){
+  $("body").attr("data-content",$(this).data("tab"))
   $("body").attr("data-status","")
 })
 
-$("#logo").click( () => {
+$("#logo").click(() => {
   $("body").attr("data-content","landing")
   $("body").attr("data-status","list")
 }
 )
 
-$("#menu>div").click( function(){
-  $("body").attr("data-content",$(this).attr("id"))
+$("#menu>div").click(function(){
+  $("body").attr("data-content",$(this).data("tab"))
   $(".board").attr("data-content","title")
   $(".lab_board").attr("data-status","group")
   $("body").attr("data-status","")
 }
 )
 
-$(".redo").click( () => {
+$(".redo").click(() => {
   $(".board").attr("data-content","title")
 }
 )
 
-$(".outline>div").click( () => {
+$(".outline>div").click(() => {
     $(".board").attr("data-content","content")
 }
 )
 
-$(".group").click( () => {
+$(".group").click(() => {
   $(".lab_board").attr("data-status","member")
 }
 )

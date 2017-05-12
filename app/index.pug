@@ -3,24 +3,19 @@ html
     link(href="https://fonts.googleapis.com/css?family=Cabin:600")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
     title EE Web
-  body(data-content = "landing" , data-orientation = "lanscape")
+  body(data-content="landing" data-orientation="lanscape")
     #logo E
     #menu
-      //(data-tab="news & events") News #[span.extend & Events]
-      //#Coures Courses
-      //#Faculty(data-extend='& Research') Faculty
-      //#Scholarship Scholarship
-      //div Upload
-      #News_events(data-extend='& Events') News
-      #Coures Courses
-      #Faculty(data-extend='& Research') Faculty
-      #Scholarship Scholarship
+      div(data-tab="news") News #[span.extend & Events]
+      div(data-tab="course") Courses
+      div(data-tab="faculty") Faculty #[span.extend & Research]
+      div(data-tab="scholarship") Scholarship
       div Upload
     #content
-      #landing.page
-	.title National Cheng Kung University#[br]Electronic Engineering
-        span.watermark ELECTRONIC
-      #activity.page.none
+      .page(data-tab="landing")
+        .title National Cheng Kung University#[br]Electronic Engineering
+        .watermark ELECTRONIC
+      .page.none(data-tab="news")
         .left
           div
             p.letter NEWS
@@ -63,7 +58,7 @@ html
               p.record edited at 2017.12.23
             .redo
               img(src='http://i.imgur.com/LEM7HgJ.png')
-      #course.page.none
+      .page.none(data-tab="course")
         .left
           div
             p.letter.inednt.yellow OUR
@@ -71,7 +66,7 @@ html
             //.box
             span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           span ACTIVITY
-      #lab.page.none
+      .page.none(data-tab="faculty")
         .left
           div
             p.letter FACULTY

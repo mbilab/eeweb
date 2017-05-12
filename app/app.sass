@@ -48,12 +48,12 @@ body
     padding-bottom: 1.5%;
     transition: all ease-in-out 0.3s;
 
-    &:after
-      content: " " attr(data-extend);
-
     &:hover
       border-bottom: 2.5px solid rgba(226, 219, 26, 1);
       padding-bottom: 0;
+
+    .extend
+      display: block;
 
 #content
   background: url('http://i.imgur.com/Fbu28kR.jpg') no-repeat;
@@ -72,7 +72,7 @@ body
     background-color: rgba(68,63,70,0.9);
     height: 100%;
     left: 0;
-    pointer-events: none; 
+    pointer-events: none;
     position: absolute;
     top: 0;
     transition: all ease-in-out 0.6s
@@ -98,6 +98,20 @@ body
       position: absolute;
       top: 75%;
 
+  &[data-tab="landing"]
+    display: block;
+
+    .watermark
+      color: rgba(92, 86, 92, 0.47);
+      float: right;
+      font-family: 'mon';
+      font-size: 10vw;
+      font-weight: 900;
+      position: absolute;
+      right: 57%;
+      bottom: 0;
+      z-index: 100;
+
 .left,.right
   float: left;
   height: 100%;
@@ -122,20 +136,6 @@ body
     font-size: 12.5rem;
     font-weight: 900;
     position: relative;
-
-#landing
-  display: block;
-
-  &>span
-    color: rgba(92, 86, 92, 0.47);
-    float: right;
-    font-family: 'mon';
-    font-size: 10vw;
-    font-weight: 900;
-    position: absolute;
-    right: 57%;
-    bottom: 0;
-    z-index: 100;
 
 .title
   box-sizing: border-box;
@@ -165,7 +165,7 @@ body
 body[data-orientation="portrait"]
   #content
     background-color: rgba(68,63,70,0.9);
-    box-shadow: -2vw 2vw 1vw  #000;
+    box-shadow: -1vw 1vw 0.2vw rgb(53, 53, 53);
 
     &::after
       width: 100%!important;
@@ -183,11 +183,13 @@ body[data-orientation="portrait"]
   .page
     padding: 0;
 
-  #landing
-    & >.title
+    &[data-tab="landing"] >.title
       font-size: 5vw;
       padding: 0;
       text-align: center;
+
+    .watermark
+      display: none;
 
   #logo
     height: 10vw;
@@ -211,7 +213,7 @@ body[data-orientation="portrait"]
       font-size: 3.5vw;
       margin: 5vh 0 5vh 3vw;
 
-      &:after
+      .extend
         display: block;
         margin-left: 1vw;
 
@@ -222,7 +224,7 @@ body[data-content="landing"]
     &::after
       width: 43%;
 
-  #landing
+  .page[data-tab='landing']
     opacity: 1;
 
 // font
@@ -301,7 +303,7 @@ body[data-content="landing"]
 
 // activity page
 
-body[data-content="News_events"]
+body[data-content="news"]
   #activity
     display: block
     opacity: 1;
@@ -427,7 +429,7 @@ body[data-content="News_events"]
 
 // lab page
 
-body[data-content="Faculty"]
+body[data-content="faculty"]
   #lab
     display: block;
     opacity: 1;
