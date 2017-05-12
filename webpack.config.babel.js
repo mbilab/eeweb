@@ -1,32 +1,32 @@
-import chalk from 'chalk'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import chalk from 'chalk' //! minimize dependency
+import ExtractTextPlugin from 'extract-text-webpack-plugin' //! needed?
 import fs from 'fs'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin' //! extract-loader
 import path from 'path'
-import ProgressBarPlugin from 'progress-bar-webpack-plugin'
+import ProgressBarPlugin from 'progress-bar-webpack-plugin' //! minimize dependency
 import webpack from 'webpack'
 
 // config
-const opt = JSON.parse(fs.readFileSync(fs.existsSync('./option.json') ? './option.json' : './option.sample.json'))
+const opt = JSON.parse(fs.readFileSync(fs.existsSync('./option.json') ? './option.json' : './option.sample.json')) //! don't use sample
 
 export default {
-  devServer: {
+  devServer: { //! minimize options
     contentBase: path.resolve('./dist'),
     host: opt.host,
     hot: true,
     inline: true,
     port: opt.port,
     stats: {
-		  chunkModules: false,
-		  chunks: false,
-		  colors: true,
-		  hash: false,
-		  version: false
+      chunkModules: false,
+      chunks: false,
+      colors: true,
+      hash: false,
+      version: false
     }
   },
   entry: path.resolve('./app/app.js'),
   module: {
-    rules: [
+    rules: [ //! minimize rules
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -80,9 +80,11 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ],
-  resolve: {
+  resolve: { //! needed?
     modules: [
       'node_modules'
     ]
   }
 }
+
+// vi:et

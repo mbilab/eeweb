@@ -2,55 +2,51 @@
 
 //html > body > #logo, #menu, #content > .page > .left, .right
 
-html
-  height: 100%;
-  width: 100%;
-
 body
-  background: rgb(68,63,70);
-  height: 100%;
-  margin: 0;
-  width: 100%;
+  background: rgb(68,63,70) //! unify color format
+  height: 100%
+  margin: 0
+  width: 100%
 
 #logo
-  align-items: center;
-  background-color: #e2db1a;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  float: left;
-  font-family: 'Cabin',sans-serif;
-  font-size: 2.5vw;
-  height: 4.2vw;
-  justify-content: center;
-  left: 2vw;
-  position: relative;
-  top: 2vw;
-  width: 4.2vw;
-  z-index: 100;
+  align-items: center
+  background-color: #e2db1a
+  color: #fff
+  cursor: pointer //! make it an <a>, change url after clicking
+  display: flex
+  float: left //! needed?
+  font-family: Cabin, sans-serif
+  font-size: 2.5vw
+  height: 4.2vw //! em or rem
+  justify-content: center
+  left: 2vw
+  position: relative
+  top: 2vw
+  width: 4.2vw
+  z-index: 100
 
 #menu
-  display: inline-block;
-  left: 43%;
-  position: relative;
-  top: 4.1vw;
-  transform: translate(-50%,-50%);
-  z-index: 100;
+  display: inline-block //! needed?
+  left: 43%
+  position: relative
+  top: 4.1vw
+  transform: translate(-50%,-50%)
+  z-index: 100
 
-  >div
-    border-bottom-color: rgba(226, 219, 26, 0);
-    color: #fff;
-    cursor: pointer;
-    display: inline;
-    font-family: 'mon';
-    font-size: 1.2vw;
-    margin-left: 4.2vw;
-    padding-bottom: 1.5%;
-    transition: all ease-in-out 0.3s;
+  > div
+    border: 0px solid rgba(226, 219, 26, 0)
+    color: #fff
+    cursor: pointer //! make it an <a>, change url after clicking
+    display: inline //! whey not <span> (or <a>)
+    font-family: mon //! system font?
+    font-size: 1.2vw
+    margin-left: 4.2vw
+    padding-bottom: 1em
+    transition: all ease-in-out .2s
 
     &:hover
-      border-bottom: 2.5px solid rgba(226, 219, 26, 1);
-      padding-bottom: 0;
+      border-bottom: 2.5px solid rgba(226, 219, 26, 1)
+      padding-bottom: .2em
 
 #content
   background: url('http://i.imgur.com/Fbu28kR.jpg') no-repeat;
@@ -95,7 +91,7 @@ body
       position: absolute;
       top: 75%;
 
-  &[data-tab="landing"]
+  &[data-page="landing"]
     display: block;
 
     .watermark
@@ -180,7 +176,7 @@ body[data-orientation="portrait"]
   .page
     padding: 0;
 
-    &[data-tab="landing"] >.title
+    &[data-page="landing"] >.title
       font-size: 5vw;
       padding: 0;
       text-align: center;
@@ -188,40 +184,40 @@ body[data-orientation="portrait"]
     .watermark
       display: none;
 
-  #logo
-    height: 10vw;
-    float: none;
-    font-size: 5vw;
+  #logo //! order
+    float: none //! needed?
+    font-size: 5vw
+    height: 10vw
     left: 0;
     top: 0;
     width: 10vw;
 
   #menu
-    display: block!important;
-    float: left;
-    left: 0;
-    top: 0;
-    transform: translateX(-100%);
-    transition: all 0.3s;
-    width: 35vw;
+    display: block !important //! needed?
+    float: left
+    left: 0 //! needed? vs. float
+    top: 0
+    transform: translateX(-100%)
+    transition: all 0.3s
+    width: 35vw
 
-    >div
-      display: block!important;
-      font-size: 3.5vw;
-      margin: 5vh 0 5vh 3vw;
+    > div
+      display: block !important //! needed?
+      font-size: 3.5vw
+      margin: 5vh 0 5vh 3vw
 
       .extend
-        display: block;
-        margin-left: 1vw;
+        display: block
+        margin-left: 1vw
 
 // landscape setting
 
-body[data-content="landing"]
+body[data-content="landing"] //! typo?
   #content
     &::after
       width: 43%;
 
-  .page[data-tab='landing']
+  .page[data-page='landing']
     opacity: 1;
 
 // font

@@ -1,21 +1,22 @@
 html
   head
     link(href="https://fonts.googleapis.com/css?family=Cabin:600")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no",name="viewport")
     title EE Web
-  body(data-content="landing" data-orientation="lanscape")
-    #logo E
+  body(data-content="landing",data-orientation="lanscape")
+    #logo(data-page="landing") E
     #menu
-      div(data-tab="news") News #[span.extend & Events]
-      div(data-tab="course") Courses
-      div(data-tab="faculty") Faculty #[span.extend & Research]
-      div(data-tab="scholarship") Scholarship
+      div(data-page="news") News #[span.extend & Events]
+      div(data-page="course") Courses
+      div(data-page="faculty") Faculty #[span.extend & Research]
+      div(data-page="scholarship") Scholarship
       div Upload
     #content
-      .page(data-tab="landing")
+      .page(data-page="landing")
         .title National Cheng Kung University#[br]Electronic Engineering
         .watermark ELECTRONIC
-      .page.none(data-tab="news")
+      // {{{ news
+      .page.none(data-page="news")
         .left
           div
             p.letter NEWS
@@ -58,7 +59,9 @@ html
               p.record edited at 2017.12.23
             .redo
               img(src='http://i.imgur.com/LEM7HgJ.png')
-      .page.none(data-tab="course")
+      // }}} news
+      // {{{ course
+      .page.none(data-page="course")
         .left
           div
             p.letter.inednt.yellow OUR
@@ -66,7 +69,9 @@ html
             //.box
             span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           span ACTIVITY
-      .page.none(data-tab="faculty")
+      // }}} course
+      // {{{ faculty
+      .page.none(data-page="faculty")
         .left
           div
             p.letter FACULTY
@@ -102,3 +107,6 @@ html
                 img(src='http://i.imgur.com/phcH8vW.png')
               .member.prof
                 img(src='http://i.imgur.com/bC8pqxm.png')
+      // }}} faculty
+
+// vi:et

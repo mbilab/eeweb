@@ -13,7 +13,7 @@ $(window).resize(() => $('body').attr("data-orientation", $(window).width() > $(
 .resize()
 
 $(".page").click(function(){
-  $("body").attr("data-content",$(this).data("tab"))
+  $("body").attr("data-content",$(this).data("page"))
   $("body").attr("data-status","")
 })
 
@@ -24,7 +24,7 @@ $("#logo").click(() => {
 )
 
 $("#menu>div").click(function(){
-  $("body").attr("data-content",$(this).data("tab"))
+  $("body").attr("data-content",$(this).data("page"))
   $(".board").attr("data-content","title")
   $(".lab_board").attr("data-status","group")
   $("body").attr("data-status","")
