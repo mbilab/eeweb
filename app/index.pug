@@ -6,11 +6,11 @@ html
   body(data-content="landing",data-orientation="lanscape")
     #logo(data-page="landing") E
     #menu
-      div(data-page="news") News #[span.extend & Events]
-      div(data-page="course") Courses
-      div(data-page="faculty") Faculty #[span.extend & Research]
-      div(data-page="scholarship") Scholarship
-      div Upload
+      span(data-page="news"): a(href='news') News #[span.extend & Events]
+      span(data-page="course"): a(href='course') Courses
+      span(data-page="faculty"): a(href='faculty') Faculty #[span.extend & Research]
+      span(data-page="scholarship"): a(href='scholarship') Scholarship
+      span Upload
     #content
       .page(data-page="landing")
         .title National Cheng Kung University#[br]Electronic Engineering
