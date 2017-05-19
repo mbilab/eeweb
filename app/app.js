@@ -4,13 +4,20 @@ import './app.sass'
 import './index.pug'
 
 const $ = require('jquery')
-const wdth = $(window).width()
-const height = $(window).height()
 
 // responsive logic
 
 $(window).resize(() => $('body').attr("data-orientation", $(window).width() > $(window).height() ? "landscape" : "portrait"))
 .resize()
+
+// show content referred to url
+
+if (window.location.hash) {
+  let page = window.location.hash.replace('#', '')
+
+  if(0 !== $(`.page[data-page='${page}']`).length)
+    $("body").attr("data-content", page)
+}
 
 $(".page").click(function(){
   $("body").attr("data-content",$(this).data("page"))
@@ -20,28 +27,23 @@ $(".page").click(function(){
 $("#logo").click(() => {
   $("body").attr("data-content","landing")
   $("body").attr("data-list",'')
-}
-)
+})
 
-$("#menu>div").click(function(){
-  $("body").attr("data-content",$(this).data("page"))
+$("#menu>a").click(function() {
+  $("body").attr("data-content",$(this).attr('href').replace('#', ''))
+  $("body").removeAttr('data-list')
   $(".board").attr("data-content","title")
   $(".lab_board").attr("data-status","group")
-  $("body").attr("data-status","")
-}
-)
+})
 
 $(".redo").click(() => {
   $(".board").attr("data-content","title")
-}
-)
+})
 
 $(".outline>div").click(() => {
     $(".board").attr("data-content","content")
-}
-)
+})
 
 $(".group").click(() => {
   $(".lab_board").attr("data-status","member")
-}
-)
+})
