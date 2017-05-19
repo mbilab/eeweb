@@ -1,89 +1,32 @@
-import chalk from 'chalk' //! minimize dependency
-import ExtractTextPlugin from 'extract-text-webpack-plugin' //! needed?
-import fs from 'fs'
-import HtmlWebpackPlugin from 'html-webpack-plugin' //! extract-loader
-import path from 'path'
-import ProgressBarPlugin from 'progress-bar-webpack-plugin' //! minimize dependency
+import autoprefixer from 'autoprefixer'
+import { resolve } from 'path'
 import webpack from 'webpack'
 
 // config
-const opt = JSON.parse(fs.readFileSync(fs.existsSync('./option.json') ? './option.json' : './option.sample.json')) //! don't use sample
+import opt from './option.json'
 
 export default {
-  devServer: { //! minimize options
-    contentBase: path.resolve('./dist'),
+  context: resolve('app'),
+  devServer: {
     host: opt.host,
-    hot: true,
     inline: true,
     port: opt.port,
-    stats: {
-      chunkModules: false,
-      chunks: false,
-      colors: true,
-      hash: false,
-      version: false
-    }
+    stats: { chunkModules: false }
   },
-  entry: path.resolve('./app/app.js'),
+  entry: './app.js',
   module: {
-    rules: [ //! minimize rules
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })
-      },
-      {
-        test: /\.(eot|otf|svg|ttf|woff(2)?)(\?[a-z0-9]+)?$/,
-        use: 'file-loader?name=fonts/[name].[ext]'
-      },
-      {
-        test: /\.(jpeg|jpg|png)$/,
-        use: 'url-loader?limit=10000'
-      },
-      {
-        test: /\.js$/,
-        exclude: /\/node_modules\/|\/lib\//,
-        use: 'babel-loader'
-      },
-      {
-        test: /\.pug$/,
-        use: 'pug-loader'
-      },
-      {
-        test: /\.sass$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'sass-loader'
-          ]
-        })
-      }
+    rules: [
+      { test: /\.css$/, use: ['style-loader?insertAt=top', 'css-loader'] },
+      { test: /\.(eot|otf|svg|ttf|woff(2)?)(\?[a-z0-9]+)?$/, use: 'file-loader?name=fonts/[hash:7].[ext]' },
+      { test: /\.(jpeg|jpg|png)$/, use: 'url-loader?limit=10000' },
+      { test: /\.js$/, use: 'babel-loader' },
+      { test: /\.pug$/, use: ['file-loader?name=[name].html', 'extract-loader', 'html-loader', 'pug-html-loader?exports=false'] },
+      { test: /\.sass$/, use: ['file-loader?name=[name].css', 'extract-loader', 'css-loader', { loader: 'postcss-loader', options: { plugins: [autoprefixer] } }, 'sass-loader'] }
     ]
   },
   output: {
     filename: 'app.js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: 'app.css'
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve('./app/index.pug')
-    }),
-    new ProgressBarPlugin({
-      format: `:msg build [${chalk.yellow.bold(':bar')}] ${chalk.green.bold(':percent')} (:elapsed seconds)`
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  ],
-  resolve: { //! needed?
-    modules: [
-      'node_modules'
-    ]
+    path: resolve('dist')
   }
 }
 
