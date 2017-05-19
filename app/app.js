@@ -14,12 +14,12 @@ $(window).resize(() => $('body').attr("data-orientation", $(window).width() > $(
 
 $(".page").click(function(){
   $("body").attr("data-content",$(this).data("page"))
-  $("body").attr("data-status","")
+  $("body").removeAttr('data-list')
 })
 
 $("#logo").click(() => {
   $("body").attr("data-content","landing")
-  $("body").attr("data-status","list")
+  $("body").attr("data-list",'')
 }
 )
 

@@ -1,209 +1,175 @@
-// global
+// global setting
 
-//html > body > #logo, #menu, #content > .page > .left, .right
+//// font
+
+@font-face
+  font-family: mon
+  src: url('res/font/Montserrat-Light.otf')
+
+@font-face
+  font-family: mon_bold
+  src: url('res/font/Montserrat-Regular.otf')
+
+//// scroll bar
+
+.scrollbar
+
+  &::-webkit-scrollbar
+    width: 4px
+    background-color: transparent
+
+  &::-webkit-scrollbar-thumb, &::-webkit-scrllbar-track
+    border-radius: 10px
+    background-color: transparent
+
+//// font awesome
+
+.fa
+  color: #e2db1a
+
+////////////////////////
 
 body
   background: rgba(68, 63, 70, 1)
-  height: 100%
+  font-family: mon, sans-serif
   margin: 0
-  width: 100%
+  overflow: hidden
+
+  @each $page in landing news course faculty scholarship upload
+    &[data-content='#{$page}'] .page[data-page='#{$page}']
+      opacity: 1
+      pointer-events: auto
+
+  a
+    text-decoration: none
 
 #logo
-  align-items: center
   background-color: #e2db1a
   color: rgba(255, 255, 255, 1)
-  cursor: pointer //! make it an <a>, change url after clicking
-  display: flex
-  float: left //! needed?
-  font-family: Cabin, sans-serif
-  font-size: 2.5vw
-  height: 4.2vw //! em or rem
-  justify-content: center
-  left: 2vw
-  position: relative
-  top: 2vw
-  width: 4.2vw
+  position: fixed
   z-index: 100
 
 #menu
-  display: inline-block //! needed?
-  left: 43%
+  float: left
   position: relative
-  top: 4.1vw
-  transform: translate(-50%,-50%)
-  z-index: 100
 
-  > span
-    border: 0px solid rgba(226, 219, 26, 0)
+  a
+    border-bottom: 2.5px solid transparent
     color: rgba(255, 255, 255, 1)
-    font-family: mon, sans-serif
-    font-size: 1.2vw
-    margin-left: 4.2vw
     padding-bottom: 1em
-    transition: all ease-in-out .2s
-    
-    >a
-      color: rgba(255,255,255,1)
-      text-decoration: none
+    transition: all ease-in-out .15s
 
     &:hover
-      border-bottom: 2.5px solid rgba(226, 219, 26, 1)
+      border-bottom-color: rgba(226, 219, 26, 1)
       padding-bottom: .2em
 
 #content
-  background: url('http://i.imgur.com/Fbu28kR.jpg') no-repeat 
-  background-position: 48% 50% 
-  background-size: cover 
-  height: 100% 
-  left: 0 
-  overflow: hidden 
-  position: absolute 
-  top: 0 
-  transition: all 0.3s ease-in-out 
-  width: 100% 
+  background: url('http://i.imgur.com/Fbu28kR.jpg') no-repeat
+  background-position: 48% 50%
+  background-size: cover
+  height: 100%
+  overflow: hidden
+  position: absolute
+  transition: all ease-in-out 0.2s
+  width: 100%
 
   &:after
-    content: "" 
-    background-color: rgba(68, 63, 70, 0.9) 
-    height: 100% 
-    left: 0 
-    pointer-events: none 
-    position: absolute 
-    top: 0 
+    content: ''
+    background-color: rgba(68, 63, 70, 0.9)
+    height: 100%
+    pointer-events: none
+    position: absolute
     transition: all ease-in-out 0.6s
-    width: 100%
 
 .page
-  box-sizing: border-box 
-  height: 100% 
-  opacity: 0 
-  position: absolute 
-  padding: 8.5% 6% 4% 3.5% 
-  top: 0 
-  transition: opacity ease-in-out  0.6s 
-  width: 100% 
-
-  >span
-
-    &:first-child
-      color: rgba(92, 86, 92, 0.47) 
-      font-family: 'mon', sans-serif
-      font-size: 12.5rem 
-      font-weight: 900 
-      position: absolute 
-      top: 75% 
+  box-sizing: border-box
+  height: 100%
+  opacity: 0
+  pointer-events: none
+  position: absolute
+  transition: opacity ease-in-out  0.6s
+  width: 100%
 
   &[data-page="landing"]
-    display: block 
 
-    .watermark
-      color: rgba(92, 86, 92, 0.47) 
-      float: right 
-      font-family: 'mon', sans-serif 
-      font-size: 10vw 
-      font-weight: 900 
-      position: absolute 
-      right: 57% 
-      bottom: 0 
-      z-index: 100 
+    > div
+      z-index: 100
 
-.left,.right
-  float: left 
-  height: 100% 
-  position: relative 
-  width: 67% 
+    .title
+      color: rgba(255, 255, 255, 1)
+      font-weight: 100
+      line-height: 6vh
+      position: relative
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 1)
+      top: 50%
+      transform: translateY(-50%)
 
-.left
-  margin-right: 0.5% 
-  width: 32% 
+// landscape
 
-  >div
-    box-sizing: border-box 
-    height: 70% 
-    padding: 0% 30% 0% 8% 
-    position: relative 
-    width: 100% 
+body[data-orientation='landscape']
 
-  >span
-    color: rgba(92, 86, 92, 0.47) 
-    float: right 
-    font-family: 'mon', sans-serif 
-    font-size: 12.5rem 
-    font-weight: 900 
-    position: relative 
-
-.title
-  box-sizing: border-box 
-  color: rgba(255, 255, 255, 1)
-  font-family: 'mon', sans-serif 
-  font-size: 2vw 
-  font-weight: 100 
-  line-height: 6vh 
-  padding-left: 23% 
-  position: relative 
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 1) 
-  top: 50% 
-  transform: translateY(-50%) 
-  z-index: 100 
-
-.fa
-  color: #e2db1a 
-
-.none
-  display: none!important 
-
-.pointer
-  cursor: pointer 
-
-//portrait setting
-
-body[data-orientation="portrait"]
-  #content
-    background-color: rgba(68,63,70,0.9) 
-    box-shadow: -1vw 1vw 0.2vw rgb(53, 53, 53) 
-
-    &::after
-      width: 100%!important 
-
-  &[data-status="list"]
-    #content
-      height: 80% 
-      left: 35% 
-      top: 10% 
-      width: 65% 
-
-    #menu
-      transform: translateX(0) 
-
-  .page
-    padding: 0 
-
-    &[data-page="landing"] >.title
-      font-size: 5vw 
-      padding: 0 
-      text-align: center 
-
-    .watermark
-      display: none 
-
-  #logo //! order
-    float: none //! needed?
-    font-size: 5vw
-    height: 10vw
-    left: 0 
-    top: 0 
-    width: 10vw 
+  #logo
+    font-size: 2.5vw
+    left: 2vw
+    padding: .55vw 1.27vw
+    top: 2vw
 
   #menu
-    display: block !important //! needed?
-    float: left
-    left: 0 //! needed? vs. float
-    top: 0
+    left: 47.2%
+    top: 3.35vw
+    transform: translate(-50%)
+    z-index: 100
+
+    a
+      font-size: 1.2vw
+      margin-left: 4.2vw
+
+  #content:after
+    width: 43%
+
+  .page
+    padding: 8.5% 6% 4% 3.5%
+
+    &[data-page="landing"]
+
+      .title
+        font-size: 2vw
+        left: 23%
+
+      .watermark
+        color: rgba(92, 86, 92, 0.47)
+        font-size: 10vw
+        font-weight: 900
+        position: absolute
+        right: 57%
+        bottom: 0
+
+// portrait
+
+body[data-orientation='portrait']
+
+  &[data-list]
+
+    #menu
+      top: 9vw
+      transform: translateX(0)
+
+    #content //! change to vw
+      height: 80%
+      left: 35%
+      top: 10%
+      width: 65%
+
+  #logo
+    font-size: 5vw
+    padding: 1.9vw 3.35vw
+
+  #menu
     transform: translateX(-100%)
-    transition: all 0.3s
+    transition: all 0.2s
     width: 35vw
 
-    > span
+    a
       display: block
       font-size: 3.5vw
       margin: 5vh 0 5vh 3vw
@@ -212,287 +178,283 @@ body[data-orientation="portrait"]
         display: block
         margin-left: 1vw
 
-// landscape setting
-
-body[data-content="landing"] //! typo?
   #content
-    &::after
-      width: 43% 
+    box-shadow: -1vw 1vw 0.2vw rgba(53, 53, 53, 1)
 
-  .page[data-page='landing']
-    opacity: 1 
+    &:after
+      width: 100%
 
-// font
+  .page
+    padding: 0
 
-@font-face
-  font-family: mon 
-  src: url('res/font/Montserrat-Light.otf') 
+    &[data-page="landing"]
 
-@font-face
-  font-family: mon_bold 
-  src: url('res/font/Montserrat-Regular.otf') 
+      .title
+        font-size: 5vw
+        text-align: center
 
-// color
+      .watermark
+        display: none
 
-.bc-white
-  background-color: rgba(255, 255, 255, 0.6) 
-
-.yellow
-  color: #e2db1a 
-
-// size
-
-.small
-  font-size: 1.5rem 
-
-// scroll bar
-.scrollbar
-
-  &::-webkit-scrllbar-track
-    border-radius: 10px
-    background-color: transparent
-
-  &::-webkit-scrollbar
-    width: 4px 
-    background-color: transparent 
-
-  &::-webkit-scrollbar-thumb
-    border-radius: 10px 
-    background-color: transparent 
 
 // Haven't been used yet
 
+.left,.right
+  float: left
+  height: 100%
+  position: relative
+  width: 67%
+
+.left
+  margin-right: 0.5%
+  width: 32%
+
+  >div
+    box-sizing: border-box
+    height: 70%
+    padding: 0% 30% 0% 8%
+    position: relative
+    width: 100%
+
+  >span
+    color: rgba(92, 86, 92, 0.47)
+    float: right
+    font-family: 'mon'
+    font-size: 12.5rem
+    font-weight: 900
+    position: relative
+
 .box
-  border: 12px solid rgba(92, 86 ,92 ,0.47) 
-  height: 10.5rem 
-  left: 24% 
-  position: absolute 
-  top: 9% 
-  width: 18.5rem 
+  border: 12px solid rgba(92, 86 ,92 ,0.47)
+  height: 10.5rem
+  left: 24%
+  position: absolute
+  top: 9%
+  width: 18.5rem
 
 .intro
-  color: #bdb2c3 
-  float: left 
-  font-family: 'mon' 
-  font-size: 1rem 
-  line-height: 1.625rem 
-  position: relative 
-  top: 27% 
-  transition: opacity 0.6s 
-  z-index: 1 
+  color: #bdb2c3
+  float: left
+  font-family: 'mon'
+  font-size: 1rem
+  line-height: 1.625rem
+  position: relative
+  top: 27%
+  transition: opacity 0.6s
+  z-index: 1
 
 .letter
-  color: #fff 
-  display: inline-block 
-  font-family: 'mon' 
-  font-size: 3.7rem 
-  font-weight: 700 
-  margin-bottom: 4% 
-  position: relative 
-  top: 14% 
-  transition: opacity 0.6s 
-  z-index: 1 
+  color: #fff
+  display: inline-block
+  font-family: 'mon'
+  font-size: 3.7rem
+  font-weight: 700
+  margin-bottom: 4%
+  position: relative
+  top: 14%
+  transition: opacity 0.6s
+  z-index: 1
 
   &.indent
-    white-space: pre 
+    white-space: pre
 
 // activity page
 
 body[data-content="news"]
   #activity
     display: block
-    opacity: 1 
+    opacity: 1
 
 .board[data-content="title"]
   .outline
-    opacity: 1 
+    opacity: 1
   .detail
-    pointer-events: none 
+    pointer-events: none
 
   &:hover .scrollbar::-webkit-scrollbar-thumb
-    background-color: #e2db1a 
+    background-color: #e2db1a
 
   & .redo
-    opacity: 0 
+    opacity: 0
 
 .board[data-content="content"]
   .outline
-    pointer-events: none 
+    pointer-events: none
   .detail
-    opacity: 1 
+    opacity: 1
 
   &:hover .scrollbar::webkit-scrollbar-thumb
-    background-color: rgba(122, 122, 122, 0.65) 
+    background-color: rgba(122, 122, 122, 0.65)
 
 .meta
-  color: #000 
-  height: 4.875rem 
+  color: #000
+  height: 4.875rem
 
 .board
-  background: url('http://i.imgur.com/0TRwFHS.png') no-repeat 
-  background-color: #fff 
-  background-size: cover 
-  box-sizing: border-box 
-  height: 93% 
-  padding: 8% 3% 8% 3% 
-  position: relative 
-  width: 100% 
-  z-index: 1 
+  background: url('http://i.imgur.com/0TRwFHS.png') no-repeat
+  background-color: #fff
+  background-size: cover
+  box-sizing: border-box
+  height: 93%
+  padding: 8% 3% 8% 3%
+  position: relative
+  width: 100%
+  z-index: 1
 
 .date,.meta
-  cursor: pointer 
-  font-family: 'mon' 
-  line-height: 1.625rem 
-  margin: 5% 0% 
-  overflow: hidden 
-  position: relative 
-  text-align: left 
-  width: 95% 
+  cursor: pointer
+  font-family: 'mon'
+  line-height: 1.625rem
+  margin: 5% 0%
+  overflow: hidden
+  position: relative
+  text-align: left
+  width: 95%
 
 .detail
-  font-family: 'mon' 
-  height: 108% 
-  left: 1% 
-  line-height: 2.5rem 
-  opacity: 0 
-  overflow-x: hidden 
-  overflow-y: auto 
-  position: relative 
-  text-align: left 
-  top: -108% 
-  transition: opacity 0.6s 
-  width: 94% 
+  font-family: 'mon'
+  height: 108%
+  left: 1%
+  line-height: 2.5rem
+  opacity: 0
+  overflow-x: hidden
+  overflow-y: auto
+  position: relative
+  text-align: left
+  top: -108%
+  transition: opacity 0.6s
+  width: 94%
 
   &>p
-    line-height: 2.5rem 
-    white-space: pre-line 
+    line-height: 2.5rem
+    white-space: pre-line
 
     &:first-child
-      display: inline-block 
-      font-size: 2rem 
-      line-height: 0 
-      margin-bottom: 10% 
+      display: inline-block
+      font-size: 2rem
+      line-height: 0
+      margin-bottom: 10%
 
 .detail_pic
-  height: 20% 
-  margin-top: 1.25rem 
-  position: relative 
-  width: 100% 
+  height: 20%
+  margin-top: 1.25rem
+  position: relative
+  width: 100%
 
   >img
-    height: 100% 
-    margin: 0 1% 
+    height: 100%
+    margin: 0 1%
 
     &:first-child
-      margin-left: 0 
+      margin-left: 0
 
 .outline
-  height: 100% 
-  opacity: 0 
-  overflow-x: hidden 
-  overflow-y: auto 
-  position: relative 
-  transition: opacity 0.6s 
-  width: 100% 
+  height: 100%
+  opacity: 0
+  overflow-x: hidden
+  overflow-y: auto
+  position: relative
+  transition: opacity 0.6s
+  width: 100%
 
   >.header
-    float: left 
-    margin: 0 3% 
-    margin-bottom: 5% 
-    position: relative 
-    width: 44% 
+    float: left
+    margin: 0 3%
+    margin-bottom: 5%
+    position: relative
+    width: 44%
 
 .record
-  line-height: 1rem 
-  position: relative 
-  right: 2% 
-  text-align: right 
-  top: 5% 
+  line-height: 1rem
+  position: relative
+  right: 2%
+  text-align: right
+  top: 5%
 
 .redo
-  cursor: pointer 
-  font-size: 1.3rem 
-  right: 1% 
-  opacity: 0.6 
-  position: absolute 
-  bottom: 1% 
-  transition: all 0.6s 
-  z-index: 100 
+  cursor: pointer
+  font-size: 1.3rem
+  right: 1%
+  opacity: 0.6
+  position: absolute
+  bottom: 1%
+  transition: all 0.6s
+  z-index: 100
 
   &>img
-    width: 50px 
+    width: 50px
 
 // lab page
 
 body[data-content="faculty"]
   #lab
-    display: block 
-    opacity: 1 
+    display: block
+    opacity: 1
 
     .lab_board
 
       &[data-status="member"]
 
         & #group
-          opacity: 0 
-          pointer-events: none 
+          opacity: 0
+          pointer-events: none
 
         & #member
-          opacity: 1 
+          opacity: 1
 
       &[data-status="group"]
 
         & #member
-          pointer-events: none 
+          pointer-events: none
 
 #group
-  align-items: center 
-  display: flex 
-  flex-wrap: wrap 
-  height: 100% 
-  justify-content: center 
-  opacity: 1 
-  overflow-y: auto 
-  transition: opacity 0.6s ease-in-out 
-  width: 100% 
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  height: 100%
+  justify-content: center
+  opacity: 1
+  overflow-y: auto
+  transition: opacity 0.6s ease-in-out
+  width: 100%
 
 .group
-  color: #000 
-  font-family: 'mon_bold' 
-  font-size: 2rem 
-  text-align: center 
+  color: #000
+  font-family: 'mon_bold'
+  font-size: 2rem
+  text-align: center
 
 .lab_board
-  background: transparent 
-  height: 100% 
-  padding: 2% 13% 
+  background: transparent
+  height: 100%
+  padding: 2% 13%
 
   &:hover .scrollbar::-webkit-scrollbar-thumb
-    background-color: #e2db1a 
+    background-color: #e2db1a
 
 #member
-  display: flex 
-  height: 100% 
-  justify-content: center 
-  opacity: 0 
-  overflow-y: auto 
-  position: relative 
-  top: -100% 
-  transition: opacity 0.6s ease-in-out 
-  width: 100% 
+  display: flex
+  height: 100%
+  justify-content: center
+  opacity: 0
+  overflow-y: auto
+  position: relative
+  top: -100%
+  transition: opacity 0.6s ease-in-out
+  width: 100%
 
 .member
-  align-items: center 
-  background: transparent 
-  display: flex 
-  flex-wrap: wrap 
-  float: left 
-  height: 12.5rem 
-  justify-content: center 
-  margin: 1% 1% 
-  cursor: pointer 
-  width: 12.5rem 
+  align-items: center
+  background: transparent
+  display: flex
+  flex-wrap: wrap
+  float: left
+  height: 12.5rem
+  justify-content: center
+  margin: 1% 1%
+  cursor: pointer
+  width: 12.5rem
 
   >img
-    height: 100% 
-    width: 100% 
+    height: 100%
+    width: 100%

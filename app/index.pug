@@ -2,22 +2,22 @@ html
   head
     link(href="https://fonts.googleapis.com/css?family=Cabin:600")
     link(rel='stylesheet' href='./app.css')
-    meta(content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no",name="viewport")
+    meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport")
     title EE Web
-  body(data-content="landing",data-orientation="lanscape")
-    #logo(data-page="landing") E
+  body(data-content="landing" data-orientation="landscape")
+    a#logo(href="#landing") E
     #menu
-      span(data-page="news"): a(href='news') News #[span.extend & Events]
-      span(data-page="course"): a(href='course') Courses
-      span(data-page="faculty"): a(href='faculty') Faculty #[span.extend & Research]
-      span(data-page="scholarship"): a(href='scholarship') Scholarship
-      span Upload
+      a(href='#news') News #[span.extend & Events]
+      a(href='#course') Courses
+      a(href='#faculty') Faculty #[span.extend & Research]
+      a(href='#scholarship') Scholarship
+      a(href='#upload') Upload
     #content
       .page(data-page="landing")
         .title National Cheng Kung University#[br]Electronic Engineering
         .watermark ELECTRONIC
       // {{{ news
-      .page.none(data-page="news")
+      .page(data-page="news")
         .left
           div
             p.letter NEWS
@@ -62,7 +62,7 @@ html
               img(src='http://i.imgur.com/LEM7HgJ.png')
       // }}} news
       // {{{ course
-      .page.none(data-page="course")
+      .page(data-page="course")
         .left
           div
             p.letter.inednt.yellow OUR
@@ -72,7 +72,7 @@ html
           span ACTIVITY
       // }}} course
       // {{{ faculty
-      .page.none(data-page="faculty")
+      .page(data-page="faculty")
         .left
           div
             p.letter FACULTY
