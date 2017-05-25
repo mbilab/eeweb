@@ -20,17 +20,16 @@ html
       .page(data-page="news")
         .left
           div
-            p.letter NEWS
-            p.letter.indent.yellow  & EVENTS
+            span.letter NEWS
+            span.letter.indent.yellow  & EVENTS
             //.box
             span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-          span ACTIVITY
         .right
           .board(data-content="title")
             .outline.scrollbar
               .header
                 i.fa.fa-trophy.fa-4x
-                .date DECEMBER 23,2017
+                .date DEC 23,2017
                 .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
               .header
                 i.fa.fa-camera-retro.fa-4x
@@ -46,7 +45,7 @@ html
                 .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
               .header
                 i.fa.fa-handshake-o.fa-4x
-                .date JANUARY 1,2017
+                .date JAN 1,2017
                 .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
             .detail.scrollbar
               p I DON'T WANT TO MISS A THING
@@ -60,6 +59,7 @@ html
               p.record edited at 2017.12.23
             .redo
               img(src='http://i.imgur.com/LEM7HgJ.png')
+        .watermark ACTIVITY  
       // }}} news
       // {{{ course
       .page(data-page="course")

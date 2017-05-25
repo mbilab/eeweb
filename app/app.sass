@@ -27,6 +27,9 @@
 .fa
   color: #e2db1a
 
+.fa-4x
+  font-size: 4vw
+
 ////////////////////////
 
 body
@@ -44,7 +47,7 @@ body
     text-decoration: none
 
 #logo
-  background-color: #e2db1a
+  background-color: rgba(226, 219, 26, 1)
   color: rgba(255, 255, 255, 1)
   position: fixed
   z-index: 100
@@ -68,8 +71,10 @@ body
   background-position: 48% 50%
   background-size: cover
   height: 100%
+  left: 0 //to make transition effect
   overflow: hidden
   position: absolute
+  top: 0 //to make transition effect
   transition: all ease-in-out 0.2s
   width: 100%
 
@@ -87,7 +92,9 @@ body
   opacity: 0
   pointer-events: none
   position: absolute
+  transition: all .5s ease-in-out
   width: 100%
+  z-index: 1
 
   &[data-page="landing"]
 
@@ -135,13 +142,13 @@ body[data-orientation='landscape']
         font-size: 2vw
         left: 23%
 
-      .watermark
-        color: rgba(92, 86, 92, 0.47)
-        font-size: 10vw
-        font-weight: 900
-        position: absolute
-        right: 57%
-        bottom: 0
+  .watermark
+    color: rgba(92, 86, 92, 0.47)
+    font-size: 10vw
+    font-weight: 900
+    position: absolute
+    right: 57%
+    bottom: 0
 
 // portrait
 
@@ -171,7 +178,7 @@ body[data-orientation='portrait']
     a
       display: block
       font-size: 3.5vw
-      margin: 5vh 0 5vh 3vw
+      margin: 5vh 3vw 5vh 3vw
 
       .extend
         display: block
@@ -192,8 +199,8 @@ body[data-orientation='portrait']
         font-size: 5vw
         text-align: center
 
-      .watermark
-        display: none
+  .watermark
+    display: none
 
 
 // Haven't been used yet
@@ -205,7 +212,7 @@ body[data-orientation='portrait']
   width: 67%
 
 .left
-  margin-right: 0.5%
+  margin-right: 1%
   width: 32%
 
   >div
@@ -223,6 +230,23 @@ body[data-orientation='portrait']
     font-weight: 900
     position: relative
 
+body[data-orientation='portrait']
+  .left
+    div
+      float: none
+      padding: 0
+  
+  .intro
+    font-size: 3vw
+    line-height: 3vh
+  
+  .board
+    height: auto
+
+    .date, .meta
+      font-size: 3vw
+      line-height: 3vh
+
 .box
   border: 12px solid rgba(92, 86 ,92 ,0.47)
   height: 10.5rem
@@ -235,8 +259,8 @@ body[data-orientation='portrait']
   color: #bdb2c3
   float: left
   font-family: 'mon'
-  font-size: 1rem
-  line-height: 1.625rem
+  font-size: 1.2vw
+  line-height: 4vh
   position: relative
   top: 27%
   transition: opacity 0.6s
@@ -246,9 +270,8 @@ body[data-orientation='portrait']
   color: #fff
   display: inline-block
   font-family: 'mon'
-  font-size: 3.7rem
+  font-size: 4vw 
   font-weight: 700
-  margin-bottom: 4%
   position: relative
   top: 14%
   transition: opacity 0.6s
@@ -292,6 +315,7 @@ body[data-content="news"]
 .board
   background: url('http://i.imgur.com/0TRwFHS.png') no-repeat
   background-color: #fff
+  background-position: 100% 0%
   background-size: cover
   box-sizing: border-box
   height: 93%
@@ -303,7 +327,8 @@ body[data-content="news"]
 .date,.meta
   cursor: pointer
   font-family: 'mon'
-  line-height: 1.625rem
+  font-size: 1.1vw
+  line-height: 4vh
   margin: 5% 0%
   overflow: hidden
   position: relative
