@@ -19,11 +19,9 @@ html
       // {{{ news
       .page(data-page="news")
         .left
-          div
-            span.letter NEWS
-            span.letter.indent.yellow  & EVENTS
+          span.title NEWS#[span.extend  & EVENTS]
             //.box
-            span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
+          span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
         .right
           .board(data-content="title")
             .outline.scrollbar
@@ -33,7 +31,7 @@ html
                 .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
               .header
                 i.fa.fa-camera-retro.fa-4x
-                .date JULY 18,2017
+                .date JUL 18,2017
                 .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
               .header
                 i.fa.fa-cog.fa-4x
@@ -41,7 +39,7 @@ html
                 .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
               .header
                 i.fa.fa-lightbulb-o.fa-4x
-                .date APRIL 4,2017
+                .date APR 4,2017
                 .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
               .header
                 i.fa.fa-handshake-o.fa-4x
@@ -64,22 +62,18 @@ html
       // {{{ course
       .page(data-page="course")
         .left
-          div
-            p.letter.inednt.yellow OUR
-            p.letter.black  COURSES
+          span.title OUR#[span.extend  COURES]
             //.box
-            span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-          span ACTIVITY
+          span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
+          .watermark ACTIVITY
       // }}} course
       // {{{ faculty
       .page(data-page="faculty")
         .left
-          div
-            p.letter FACULTY
-            p.letter.indent.yellow  & RESEARCH
+          span.title FACULTY#[span.extend  & RESEARCH]
             //.box
-            span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-          span RESEARCH
+          span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
+          .watermark RESEARCH
         .right
           .board.lab_board(data-status="group")
             #group.scrollbar

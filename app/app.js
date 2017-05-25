@@ -25,8 +25,7 @@ $(".page").click(function(){
 })
 
 $("#logo").click(() => {
-  $("body").attr("data-content","landing")
-  $("body").attr("data-list",'')
+  $("body").attr("data-orientation") == "portrait" ? $("body").attr("data-list",'') : $("body").attr("data-content","landing")
 })
 
 $("#menu>a").click(function() {
