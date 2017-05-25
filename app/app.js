@@ -35,11 +35,11 @@ $("#menu>a").click(function() {
   $(".lab_board").attr("data-status","group")
 })
 
-$(".redo").click(() => {
+$(".return").click(() => {
   $(".board").attr("data-content","title")
 })
 
-$(".outline>div").click(() => {
+$(".header").click(() => {
     $(".board").attr("data-content","content")
 })
 

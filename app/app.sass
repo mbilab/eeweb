@@ -146,7 +146,96 @@ body
       .extend
         color: rgba(255, 255, 255, 1)
         white-space: nowrap
+    
+  .right
+      
+    .board
+      background: url('http://i.imgur.com/0TRwFHS.png') no-repeat
+      background-color: rgba(255, 255, 255, 1)
+      background-position: 100% 0%
+      background-size: cover
+      box-sizing: border-box
+      height: 100%
+      padding: 6% 3% 6% 3%
+      position: relative
+      width: 100%
+      z-index: 1
 
+      .main
+        height: 100%
+        opacity: 0
+        overflow-x: hidden
+        overflow-y: auto
+        position: relative
+        transition: opacity 0.6s
+        width: 100%
+
+        .header
+          float: left
+          margin: 0 3%
+          margin-bottom: 5%
+          position: relative
+
+          .date,.meta
+            color: rgba(0, 0, 0, 1)
+            cursor: pointer
+            font-family: 'mon'
+            margin: 5% 0%
+            overflow: hidden
+            position: relative
+            text-align: left
+            width: 95%
+        
+      .main-content
+        box-sizing: border-box
+        font-family: 'mon'
+        opacity: 0
+        overflow-x: hidden
+        overflow-y: auto
+        padding: 0 2%
+        position: relative
+        text-align: left
+        transition: opacity 0.6s
+        width: 100%
+
+        p
+          white-space: pre-line
+
+          &:first-child
+            display: inline-block
+          
+        .main-content-pic
+          height: 20%
+          margin-top: 1.25rem
+          position: relative
+          width: 100%
+
+          img
+            height: 100%
+            margin-left: .5vw
+
+          &:first-child
+            margin-left: 0
+
+        .record
+          line-height: 4vh
+          position: relative
+          right: 2%
+          text-align: right
+          top: 5%
+
+      .return
+        cursor: pointer
+        font-size: 1.3rem
+        right: 1%
+        opacity: 0.6
+        position: absolute
+        bottom: 1%
+        transition: all 0.6s
+        z-index: 100
+
+        img
+          width: 3vw
 // landscape
 
 body[data-orientation='landscape']
@@ -188,6 +277,26 @@ body[data-orientation='landscape']
       
       .title
         color: rgba(226, 219, 26, 1)
+    
+    .right
+      
+      .header
+        width: 44%
+        
+        .date,.meta
+          font-size: 1.1vw
+          line-height: 4vh
+
+      .main-content
+        height: 108%
+        top: -108%
+
+        p
+          font-size: 1vw
+          line-height: 5vh
+
+          &:first-child
+            font-size: 2.5vw
 
   .watermark
     color: rgba(92, 86, 92, 0.47)
@@ -267,20 +376,38 @@ body[data-orientation='portrait']
       .header
         width: 100%
 
-        .fa
-          font-size: 5vh
+      .fa
+        font-size: 5vh
 
-        .date, .meta
-          font-size: 3vw
+      .date,.meta
+        font-size: 3vw
+        line-height: 3vh
+
+      .main-content
+        height: 100%
+        top: -100%
+  
+        p
+          font-size: 4vw
           line-height: 3vh
+
+          &:first-child
+            font-size: 5vw
+  
+        .main-content-pic
+          overflow: scroll
+
+          img
+            width: 48%
+            margin-left: 1%
+  
+      .return
+        display: none
 
   .watermark
     display: none
 
-
-// Haven't been used yet
-
-.box
+//.box
   border: 12px solid rgba(92, 86 ,92 ,0.47)
   height: 10.5rem
   left: 24%
@@ -288,132 +415,32 @@ body[data-orientation='portrait']
   top: 9%
   width: 18.5rem
 
-// activity page
+// activity page controll
 
 body[data-content="news"]
   #activity
-    display: block
     opacity: 1
 
 .board[data-content="title"]
-  .outline
-    opacity: 1
-  .detail
+  .main
+    opacity: 1!important
+  .main-content
     pointer-events: none
 
   &:hover .scrollbar::-webkit-scrollbar-thumb
     background-color: #e2db1a
 
-  & .redo
+  & .return
     opacity: 0
 
 .board[data-content="content"]
-  .outline
+  .main
     pointer-events: none
-  .detail
-    opacity: 1
+  .main-content
+    opacity: 1!important
 
   &:hover .scrollbar::webkit-scrollbar-thumb
     background-color: rgba(122, 122, 122, 0.65)
-
-.meta
-  color: #000
-
-.board
-  background: url('http://i.imgur.com/0TRwFHS.png') no-repeat
-  background-color: #fff
-  background-position: 100% 0%
-  background-size: cover
-  box-sizing: border-box
-  height: 100%
-  padding: 6% 3% 6% 3%
-  position: relative
-  width: 100%
-  z-index: 1
-
-.date,.meta
-  cursor: pointer
-  font-family: 'mon'
-  font-size: 1.1vw
-  line-height: 4vh
-  margin: 5% 0%
-  overflow: hidden
-  position: relative
-  text-align: left
-  width: 95%
-
-.detail
-  font-family: 'mon'
-  height: 108%
-  left: 1%
-  line-height: 2.5rem
-  opacity: 0
-  overflow-x: hidden
-  overflow-y: auto
-  position: relative
-  text-align: left
-  top: -108%
-  transition: opacity 0.6s
-  width: 94%
-
-  &>p
-    line-height: 2.5rem
-    white-space: pre-line
-
-    &:first-child
-      display: inline-block
-      font-size: 2rem
-      line-height: 0
-      margin-bottom: 10%
-
-.detail_pic
-  height: 20%
-  margin-top: 1.25rem
-  position: relative
-  width: 100%
-
-  >img
-    height: 100%
-    margin: 0 1%
-
-    &:first-child
-      margin-left: 0
-
-.outline
-  height: 100%
-  opacity: 0
-  overflow-x: hidden
-  overflow-y: auto
-  position: relative
-  transition: opacity 0.6s
-  width: 100%
-
-  .header
-    float: left
-    margin: 0 3%
-    margin-bottom: 5%
-    position: relative
-    width: 44%
-
-.record
-  line-height: 1rem
-  position: relative
-  right: 2%
-  text-align: right
-  top: 5%
-
-.redo
-  cursor: pointer
-  font-size: 1.3rem
-  right: 1%
-  opacity: 0.6
-  position: absolute
-  bottom: 1%
-  transition: all 0.6s
-  z-index: 100
-
-  &>img
-    width: 50px
 
 // lab page
 
