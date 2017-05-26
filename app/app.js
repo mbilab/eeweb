@@ -7,8 +7,11 @@ const $ = require('jquery')
 
 // responsive logic
 
-$(window).resize(() => $('body').attr("data-orientation", $(window).width() > $(window).height() ? "landscape" : "portrait"))
-.resize()
+$(window).resize(() => $('body').attr('data-orientation',
+  $(window).width() > $(window).height()
+  ? "landscape"
+  : "portrait")
+).resize()
 
 // show content referred to url
 

@@ -1,17 +1,16 @@
 html
   head
-    link(href="https://fonts.googleapis.com/css?family=Cabin:600")
-    link(rel='stylesheet' href='./app.css')
-    meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport")
-    title EE Web
-  body(data-content="landing" data-orientation="landscape")
+    link(href='./app.css',rel='stylesheet')
+    meta(content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width",name="viewport")
+    title NCKU EE
+  body(data-content="landing",data-orientation="landscape")
     a#logo(href="#landing") E
     #menu
       a(href='#news') News #[span.extend & Events]
-      a(href='#course') Courses
+      //a(href='#course') Courses
       a(href='#faculty') Faculty #[span.extend & Research]
-      a(href='#scholarship') Scholarship
-      a(href='#upload') Upload
+      //a(href='#scholarship') Scholarship
+      //a(href='#upload') Upload
     #content
       .page(data-page="landing")
         .title National Cheng Kung University#[br]Electronic Engineering

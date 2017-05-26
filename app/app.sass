@@ -31,13 +31,16 @@
   font-size: 3.5vw
 
 ////////////////////////
-//body > logo, menu, content > page > left, right, watermark
+// body > logo, menu, content > page > left, right, watermark
+
+a
+  color: rgb(255, 255, 255)
+  text-decoration: none
 
 body
-  background: rgba(68, 63, 70, 1)
+  color: rgb(255, 255, 255)
   font-family: mon, sans-serif
   margin: 0
-  min-height: 400
   overflow: hidden
 
   @each $page in landing news course faculty scholarship upload
@@ -45,48 +48,98 @@ body
       opacity: 1
       pointer-events: auto
 
-  a
-    text-decoration: none
-
+  &[data-orientation='landscape']
+    min-height: 400 //! why this?
+  
+  &[data-orientation='portrait']
+    background: rgb(68, 63, 70)
+  
 #logo
-  background-color: rgba(226, 219, 26, 1)
-  color: rgba(255, 255, 255, 1)
+  background-color: rgb(226, 219, 26)
   position: fixed
   z-index: 100
 
+  [data-orientation='landscape'] &
+    font-size: 2.5vw
+    left: 2vw
+    top: 2vw
+    padding: .55vw 1.27vw
+
+  [data-orientation='portrait'] &
+    font-size: 5vw
+    padding: 1.9vw 3.35vw
+
 #menu
-  float: left
-  position: relative
+  transition: all 0.2s
 
   a
-    border-bottom: 2.5px solid transparent
-    color: rgba(255, 255, 255, 1)
-    padding-bottom: 1em
     transition: all ease-in-out .15s
 
-    &:hover
-      border-bottom-color: rgba(226, 219, 26, 1)
-      padding-bottom: .2em
+  [data-orientation='landscape'] &
+    float: left //! why this?
+    left: 47.2% //! why this?
+    position: relative
+    top: 3.35vw //! related to em
+    transform: translate(-50%)
+    z-index: 100
+
+    a
+      border-bottom: 2.5px solid transparent
+      font-size: 1.2vw //! related to vw, but landscape threshould be related to this
+      margin-left: 4.2vw //! related to em
+      padding-bottom: 1em
+  
+      &:hover
+        border-bottom-color: rgba(226, 219, 26)
+        padding-bottom: .2em
+
+  [data-orientation='portrait'] &
+    top: 9.8vw //! related to em
+    transform: translateX(-100%)
+    width: 35vw //! related to em
+
+    a
+      display: block
+      font-size: 3.5vw //! paragraph text, related to vw, set min and max
+      margin: 2em 0 0 1em
+
+      .extend
+        display: block
+        margin-left: .5em
+
+  [data-orientation='portrait'][data-list] &
+    transform: translateX(0)
 
 #content
-  background: url('http://i.imgur.com/Fbu28kR.jpg') no-repeat
-  background-position: 48% 50%
-  background-size: cover
+  background: url('http://i.imgur.com/Fbu28kR.jpg') center center / cover no-repeat
+  box-shadow: -1vw 1vw 0.2vw rgba(53, 53, 53, 1)
   height: 100%
-  left: 0 //to make transition effect
   overflow: hidden
   position: absolute
-  top: 0 //to make transition effect
+  top: 0
   transition: all ease-in-out 0.2s
   width: 100%
 
-  &:after
-    content: ''
+  &:after // mask
     background-color: rgba(68, 63, 70, 0.9)
+    content: ''
     height: 100%
     pointer-events: none
     position: absolute
     transition: all ease-in-out 0.6s
+
+  [data-orientation='landscape'] &:after
+    width: 43%
+
+  [data-orientation='portrait'] &:after
+    width: 100%
+
+  [data-orientation='portrait'][data-list] &
+    //! use transform: scale()
+    height: 80vh
+    left: 35vw
+    top: 10vh
+    width: 65vw
 
 .page
   box-sizing: border-box
@@ -97,20 +150,6 @@ body
   transition: all .5s ease-in-out
   width: 100%
   z-index: 1
-
-  &[data-page="landing"]
-
-    > div
-      z-index: 100
-
-    .title
-      color: rgba(255, 255, 255, 1)
-      font-weight: 100
-      line-height: 6vh
-      position: relative
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 1)
-      top: 50%
-      transform: translateY(-50%)
 
   .left,.right
     float: left
@@ -236,33 +275,36 @@ body
 
         img
           width: 3vw
+
+[data-page="landing"]
+
+  > div
+    z-index: 100 //! why this?
+
+  .title
+    color: rgb(255, 255, 255)
+    font-weight: 100
+    line-height: 2
+    position: relative
+    text-shadow: 2px 2px 10px rgb(0, 0, 0)
+    top: 50%
+    transform: translateY(-50%)
+
+  [data-orientation='landscape'] &
+
+    .title
+      //! font-size?
+      text-align: left
+
+  [data-orientation='portrait'] &
+
+    .title
+      font-size: 5vw
+      text-align: center
+
 // landscape
 
 body[data-orientation='landscape']
-
-  #logo
-    font-size: 2.5vw
-    left: 2vw
-    padding: .55vw 1.27vw
-    top: 2vw
-
-  #menu
-    left: 47.2%
-    top: 3.35vw
-    transform: translate(-50%)
-    z-index: 100
-
-    a
-      font-size: 1.2vw
-      margin-left: 4.2vw
-
-  #content:after
-    width: 100%
-
-  &[data-content="landing"]
-
-    #content:after
-      width: 43%
 
   .page
     padding: 8.5% 6% 4% 3.5%
@@ -310,50 +352,8 @@ body[data-orientation='landscape']
 
 body[data-orientation='portrait']
 
-  &[data-list]
-
-    #menu
-      top: 9.8vw
-      transform: translateX(0)
-
-    #content
-      height: 80vh
-      left: 35vw
-      top: 10vh
-      width: 65vw
-
-  #logo
-    font-size: 5vw
-    padding: 1.9vw 3.35vw
-
-  #menu
-    transform: translateX(-100%)
-    transition: all 0.2s
-    width: 35vw
-
-    a
-      display: block
-      font-size: 3.5vw
-      margin: 5vh 3vw 5vh 3vw
-
-      .extend
-        display: block
-        margin-left: 1vw
-
-  #content
-    box-shadow: -1vw 1vw 0.2vw rgba(53, 53, 53, 1)
-
-    &:after
-      width: 100%
-
   .page
     padding: 0
-
-    &[data-page="landing"]
-
-      .title
-        font-size: 5vw
-        text-align: center
 
     .left
       height: 9.8vw
