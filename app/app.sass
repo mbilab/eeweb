@@ -47,9 +47,6 @@ body
     &[data-content='#{$page}'] .page[data-page='#{$page}']
       opacity: 1
       pointer-events: auto
-
-  &[data-orientation='landscape']
-    min-height: 400 //! why this?
   
   &[data-orientation='portrait']
     background: rgb(68, 63, 70)
@@ -61,13 +58,13 @@ body
 
   [data-orientation='landscape'] &
     font-size: 2.5vw
-    left: 2vw
-    top: 2vw
-    padding: .55vw 1.27vw
+    left: .4em
+    top: .8em
+    padding: .22em .508em
 
   [data-orientation='portrait'] &
     font-size: 5vw
-    padding: 1.9vw 3.35vw
+    padding: .38em .67em
 
 #menu
   transition: all 0.2s
@@ -76,18 +73,16 @@ body
     transition: all ease-in-out .15s
 
   [data-orientation='landscape'] &
-    //! what's the layout logic?
-    float: left //! why this?
-    left: 47.2% //! why this?
-    position: relative
-    top: 3.35vw //! related to em
+    font-size: 1.2vw  //! layout logic?
+    left: 42%
+    position: absolute
+    top: 2.79em
     transform: translate(-50%)
     z-index: 100
 
     a
       border-bottom: 2.5px solid transparent
-      font-size: 1.2vw //! related to vw, but landscape threshould be related to this
-      margin-left: 4.2vw //! related to em
+      margin-left: 3.5em
       padding-bottom: 1em
   
       &:hover
@@ -95,25 +90,29 @@ body
         padding-bottom: .2em
 
   [data-orientation='portrait'] &
-    top: 9.8vw //! related to em
+    font-size: 3.5vw
+    position: absolute
+    top: 4em
     transform: translateX(-100%)
-    width: 35vw //! related to em
+    width: 10em
 
     a
       display: block
-      font-size: 3.5vw //! paragraph text, related to vw, set min and max
       margin: 2em 0 0 1em
 
       .extend
         display: block
         margin-left: .5em
 
+      &:first-child
+        margin-top: 0
+
   [data-orientation='portrait'][data-list] &
     transform: translateX(0)
 
 #content
   background: url('http://i.imgur.com/Fbu28kR.jpg') center center / cover no-repeat
-  box-shadow: -1vw 1vw 0.2vw rgba(53, 53, 53, 1)
+  box-shadow: -1vw 1vw 0.2vw rgb(53, 53, 53)
   height: 100%
   overflow: hidden
   position: absolute
@@ -121,26 +120,26 @@ body
   transition: all ease-in-out 0.2s
   width: 100%
 
-  &:after // mask
-    background-color: rgba(68, 63, 70, 0.9)
+  &:after
+    background: rgba(68, 63, 70, 0.9)
     content: ''
     height: 100%
     pointer-events: none
     position: absolute
     transition: all ease-in-out 0.6s
-
+  
   [data-orientation='landscape'] &:after
+    width: 100%
+
+  [data-content='landing'] &:after
     width: 43%
 
   [data-orientation='portrait'] &:after
-    width: 100%
+    display: none
 
   [data-orientation='portrait'][data-list] &
-    //! use transform: scale()
-    height: 80vh
-    left: 35vw
-    top: 10vh
-    width: 65vw
+    transform: scale( .65, .8)
+    transform-origin: right
 
 .page
   box-sizing: border-box
@@ -148,9 +147,23 @@ body
   opacity: 0
   pointer-events: none
   position: absolute
-  transition: all .5s ease-in-out
+  transition: all .2s ease-in-out
   width: 100%
   z-index: 1
+
+  &:before // mask
+    background-color: rgba(68, 63, 70, 0.9)
+    content: ''
+    height: 100%
+    pointer-events: none
+    position: absolute
+    transition: all ease-in-out 0.6s
+
+  [data-orientation='landscape'] &:before
+    display: none
+
+  [data-orientation='portrait'] &:before
+    width: 100%
 
   .left,.right
     float: left
@@ -195,6 +208,7 @@ body
       background-position: 100% 0%
       background-size: cover
       box-sizing: border-box
+      color: rgb(0, 0, 0)
       height: 100%
       padding: 6% 3% 6% 3%
       position: relative
@@ -278,10 +292,7 @@ body
           width: 3vw
 
 [data-page="landing"]
-
-  > div
-    z-index: 100 //! why this?
-
+  
   .title
     color: rgb(255, 255, 255)
     font-weight: 100
@@ -294,7 +305,8 @@ body
   [data-orientation='landscape'] &
 
     .title
-      //! font-size?
+      font-size: 2vw
+      left: 23%
       text-align: left
 
   [data-orientation='portrait'] &
@@ -309,12 +321,6 @@ body[data-orientation='landscape']
 
   .page
     padding: 8.5% 6% 4% 3.5%
-
-    &[data-page="landing"]
-
-      .title
-        font-size: 2vw
-        left: 23%
 
     .left
       
