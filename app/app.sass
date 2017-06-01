@@ -25,9 +25,14 @@
 //// font awesome
 
 .fa
+
   color: #e2db1a
 
+  [data-orientation='portrait']
+    font-size: 5vh
+
 .fa-4x
+
   font-size: 3.5vw
 
 ////////////////////////
@@ -78,6 +83,7 @@ body
     position: absolute
     top: 2.79em
     transform: translate(-50%)
+    white-space: nowrap
     z-index: 100
 
     a
@@ -116,7 +122,6 @@ body
   height: 100%
   overflow: hidden
   position: absolute
-  top: 0
   transition: all ease-in-out 0.2s
   width: 100%
 
@@ -159,137 +164,217 @@ body
     position: absolute
     transition: all ease-in-out 0.6s
 
-  [data-orientation='landscape'] &:before
-    display: none
+  [data-orientation='landscape'] &
+    padding: 8.5% 6% 4% 3.5%
+    
+    &:before
+      display: none
 
-  [data-orientation='portrait'] &:before
-    width: 100%
+  [data-orientation='portrait'] &
+    padding: 0
+    
+    &:before
+      width: 100%
 
-  .left,.right
-    float: left
-    height: 100%
-    position: relative
-    width: 67%
+.left,.right
+  float: left
+  height: 100%
+  position: relative
+  width: 67%
 
-  .left
-    margin-right: 1%
+.left
+  margin-right: 1%
+
+  [data-orientation='landscape'] &
     width: 32%
 
-    .intro
-      color: #bdb2c3
-      float: left
-      font-family: 'mon'
-      font-size: 1.2vw
-      line-height: 4vh
-      position: relative
-      top: 15vh
-      transition: opacity 0.6s
-      z-index: 1
-    
-    .title
-      color: rgba(255, 255, 255, 1)
-      font-family: 'mon'
-      font-size: 4vw 
-      font-weight: 700
-      position: relative
+  [data-orientation='portrait'] &
+    height: 9.8vw
+    width: 100%
+
+  .title
+    color: rgb(226, 219, 26)
+    font-family: 'mon'
+    font-size: 4vw 
+    font-weight: 700
+    position: relative
+    transition: opacity 0.6s
+
+    [data-orientation='landscape'] &
       top: 10%
-      transition: opacity 0.6s
-      z-index: 1
-      
-      .extend
-        color: rgba(255, 255, 255, 1)
-        white-space: nowrap
+
+    [data-orientation='portrait'] &
+      display: inline-block
+      top: 50%
+      transform: translateY(-50%)
+      margin-left: 15vw
+
+.intro
+  [data-orientation='landscape'] &
+    color: #bdb2c3
+    float: left
+    font-family: 'mon'
+    font-size: 1.2vw
+    line-height: 1.7
+    position: relative
+    top: 6em
+    transition: opacity .6s
+
+  [data-orientation='portrait'] &
+    display: none
+  
+.extend
+  color: rgba(255, 255, 255, 1)
+  white-space: nowrap
+
+.right
+  [data-orientation='portrait'] &
+    height: calc(100% - 9.8vw)
+    width: 100%
+
+.board
+  box-sizing: border-box
+  color: rgb(0, 0, 0)
+  height: 100%
+  position: relative
+  width: 100%
+  z-index: 1
+  
+  [data-list] &
+    pointer-events: none !important
+
+.main
+  height: 100%
+  opacity: 0
+  overflow-x: hidden
+  overflow-y: auto
+  position: relative
+  transition: opacity .6s
+  width: 100%
+
+.header
+  float: left
+  margin: 0 3%
+  margin-bottom: 5%
+  position: relative
+
+  [data-orientation='landscape'] &
+    width: 44%
+
+  [data-orientation='portrait'] &
+    width: 100%
+
+.date,.meta
+  color: rgb(0, 0, 0)
+  cursor: pointer
+  font-family: 'mon'
+  margin: 5% 0%
+  overflow: hidden
+  position: relative
+  text-align: left
+  width: 95%
+
+  [data-orientation='landscape'] &
+    font-size: 1.1vw
+    line-height: 1.8
+
+  [data-orientation='portrait'] &
+    font-size: 3vw
+    line-height: 1.5
     
-  .right
+.main-content
+  box-sizing: border-box
+  font-family: 'mon'
+  opacity: 0
+  overflow-x: hidden
+  overflow-y: auto
+  padding: 0 2%
+  position: relative
+  text-align: left
+  transition: opacity .6s
+  width: 100%
+
+  [data-orientation='landscape'] &
+    height: 108%
+    top: -108%
+
+  [data-orientation='portrait'] &
+    height: 100%
+    top: -100%
+
+  p
+    white-space: pre-line
+
+    [data-orientation='landscape'] &
+      font-size: 1vw
+      line-height: 2.5
+
+    [data-orientation='portrait'] &
+      font-size: 3vw
+      line-height: 2
+
+    &:first-child
+      display: inline-block
+
+      [data-orientation='landscape'] &
+        font-size: 2.5vw
+        line-height: 1
+
+      [data-orientation='portrait'] &
+        font-size: 5vw
       
-    .board
-      background: url('http://i.imgur.com/0TRwFHS.png') no-repeat
-      background-color: rgba(255, 255, 255, 1)
-      background-position: 100% 0%
-      background-size: cover
-      box-sizing: border-box
-      color: rgb(0, 0, 0)
-      height: 100%
-      padding: 6% 3% 6% 3%
-      position: relative
-      width: 100%
-      z-index: 1
+.main-content-pic
+  height: 20%
+  margin-top: 1.25rem
+  position: relative
+  width: 100%
 
-      .main
-        height: 100%
-        opacity: 0
-        overflow-x: hidden
-        overflow-y: auto
-        position: relative
-        transition: opacity 0.6s
-        width: 100%
+  [data-orientation='portrait'] &
+    overflow: scroll
 
-        .header
-          float: left
-          margin: 0 3%
-          margin-bottom: 5%
-          position: relative
+  img
+    height: 100%
+    margin-left: .5vw
 
-          .date,.meta
-            color: rgba(0, 0, 0, 1)
-            cursor: pointer
-            font-family: 'mon'
-            margin: 5% 0%
-            overflow: hidden
-            position: relative
-            text-align: left
-            width: 95%
-        
-      .main-content
-        box-sizing: border-box
-        font-family: 'mon'
-        opacity: 0
-        overflow-x: hidden
-        overflow-y: auto
-        padding: 0 2%
-        position: relative
-        text-align: left
-        transition: opacity 0.6s
-        width: 100%
+    [data-orientation='portrait'] &
+      width: 48%
+      margin-left: 1%
 
-        p
-          white-space: pre-line
+  &:first-child
+    margin-left: 0
 
-          &:first-child
-            display: inline-block
-          
-        .main-content-pic
-          height: 20%
-          margin-top: 1.25rem
-          position: relative
-          width: 100%
+.record
+  line-height: 2
+  position: relative
+  right: 2%
+  text-align: right
+  top: 5%
 
-          img
-            height: 100%
-            margin-left: .5vw
+.return
+  [data-orientation='landscape'] &
+    cursor: pointer
+    font-size: 1.3rem
+    right: 1%
+    opacity: 0.6
+    position: absolute
+    bottom: 1%
+    transition: all 0.6s
+    z-index: 100
+  
+    img
+      width: 3vw
 
-          &:first-child
-            margin-left: 0
+.watermark
+  [data-orientation='landscape'] &
+    color: rgba(92, 86, 92, 0.47)
+    font-size: 10vw
+    font-weight: 900
+    position: absolute
+    right: 57%
+    bottom: 0
 
-        .record
-          line-height: 4vh
-          position: relative
-          right: 2%
-          text-align: right
-          top: 5%
-
-      .return
-        cursor: pointer
-        font-size: 1.3rem
-        right: 1%
-        opacity: 0.6
-        position: absolute
-        bottom: 1%
-        transition: all 0.6s
-        z-index: 100
-
-        img
-          width: 3vw
+  [data-orientation='portrait'] &
+    display: none
 
 [data-page="landing"]
   
@@ -303,124 +388,23 @@ body
     transform: translateY(-50%)
 
   [data-orientation='landscape'] &
-
+    
     .title
       font-size: 2vw
       left: 23%
       text-align: left
 
   [data-orientation='portrait'] &
-
+    
     .title
       font-size: 5vw
       text-align: center
 
-// landscape
-
-body[data-orientation='landscape']
-
-  .page
-    padding: 8.5% 6% 4% 3.5%
-
-    .left
-      
-      .title
-        color: rgba(226, 219, 26, 1)
-    
-    .right
-      
-      .header
-        width: 44%
-        
-        .date,.meta
-          font-size: 1.1vw
-          line-height: 4vh
-
-      .main-content
-        height: 108%
-        top: -108%
-
-        p
-          font-size: 1vw
-          line-height: 5vh
-
-          &:first-child
-            font-size: 2.5vw
-
-  .watermark
-    color: rgba(92, 86, 92, 0.47)
-    font-size: 10vw
-    font-weight: 900
-    position: absolute
-    right: 57%
-    bottom: 0
-
-// portrait
-
-body[data-orientation='portrait']
-
-  .page
-    padding: 0
-
-    .left
-      height: 9.8vw
-      width: 100%
-
-      .title
-        color: rgba(226, 219, 26, 1)
-        display: inline-block
-        top: 50%
-        transform: translateY(-50%)
-        margin-left: 15vw
-
-      .intro
-        display: none
-
-    .right
-      height: calc(100% - 9.8vw)
-      width: 100%
-
-      .header
-        width: 100%
-
-      .fa
-        font-size: 5vh
-
-      .date,.meta
-        font-size: 3vw
-        line-height: 3vh
-
-      .main-content
-        height: 100%
-        top: -100%
+[data-page='news']
   
-        p
-          font-size: 3vw
-          line-height: 4vh
-
-          &:first-child
-            font-size: 5vw
-  
-        .main-content-pic
-          overflow: scroll
-
-          img
-            width: 48%
-            margin-left: 1%
-  
-      .return
-        display: none
-
-  .watermark
-    display: none
-
-//.box
-  border: 12px solid rgba(92, 86 ,92 ,0.47)
-  height: 10.5rem
-  left: 24%
-  position: absolute
-  top: 9%
-  width: 18.5rem
+  .board
+    background: url('http://i.imgur.com/0TRwFHS.png') 100% 0% / cover no-repeat
+    padding: 6% 3% 6% 3%
 
 // activity page controll
 
