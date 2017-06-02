@@ -28,7 +28,13 @@ $(".page").click(function(){
 })
 
 $("#logo").click(() => {
-  $("body").attr("data-orientation") == "portrait" ? $("body").attr("data-list",'') : $("body").attr("data-content","landing")
+  if ("landscape" === $("body").attr("data-orientation"))
+    return $("body").attr("data-content", "landing")
+  if ($("body").is("[data-list]")) {
+    $("body").attr("data-content", "landing").removeAttr("data-list")
+  } else {
+    $("body").attr("data-list", "")
+  }
 })
 
 $("#menu>a").click(function() {
