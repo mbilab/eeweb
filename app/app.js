@@ -24,22 +24,22 @@ if (window.location.hash) {
 
 $(".page").click(function(){
   $("body").attr("data-content",$(this).data("page"))
-  $("body").removeAttr('data-list')
+  $("body").removeAttr('data-menued')
 })
 
 $("#logo").click(() => {
   if ("landscape" === $("body").attr("data-orientation"))
     return $("body").attr("data-content", "landing")
-  if ($("body").is("[data-list]")) {
-    $("body").attr("data-content", "landing").removeAttr("data-list")
+  if ($("body").is("[data-menued]")) {
+    $("body").removeAttr("data-menued")
   } else {
-    $("body").attr("data-list", "")
+    $("body").attr("data-menued", "")
   }
 })
 
 $("#menu>a").click(function() {
   $("body").attr("data-content",$(this).attr('href').replace('#', ''))
-  $("body").removeAttr('data-list')
+  $("body").removeAttr('data-menued')
   $(".board").attr("data-content","title")
   $(".lab_board").attr("data-status","group")
 })
