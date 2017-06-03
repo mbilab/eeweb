@@ -35,25 +35,21 @@
 
   font-size: 3.5vw
 
-////animation time
+//// animation time
 
 $normal-term: .6s
-
 $short-term: .2s
 
-////color setting
+//// color setting
 
-$white: rgb(255, 255, 255)
-
-$yellow: rgb(226, 219, 26)
-
-$gray: rgb(68, 63, 70)
+$dark-color: rgb(68, 63, 70)
+$primary-color: rgb(226, 219, 26)
 
 ////////////////////////
 // body > logo, menu, content > page > left, right, watermark
 
 a
-  color: $white
+  color: white
   text-decoration: none
 
 body
@@ -67,11 +63,11 @@ body
       pointer-events: auto
   
   &[data-orientation='portrait']
-    background-color: lighten($gray, 10%)
+    background-color: lighten($dark-color, 10%)
   
-#logo
+#logo // {{{
   align-items: center
-  background-color: $yellow
+  background-color: $primary-color
   display: flex
   justify-content: center
   position: fixed
@@ -87,8 +83,9 @@ body
     font-size: 5vw
     height: 2em
     width: 2em
+// }}}
 
-#menu
+#menu // {{{
   transition: all $short-term
 
   a
@@ -109,7 +106,7 @@ body
       padding-bottom: 1em
   
       &:hover
-        border-bottom-color: $yellow
+        border-bottom-color: $primary-color
         padding-bottom: .2em
 
       &:first-child
@@ -118,7 +115,7 @@ body
   [data-orientation='portrait'] &
     font-size: 3.5vw
     position: absolute
-    top: 4em
+    top: 10vw
     transform: translateX(-100%)
     width: 10em
 
@@ -130,11 +127,9 @@ body
         display: block
         margin-left: .5em
 
-      &:first-child
-        margin-top: 0
-
   [data-orientation='portrait'][data-menued] &
     transform: translateX(0)
+// }}}
 
 #content
   background: url('http://i.imgur.com/Fbu28kR.jpg') center center / cover no-repeat
@@ -144,8 +139,8 @@ body
   transition: all $short-term ease-in-out
   width: 100%
 
-  [data-orientation='landscape'] &:after
-    background: rgba($gray, 0.9)
+  &:after // mask
+    background: rgba($dark-color, .9)
     content: ''
     height: 100%
     pointer-events: none
@@ -153,11 +148,11 @@ body
     transition: all $normal-term ease-in-out
     width: 100%
 
-  [data-content='landing'] &:after
-    width: 43%
+    [data-orientation='landscape'][data-content='landing'] &
+      width: 43%
 
   [data-orientation='portrait'][data-menued] &
-    box-shadow: -1vw 1vw 2vw darken($gray, 5%)
+    box-shadow: -1vw 1vw 2vw darken($dark-color, 5%)
     transform: scale(.65)
     transform-origin: right
 
@@ -171,26 +166,12 @@ body
   width: 100%
   z-index: 1
 
-  &:before // mask
-    background-color: rgba($gray, 0.9)
-    content: ''
-    height: 100%
-    pointer-events: none
-    position: absolute
-    transition: all $normal-term ease-in-out
-
   [data-orientation='landscape'] &
     padding: 8.5% 6% 4% 3.5%
     
-    &:before
-      display: none
-
   [data-orientation='portrait'] &
     padding: 0
     
-    &:before
-      width: 100%
-
 .left,.right
   float: left
   height: 100%
@@ -209,7 +190,7 @@ body
     width: 100%
 
   .title
-    color: $yellow
+    color: $primary-color
     font-family: 'mon'
     font-size: 4vw 
     font-weight: 700
@@ -240,7 +221,7 @@ body
     display: none
   
 .extend
-  color: $white
+  color: white
   white-space: nowrap
 
 .right
@@ -394,7 +375,7 @@ body
 [data-page="landing"]
   
   .title
-    color: $white
+    color: white
     font-weight: 100
     line-height: 2
     position: relative
@@ -434,7 +415,7 @@ body[data-content="news"]
     pointer-events: none
 
   &:hover .scrollbar::-webkit-scrollbar-thumb
-    background-color: $yellow
+    background-color: $primary-color
 
   & .return
     opacity: 0!important
