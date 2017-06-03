@@ -25,7 +25,6 @@
 //// font awesome
 
 .fa
-
   color: #e2db1a
 
   [data-orientation='portrait']
@@ -45,6 +44,18 @@ $short-term: .2s
 $dark-color: rgb(68, 63, 70)
 $primary-color: rgb(226, 219, 26)
 
+//// mixin
+
+=full-size
+  height: 100%
+  position: absolute
+  width: 100%
+
+=vertical-center
+  align-items: center
+  display: inline-flex
+  justify-content: center
+
 ////////////////////////
 // body > logo, menu, content > page > left, right, watermark
 
@@ -57,19 +68,12 @@ body
   margin: 0
   overflow: hidden
 
-  @each $page in landing news course faculty scholarship upload
-    &[data-content='#{$page}'] .page[data-page='#{$page}']
-      opacity: 1
-      pointer-events: auto
-  
   &[data-orientation='portrait']
     background-color: lighten($dark-color, 10%)
   
 #logo // {{{
-  align-items: center
+  +vertical-center
   background-color: $primary-color
-  display: flex
-  justify-content: center
   position: fixed
   z-index: 100
 
@@ -92,7 +96,7 @@ body
     transition: all ease-in-out .15s
 
   [data-orientation='landscape'] &
-    font-size: 1.2vw  //! layout logic?
+    font-size: 1.2vw //! layout logic?
     left: 42%
     position: absolute
     top: 2.79em
@@ -131,22 +135,18 @@ body
     transform: translateX(0)
 // }}}
 
-#content
+#content // {{{
+  +full-size
   background: url('http://i.imgur.com/Fbu28kR.jpg') center center / cover no-repeat
-  height: 100%
   overflow: hidden
-  position: absolute
   transition: all $short-term ease-in-out
-  width: 100%
 
   &:after // mask
+    +full-size
     background: rgba($dark-color, .9)
     content: ''
-    height: 100%
     pointer-events: none
-    position: absolute
-    transition: all $normal-term ease-in-out
-    width: 100%
+    transition: all $short-term ease-in-out
 
     [data-orientation='landscape'][data-content='landing'] &
       width: 43%
@@ -155,15 +155,14 @@ body
     box-shadow: -1vw 1vw 2vw darken($dark-color, 5%)
     transform: scale(.65)
     transform-origin: right
+// }}}
 
-.page
+.page // {{{
+  +full-size
   box-sizing: border-box
-  height: 100%
   opacity: 0
   pointer-events: none
-  position: absolute
   transition: all $short-term ease-in-out
-  width: 100%
   z-index: 1
 
   [data-orientation='landscape'] &
@@ -172,13 +171,20 @@ body
   [data-orientation='portrait'] &
     padding: 0
     
-.left,.right
+@each $page in landing news faculty
+  [data-content='#{$page}'] .page[data-page='#{$page}']
+    opacity: 1
+    pointer-events: auto
+  [data-content='#{$page}'][data-menued] .page[data-page='#{$page}']
+    pointer-events: none
+// }}}
+
+.page-left, .page-right
   float: left
   height: 100%
   position: relative
-  width: 67%
 
-.left
+.page-left // {{{
   margin-right: 1%
 
   [data-orientation='landscape'] &
@@ -191,40 +197,41 @@ body
 
   .title
     color: $primary-color
-    font-family: 'mon'
-    font-size: 4vw 
-    font-weight: 700
-    position: relative
-    transition: opacity $normal-term
+    font: 700 4vw 'mon'
 
     [data-orientation='landscape'] &
+      position: relative
       top: 10%
 
     [data-orientation='portrait'] &
-      display: inline-block
-      top: 50%
-      transform: translateY(-50%)
+      +vertical-center
       margin-left: 15vw
+      height: 100%
 
-.intro
-  [data-orientation='landscape'] &
-    color: #bdb2c3
-    float: left
-    font-family: 'mon'
-    font-size: 1.2vw
-    line-height: 1.7
-    position: relative
-    top: 6em
-    transition: opacity $normal-term
+    .extend
+      color: white
+      white-space: nowrap
 
-  [data-orientation='portrait'] &
-    display: none
+  .intro
+    [data-orientation='landscape'] &
+      color: #bdb2c3
+      float: left
+      font-family: 'mon'
+      font-size: 1.2vw
+      line-height: 1.7
+      position: relative
+      top: 6em
+      transition: opacity $normal-term
   
-.extend
-  color: white
-  white-space: nowrap
+    [data-orientation='portrait'] &
+      display: none
+// }}}
+  
+.page-right
 
-.right
+  [data-orientation='landscape'] &
+    width: 67%
+
   [data-orientation='portrait'] &
     font-size: 5vw
     height: calc(100% - 2em)
@@ -233,14 +240,9 @@ body
 .board
   box-sizing: border-box
   height: 100%
-  position: relative
   width: 100%
-  z-index: 1
 
-  [data-menued] &
-    pointer-events: none
-
-.main
+.main //! need to discuss
   height: 100%
   opacity: 0
   overflow-x: hidden
