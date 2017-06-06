@@ -368,11 +368,14 @@ body
     font-size: 10vw
     font-weight: 900
     position: absolute
-    right: 57%
+    right: 0
     bottom: 0
 
   [data-orientation='portrait'] &
     display: none
+
+  [data-page='landing'] &
+    right: 57%
 
 [data-page="landing"]
   
@@ -466,21 +469,23 @@ body[data-content="faculty"]
   width: 100%
 
 .group
+  white-space: wrap
+  background: green !important
   color: #000
   font-family: 'mon_bold'
-  font-size: 2rem
+  font-size: 1.5vw
+  height: 30%
+  margin: 1%
   text-align: center
+  width: 26%
 
 .lab_board
-  background: transparent
-  height: 100%
-  padding: 2% 13%
-
+  
   &:hover .scrollbar::-webkit-scrollbar-thumb
     background-color: #e2db1a
 
 #member
-  display: flex
+  display: none
   height: 100%
   justify-content: center
   opacity: 0
@@ -495,12 +500,8 @@ body[data-content="faculty"]
   background: transparent
   display: flex
   flex-wrap: wrap
-  float: left
-  height: 12.5rem
   justify-content: center
-  margin: 1% 1%
   cursor: pointer
-  width: 12.5rem
 
   >img
     height: 100%
