@@ -162,7 +162,7 @@ body
   box-sizing: border-box
   opacity: 0
   pointer-events: none
-  transition: all $short-term ease-in-out
+  transition: all $normal-term ease-in-out
   z-index: 1
 
   [data-orientation='landscape'] &
@@ -351,12 +351,11 @@ body
 .return
   [data-orientation='landscape'] &
     cursor: pointer
-    font-size: 1.3rem
     right: 1%
     opacity: 0.6
     position: absolute
     bottom: 1%
-    transition: all 0$normal-term
+    transition: all $normal-term
     z-index: 100
   
     img
@@ -436,26 +435,25 @@ body[data-content="news"]
 
 // lab page
 
-body[data-content="faculty"]
-  #lab
-    display: block
+[data-content="faculty"]
+  &[data-status="member"]
+    #group
+      opacity: 0
+      pointer-events: none
+
+    #member
+      opacity: 1
+
+  &[data-status="group"]
+    #member
+      pointer-events: none
+
+  .main
     opacity: 1
-
-    .lab_board
-
-      &[data-status="member"]
-
-        & #group
-          opacity: 0
-          pointer-events: none
-
-        & #member
-          opacity: 1
-
-      &[data-status="group"]
-
-        & #member
-          pointer-events: none
+    
+    [data-orientation='portrait'] &
+      box-sizing: border-box
+      
 
 #group
   align-items: center
@@ -465,24 +463,33 @@ body[data-content="faculty"]
   justify-content: center
   opacity: 1
   overflow-y: auto
-  transition: opacity 0$normal-term ease-in-out
+  transition: opacity $normal-term ease-in-out
   width: 100%
+
+  [data-orientation='portrait'] &
 
 .group
   white-space: wrap
-  background: green !important
+  background: $primary-color
   color: #000
   font-family: 'mon_bold'
-  font-size: 1.5vw
-  height: 30%
   margin: 1%
   text-align: center
-  width: 26%
+  
+  [data-orientation='landscape'] &
+    font-size: 1.5vw
+    height: 30%
+    width: 26%
+
+  [data-orientation='portrait'] &
+    font-size: 3.5vw
+    height: 10em
+    width: 10em
 
 .lab_board
   
   &:hover .scrollbar::-webkit-scrollbar-thumb
-    background-color: #e2db1a
+    background-color: $primary-color
 
 #member
   display: none
@@ -492,12 +499,11 @@ body[data-content="faculty"]
   overflow-y: auto
   position: relative
   top: -100%
-  transition: opacity 0$normal-term ease-in-out
+  transition: opacity $normal-term ease-in-out
   width: 100%
 
 .member
   align-items: center
-  background: transparent
   display: flex
   flex-wrap: wrap
   justify-content: center
