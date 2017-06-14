@@ -40,16 +40,16 @@ $("#logo").click(() => {
 $("#menu>a").click(function() {
   $("body").attr("data-content",$(this).attr('href').replace('#', ''))
   $("body").removeAttr('data-menued')
-  $(".board").attr("data-content","title")
+  $(".page-right").attr("data-content","title")
   $(".lab_board").attr("data-status","group")
 })
 
 $(".return").click(() => {
-  $(".board").attr("data-content","title")
+  $(".page-right").attr("data-content","title")
 })
 
 $(".header").click(() => {
-    $(".board").attr("data-content","content")
+    $(".page-right").attr("data-content","content")
 })
 
 $(".group").click(() => {

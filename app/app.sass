@@ -230,7 +230,7 @@ body
 // }}}
   
 .page-right
-
+  box-sizing: border-box
   [data-orientation='landscape'] &
     width: 67%
 
@@ -394,7 +394,7 @@ body
 
 [data-page='news']
   
-  .board
+  .page-right
     background: url('http://i.imgur.com/0TRwFHS.png') 100% 0% / cover no-repeat
     padding: 6% 3% 6% 3%
 
@@ -404,7 +404,7 @@ body[data-content="news"]
   #activity
     opacity: 1
 
-.board[data-content="title"]
+.page-right[data-content="title"]
   .overall
     opacity: 1!important
   .news-content
@@ -416,7 +416,7 @@ body[data-content="news"]
   & .return
     opacity: 0!important
 
-.board[data-content="content"]
+.page-right[data-content="content"]
   .overall
     pointer-events: none
   .news-content
