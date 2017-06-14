@@ -239,6 +239,10 @@ body
     height: calc(100% - 2em)
     width: 100%
 
+  [data-orientation='portrait'][data-content='faculty'] &
+    box-sizing: border-box
+    padding: 7vw 0
+
 .board
   box-sizing: border-box
   height: 100%
@@ -444,17 +448,17 @@ body[data-content="news"]
       
 
 #group
-  align-items: center
-  display: flex
-  flex-wrap: wrap
   height: 100%
-  justify-content: center
   opacity: 1
   overflow-y: auto
   transition: opacity $normal-term ease-in-out
   width: 100%
-
-  [data-orientation='portrait'] &
+  
+  [data-orientation='landscape'] &
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
 
 .group
   white-space: wrap
@@ -471,8 +475,12 @@ body[data-content="news"]
 
   [data-orientation='portrait'] &
     font-size: 3.5vw
-    height: 10em
-    width: 10em
+    height: 9em
+    margin: 1.5em auto
+    width: 18em
+
+    &:first-child
+      margin-top: 0
 
 .lab_board
   
