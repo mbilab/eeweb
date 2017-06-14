@@ -22,7 +22,7 @@ if (window.location.hash) {
     $("body").attr("data-content", page)
 }
 
-$(".page").click(function(){
+$("#content").click(function(){
   $("body").attr("data-content",$(this).data("page"))
   $("body").removeAttr('data-menued')
 })

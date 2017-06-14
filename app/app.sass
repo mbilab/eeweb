@@ -27,12 +27,13 @@
 .fa
   color: #e2db1a
 
-  [data-orientation='portrait']
-    font-size: 5vh
-
 .fa-4x
 
-  font-size: 3.5vw
+  [data-orientation='landscape'] &
+    font-size: 3.5vw
+
+  [data-orientation='portrait'] &
+    font-size: 3.5vh
 
 //// animation time
 
@@ -210,6 +211,7 @@ body
 
     .extend
       color: white
+      margin-left: .25em
       white-space: nowrap
 
   .intro
@@ -242,7 +244,7 @@ body
   height: 100%
   width: 100%
 
-.main //! need to discuss
+.overall //! need to discuss
   height: 100%
   opacity: 0
   overflow-x: hidden
@@ -280,7 +282,7 @@ body
     font-size: 3vw
     line-height: 1.5
     
-.main-content
+.news-content
   box-sizing: border-box
   font-family: 'mon'
   opacity: 0
@@ -320,33 +322,19 @@ body
 
       [data-orientation='portrait'] &
         font-size: 5vw
-      
-.main-content-pic
-  height: 20%
-  margin-top: 1.25rem
-  position: relative
-  width: 100%
-
-  [data-orientation='portrait'] &
-    overflow: scroll
-
   img
-    height: 100%
-    margin-left: .5vw
+    margin: .5vw 1vw
+
+    [data-orientation='landscape'] &
+      width: 15%
 
     [data-orientation='portrait'] &
-      width: 48%
-      margin-left: 1%
-
-  &:first-child
-    margin-left: 0
+      width: 47%
 
 .record
-  line-height: 2
   position: relative
   right: 2%
   text-align: right
-  top: 5%
 
 .return
   [data-orientation='landscape'] &
@@ -413,9 +401,9 @@ body[data-content="news"]
     opacity: 1
 
 .board[data-content="title"]
-  .main
+  .overall
     opacity: 1!important
-  .main-content
+  .news-content
     pointer-events: none
 
   &:hover .scrollbar::-webkit-scrollbar-thumb
@@ -425,9 +413,9 @@ body[data-content="news"]
     opacity: 0!important
 
 .board[data-content="content"]
-  .main
+  .overall
     pointer-events: none
-  .main-content
+  .news-content
     opacity: 1!important
 
   &:hover .scrollbar::webkit-scrollbar-thumb
@@ -448,7 +436,7 @@ body[data-content="news"]
     #member
       pointer-events: none
 
-  .main
+  .overall
     opacity: 1
     
     [data-orientation='portrait'] &
