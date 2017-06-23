@@ -204,6 +204,16 @@ body
       position: relative
       top: 10%
 
+      &::before
+        content: ''
+        border: .45vw solid gray
+        height: 15vh
+        left: 3vw
+        position: absolute
+        top: 4vh
+        width: 15vw
+        z-index: -1
+
     [data-orientation='portrait'] &
       +vertical-center
       margin-left: 15vw
