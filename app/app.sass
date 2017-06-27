@@ -12,7 +12,7 @@
 
 //// scroll bar
 
-.scrollbar
+.overview,.news-content,#group,#member
 
   &::-webkit-scrollbar
     width: 4px
@@ -206,6 +206,7 @@ body
 
       &::before
         content: ''
+        display: none
         border: .45vw solid gray
         height: 15vh
         left: 3vw
@@ -258,7 +259,7 @@ body
   height: 100%
   width: 100%
 
-.overall //! need to discuss
+.overview //! need to discuss
   height: 100%
   opacity: 0
   overflow-x: hidden
@@ -286,7 +287,6 @@ body
   overflow: hidden
   position: relative
   text-align: left
-  width: 95%
 
   [data-orientation='landscape'] &
     font-size: 1.1vw
@@ -295,7 +295,12 @@ body
   [data-orientation='portrait'] &
     font-size: 3vw
     line-height: 1.5
-    
+
+.date
+  [data-orientation='portrait'] &
+    display: inline
+    margin-left: 5%
+
 .news-content
   box-sizing: border-box
   font-family: 'mon'
@@ -405,7 +410,7 @@ body
 [data-page='news']
   
   .page-right
-    background: url('http://i.imgur.com/0TRwFHS.png') 100% 0% / cover no-repeat
+    background: url('http://i.imgur.com/0TRwFHS.png') 45% 0% / cover no-repeat
     padding: 6% 3% 6% 3%
 
 // activity page controll
@@ -415,24 +420,24 @@ body[data-content="news"]
     opacity: 1
 
 .page-right[data-content="title"]
-  .overall
+  .overview
     opacity: 1!important
   .news-content
     pointer-events: none
 
-  &:hover .scrollbar::-webkit-scrollbar-thumb
+  &:hover .overview::-webkit-scrollbar-thumb
     background-color: $primary-color
 
   & .return
     opacity: 0!important
 
 .page-right[data-content="content"]
-  .overall
+  .overview
     pointer-events: none
   .news-content
     opacity: 1!important
 
-  &:hover .scrollbar::webkit-scrollbar-thumb
+  &:hover .news-content::-webkit-scrollbar-thumb
     background-color: rgba(122, 122, 122, 0.65)
 
 // lab page
@@ -450,7 +455,7 @@ body[data-content="news"]
     #member
       pointer-events: none
 
-  .overall
+  .overview
     opacity: 1
     
     [data-orientation='portrait'] &
@@ -471,16 +476,19 @@ body[data-content="news"]
     justify-content: center
 
 .group
-  white-space: wrap
+  align-items: center
   background: $primary-color
   color: #000
+  display: flex
   font-family: 'mon_bold'
-  margin: 1%
+  justify-content: center
   text-align: center
+  white-space: wrap
   
   [data-orientation='landscape'] &
     font-size: 1.5vw
     height: 30%
+    margin: 1%
     width: 26%
 
   [data-orientation='portrait'] &
@@ -491,11 +499,6 @@ body[data-content="news"]
 
     &:first-child
       margin-top: 0
-
-.lab_board
-  
-  &:hover .scrollbar::-webkit-scrollbar-thumb
-    background-color: $primary-color
 
 #member
   display: none
