@@ -40,16 +40,19 @@ $("#logo").click(() => {
 $("#menu>a").click(function() {
   $("body").attr("data-content",$(this).attr('href').replace('#', ''))
   $("body").removeAttr('data-menued')
-  $(".page-right").attr("data-content","title")
+  $(".page-content").attr("data-content","title")
+  $(".overview").attr("data-index","0")
   $(".lab_board").attr("data-status","group")
 })
 
 $(".return").click(() => {
-  $(".page-right").attr("data-content","title")
+  $(".page-content").attr("data-content","title")
+  $(".overview").attr("data-index","0")
 })
 
-$(".header").click(() => {
-    $(".page-right").attr("data-content","content")
+$(".header").click(function() {
+    $(".page-content").attr("data-content","content")
+    $(".overview").attr("data-index",$(this).data('index'))
 })
 
 $(".group").click(() => {

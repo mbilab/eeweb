@@ -180,12 +180,12 @@ body
     pointer-events: none
 // }}}
 
-.page-left, .page-right
+.page-info, .page-content
   float: left
   height: 100%
   position: relative
 
-.page-left // {{{
+.page-info // {{{
   margin-right: 1%
 
   [data-orientation='landscape'] &
@@ -240,7 +240,7 @@ body
       display: none
 // }}}
   
-.page-right
+.page-content
   box-sizing: border-box
   [data-orientation='landscape'] &
     width: 67%
@@ -303,6 +303,7 @@ body
 
 .news-content
   box-sizing: border-box
+  display: none
   font-family: 'mon'
   opacity: 0
   overflow-x: hidden
@@ -350,8 +351,14 @@ body
     [data-orientation='portrait'] &
       width: 47%
 
+@each $index in 1 2 3 4 5
+  .overview[data-index='#{$index}']~.news-content[data-id='#{$index}']
+    display: block
+    opacity: 1
+
 .record
   position: relative
+  line-height: 1
   right: 2%
   text-align: right
 
@@ -409,19 +416,15 @@ body
 
 [data-page='news']
   
-  .page-right
+  .page-content
     background: url('http://i.imgur.com/0TRwFHS.png') 45% 0% / cover no-repeat
     padding: 6% 3% 6% 3%
 
 // activity page controll
 
-body[data-content="news"]
-  #activity
-    opacity: 1
-
-.page-right[data-content="title"]
+.page-content[data-content="title"]
   .overview
-    opacity: 1!important
+    opacity: 1
   .news-content
     pointer-events: none
 
@@ -429,13 +432,11 @@ body[data-content="news"]
     background-color: $primary-color
 
   & .return
-    opacity: 0!important
+    opacity: 0
 
-.page-right[data-content="content"]
+.page-content[data-content="content"]
   .overview
     pointer-events: none
-  .news-content
-    opacity: 1!important
 
   &:hover .news-content::-webkit-scrollbar-thumb
     background-color: rgba(122, 122, 122, 0.65)

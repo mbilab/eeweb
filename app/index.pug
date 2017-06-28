@@ -18,39 +18,60 @@ html
         .watermark ELECTRONIC
       // {{{ news
       .page(data-page="news")
-        .page-left
+        .page-info
           span.title NEWS#[span.extend  & EVENTS]
           span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           .watermark ACTIVITY  
-        .page-right(data-content="title")
+        .page-content(data-content="title")
           .overview
-            .header
+            .header(data-index="1")
               i.fa.fa-trophy.fa-4x
               .date DEC 23,2017
               .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-            .header
+            .header(data-index="2")
               i.fa.fa-camera-retro.fa-4x
               .date JUL 18,2017
               .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-            .header
+            .header(data-index="3")
               i.fa.fa-cog.fa-4x
               .date MAY 5,2017
               .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-            .header
+            .header(data-index="4")
               i.fa.fa-lightbulb-o.fa-4x
               .date APR 4,2017
               .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-            .header
+            .header(data-index="5")
               i.fa.fa-handshake-o.fa-4x
               .date JAN 1,2017
               .meta Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-          .news-content
+          .news-content(data-id="1")
             p I DON'T WANT TO MISS A THING
             p I could stay awake just to hear you breathing Watch you smile while you are sleeping While far away and dreaming I could spend my life in this sweet surrender I could stay lost in this moment forever Every moment I spend with you is a moment I treasure Don't want to close my eyes Don't want to fall asleep 'Cuz I'd miss you baby And I don't wanna miss a thing 'Cuz even when I dream of you The sweetest dream would never do I'd still miss you baby
-            img(src='http://i.imgur.com/f4u6ztF.jpg')
-            img(src='http://i.imgur.com/Unag5cx.jpg')
-            img(src='http://i.imgur.com/2TAZyTO.jpg')
-            img(src='http://i.imgur.com/K2O9q6S.jpg')
+            img.size-small(src='http://i.imgur.com/f4u6ztF.jpg')
+            p.record T.Y.Liao
+            p.record edited at 2017.12.23
+          .news-content(data-id="2")
+            p WE DON'T TALK ANYMORE 
+            p We don't talk anymore, we don't talk anymore We don't talk anymore, like we used to do We don't love anymore What was all of it for? Oh, we don't talk anymore, like we used to do I just heard you found the one you been looking You been looking for I wish I would have known that wasn't me Cause even after all this time I still wonder Why I can't move on Just the way you did so easily Don't wanna know What kind of dress you're wearing tonight If he's holding onto you so tight The way I did before I overdosed Should've known your love was a game Now I can't get you out of my brain Oh, it's such a shame
+            img.size-normal(src='http://i.imgur.com/f4u6ztF.jpg')
+            p.record T.Y.Liao
+            p.record edited at 2017.11.11
+          .news-content(data-id="3")
+            p I DON'T WANT TO MISS A THING
+            p I could stay awake just to hear you breathing Watch you smile while you are sleeping While far away and dreaming I could spend my life in this sweet surrender I could stay lost in this moment forever Every moment I spend with you is a moment I treasure Don't want to close my eyes Don't want to fall asleep 'Cuz I'd miss you baby And I don't wanna miss a thing 'Cuz even when I dream of you The sweetest dream would never do I'd still miss you baby
+            img.size-full(src='http://i.imgur.com/f4u6ztF.jpg')
+            p.record T.Y.Liao
+            p.record edited at 2017.12.23
+          .news-content(data-id="4")
+            p I DON'T WANT TO MISS A THING
+            p I could stay awake just to hear you breathing Watch you smile while you are sleeping While far away and dreaming I could spend my life in this sweet surrender I could stay lost in this moment forever Every moment I spend with you is a moment I treasure Don't want to close my eyes Don't want to fall asleep 'Cuz I'd miss you baby And I don't wanna miss a thing 'Cuz even when I dream of you The sweetest dream would never do I'd still miss you baby
+            img.size-small(src='http://i.imgur.com/f4u6ztF.jpg')
+            p.record T.Y.Liao
+            p.record edited at 2017.12.23
+          .news-content(data-id="5")
+            p I DON'T WANT TO MISS A THING
+            p I could stay awake just to hear you breathing Watch you smile while you are sleeping While far away and dreaming I could spend my life in this sweet surrender I could stay lost in this moment forever Every moment I spend with you is a moment I treasure Don't want to close my eyes Don't want to fall asleep 'Cuz I'd miss you baby And I don't wanna miss a thing 'Cuz even when I dream of you The sweetest dream would never do I'd still miss you baby
+            img.size-full(src='http://i.imgur.com/f4u6ztF.jpg')
             p.record T.Y.Liao
             p.record edited at 2017.12.23
           .return
@@ -58,18 +79,18 @@ html
       // }}} news
       // {{{ course
       .page(data-page="course")
-        .page-left
+        .page-info
           span.title OUR#[span.extend COURES]
           span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           .watermark ACTIVITY
       // }}} course
       // {{{ faculty
       .page(data-page="faculty")
-        .page-left
+        .page-info
           span.title FACULTY#[span.extend  & RESEARCH]
           span.intro Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           .watermark RESEARCH
-        .page-right
+        .page-content
           .overview(data-status="group")
             #group
               .group
