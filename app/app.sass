@@ -80,7 +80,7 @@ body
 
   [data-orientation='landscape'] &
     font-size: 2.5vw
-    left: .4em
+    left: .8em
     top: .8em
     padding: .22em .508em
 
@@ -254,10 +254,22 @@ body
     box-sizing: border-box
     padding: 7vw 0
 
-.board
-  box-sizing: border-box
-  height: 100%
-  width: 100%
+  &[data-content="title"]
+    .overview
+      opacity: 1
+
+      &:hover::-webkit-scrollbar-thumb
+        background-color: $primary-color
+
+  &[data-content="content"]
+    .overview
+      pointer-events: none
+
+    .return
+      opacity: .6
+
+    &:hover::-webkit-scrollbar-thumb
+      background-color: rgba(122, 122, 122, 0.65)
 
 .overview //! need to discuss
   height: 100%
@@ -270,36 +282,42 @@ body
 
 .header
   float: left
-  margin: 0 3%
-  margin-bottom: 5%
   position: relative
 
   [data-orientation='landscape'] &
-    width: 44%
+    margin: 0 2.5%
+    margin-bottom: 5%
+    width: 45%
 
   [data-orientation='portrait'] &
+    margin-bottom: 10%
     width: 100%
 
 .date,.meta
   cursor: pointer
   font-family: 'mon'
-  margin: 5% 0%
   overflow: hidden
   position: relative
   text-align: left
 
   [data-orientation='landscape'] &
     font-size: 1.1vw
+    margin-top: 5%
     line-height: 1.8
 
   [data-orientation='portrait'] &
     font-size: 3vw
+    margin-top: 3%
     line-height: 1.5
 
 .date
   [data-orientation='portrait'] &
     display: inline
     margin-left: 5%
+
+.meta
+  [data-orientation='portrait'] &
+    display: block
 
 .news-content
   box-sizing: border-box
@@ -309,6 +327,7 @@ body
   overflow-x: hidden
   overflow-y: auto
   padding: 0 2%
+  pointer-events: none
   position: relative
   text-align: left
   transition: opacity $normal-term
@@ -366,7 +385,7 @@ body
   [data-orientation='landscape'] &
     cursor: pointer
     right: 1%
-    opacity: 0.6
+    opacity: 0
     position: absolute
     bottom: 1%
     transition: all $normal-term
@@ -420,27 +439,6 @@ body
     background: url('http://i.imgur.com/0TRwFHS.png') 45% 0% / cover no-repeat
     padding: 6% 3% 6% 3%
 
-// activity page controll
-
-.page-content[data-content="title"]
-  .overview
-    opacity: 1
-  .news-content
-    pointer-events: none
-
-  &:hover .overview::-webkit-scrollbar-thumb
-    background-color: $primary-color
-
-  & .return
-    opacity: 0
-
-.page-content[data-content="content"]
-  .overview
-    pointer-events: none
-
-  &:hover .news-content::-webkit-scrollbar-thumb
-    background-color: rgba(122, 122, 122, 0.65)
-
 // lab page
 
 [data-content="faculty"]
@@ -461,7 +459,6 @@ body
     
     [data-orientation='portrait'] &
       box-sizing: border-box
-      
 
 #group
   height: 100%
