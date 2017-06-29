@@ -12,7 +12,7 @@
 
 //// scroll bar
 
-.overview,.news-content,#group,#member
+.overview,.content,#group,#member
 
   &::-webkit-scrollbar
     width: 4px
@@ -136,7 +136,7 @@ body
     transform: translateX(0)
 // }}}
 
-#content // {{{
+#main // {{{
   +full-size
   background: url('http://i.imgur.com/Fbu28kR.jpg') center center / cover no-repeat
   overflow: hidden
@@ -149,7 +149,7 @@ body
     pointer-events: none
     transition: all $short-term ease-in-out
 
-    [data-orientation='landscape'][data-content='landing'] &
+    [data-orientation='landscape'][data-page='landing'] &
       width: 43%
 
   [data-orientation='portrait'][data-menued] &
@@ -173,10 +173,10 @@ body
     padding: 0
     
 @each $page in landing news faculty
-  [data-content='#{$page}'] .page[data-page='#{$page}']
+  [data-page='#{$page}'] .page[data-page-id='#{$page}']
     opacity: 1
     pointer-events: auto
-  [data-content='#{$page}'][data-menued] .page[data-page='#{$page}']
+  [data-page='#{$page}'][data-menued] .page[data-page-id='#{$page}']
     pointer-events: none
 // }}}
 
@@ -225,7 +225,7 @@ body
       margin-left: .25em
       white-space: nowrap
 
-  .intro
+  .description
     [data-orientation='landscape'] &
       color: #bdb2c3
       float: left
@@ -250,16 +250,16 @@ body
     height: calc(100% - 2em)
     width: 100%
 
-  [data-orientation='portrait'][data-content='faculty'] &
+  [data-orientation='portrait'][data-page='faculty'] &
     box-sizing: border-box
     padding: 7vw 0
 
-  &[data-content="title"]
+  &[data-page-content="list"]
 
     &:hover::-webkit-scrollbar-thumb
       background-color: $primary-color
 
-  &[data-content="content"]
+  &[data-page-content="content"]
     
     &:hover::-webkit-scrollbar-thumb
       background-color: rgba(122, 122, 122, 0.65)
@@ -272,10 +272,10 @@ body
   transition: opacity $normal-term
   width: 100%
 
-  .page-content[data-content="title"] &
+  .page-content[data-page-content="list"] &
     opacity: 1
 
-  .page-content[data-content="content"] &
+  .page-content[data-page-content="content"] &
     opacity: 0
     pointer-events: none
 
@@ -318,7 +318,7 @@ body
   [data-orientation='portrait'] &
     display: block
 
-.news-content
+.content
   box-sizing: border-box
   display: none
   font-family: 'mon'
@@ -370,7 +370,7 @@ body
       width: 47%
 
 @each $index in 1 2 3 4 5
-  .overview[data-index='#{$index}']~.news-content[data-id='#{$index}']
+  .overview[data-index='#{$index}']~.content[data-id='#{$index}']
     display: block
     opacity: 1
     pointer-events: auto
@@ -397,10 +397,10 @@ body
       transform: translateY(-50%)
       right: 4%
 
-    .page-content[data-content="title"] &
+    .page-content[data-page-content="list"] &
       opacity: 0
 
-    .page-content[data-content="content"] &
+    .page-content[data-page-content="content"] &
       opacity: 1
 
 .watermark
@@ -416,10 +416,10 @@ body
   [data-orientation='portrait'] &
     display: none
 
-  [data-page='landing'] &
+  [data-page-id='landing'] &
     right: 57%
 
-[data-page="landing"]
+[data-page-id="landing"]
   
   .title
     color: white
@@ -443,7 +443,7 @@ body
       font-size: 5vw
       text-align: center
 
-[data-page='news']
+[data-page-id='news']
   
   .page-content
     background: url('http://i.imgur.com/0TRwFHS.png') 45% 0% / cover no-repeat
@@ -451,7 +451,7 @@ body
 
 // lab page
 
-[data-content="faculty"]
+[data-page="faculty"]
   &[data-status="member"]
     #group
       opacity: 0

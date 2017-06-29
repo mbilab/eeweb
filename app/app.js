@@ -19,17 +19,17 @@ if (window.location.hash) {
   let page = window.location.hash.replace('#', '')
 
   if(0 !== $(`.page[data-page='${page}']`).length)
-    $("body").attr("data-content", page)
+    $("body").attr("data-page", page)
 }
 
-$("#content").click(function(){
-  $("body").attr("data-content",$(this).data("page"))
+$("#main").click(function(){
+  $("body").attr("data-page",$(this).data("page"))
   $("body").removeAttr('data-menued')
 })
 
 $("#logo").click(() => {
   if ("landscape" === $("body").attr("data-orientation"))
-    return $("body").attr("data-content", "landing")
+    return $("body").attr("data-page", "landing")
   if ($("body").is("[data-menued]")) {
     $("body").removeAttr("data-menued")
   } else {
@@ -38,20 +38,20 @@ $("#logo").click(() => {
 })
 
 $("#menu>a").click(function() {
-  $("body").attr("data-content",$(this).attr('href').replace('#', ''))
+  $("body").attr("data-page",$(this).attr('href').replace('#', ''))
   $("body").removeAttr('data-menued')
-  $(".page-content").attr("data-content","title")
+  $(".page-content").attr("data-page-content","list")
   $(".overview").attr("data-index","0")
   $(".lab_board").attr("data-status","group")
 })
 
 $(".return").click(() => {
-  $(".page-content").attr("data-content","title")
+  $(".page-content").attr("data-page-content","list")
   $(".overview").attr("data-index","0")
 })
 
 $(".header").click(function() {
-    $(".page-content").attr("data-content","content")
+    $(".page-content").attr("data-page-content","content")
     $(".overview").attr("data-index",$(this).data('index'))
 })
 
