@@ -280,7 +280,8 @@ body
     pointer-events: none
 
 .header
-  float: left
+  float: left //! flexbox?
+  box-sizing: border-box
   position: relative
 
   [data-orientation='landscape'] &
@@ -289,10 +290,13 @@ body
     width: 45%
 
   [data-orientation='portrait'] &
-    margin-bottom: 10%
+    padding: 1em .5em
     width: 100%
 
-.date,.meta
+.header + .header
+  border-top: 1px solid lighten($dark-color, 50%)
+
+.date,.meta //! vertical alignment, css selector
   cursor: pointer
   font-family: 'mon'
   overflow: hidden
@@ -446,8 +450,8 @@ body
 [data-page-id='news']
   
   .page-content
-    background: url('http://i.imgur.com/0TRwFHS.png') 45% 0% / cover no-repeat
-    padding: 6% 3% 6% 3%
+    //background: url('http://i.imgur.com/0TRwFHS.png') 45% 0% / cover no-repeat
+    background-color: rgb(255,255,255)
 
 // lab page
 
