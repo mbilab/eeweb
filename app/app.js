@@ -47,12 +47,12 @@ $("#menu>a").click(function() {
 
 $(".return").click(() => {
   $(".page-content").attr("data-page-content","list")
-  $(".overview").attr("data-index","0")
+  $(".item").removeClass('show')
 })
 
-$(".header").click(function() {
-    $(".page-content").attr("data-page-content","content")
-    $(".overview").attr("data-index",$(this).data('index'))
+$(".item").click(function() {
+    $(".page-content").attr("data-page-content",$(this).index())
+    $(this).addClass('show')
 })
 
 $(".group").click(() => {
