@@ -41,8 +41,7 @@ $("#menu>a").click(function() {
   $("body").attr("data-page",$(this).attr('href').replace('#', ''))
   $("body").removeAttr('data-menued')
   $(".page-content").attr("data-page-content","list")
-  $(".overview").attr("data-index","0")
-  $(".lab_board").attr("data-status","group")
+  $(".item").removeClass('show')
 })
 
 $(".return").click(() => {
@@ -52,6 +51,7 @@ $(".return").click(() => {
 
 $(".item").click(function() {
     $(".page-content").attr("data-page-content",$(this).index())
+    $(".item").removeClass('show')
     $(this).addClass('show')
 })
 

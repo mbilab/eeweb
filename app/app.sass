@@ -12,7 +12,7 @@
 
 //// scroll bar
 
-.page-content,.item,#group,#member
+.page-content, .item, #group, #member
 
   &::-webkit-scrollbar
     width: 4px
@@ -244,7 +244,7 @@ body
   box-sizing: border-box
   overflow: auto
   [data-orientation='landscape'] &
-    padding: 6% 3%
+    padding: 2% 3%
     width: 67%
 
   [data-orientation='portrait'] &
@@ -337,20 +337,24 @@ body
   transition: opacity $normal-term
   width: 100%
 
-  [data-orientation='landscape'] &
-    height: 108%
-  
   [data-orientation='portrait'] &
     height: 100%
     top: -100%
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    display: block
+    display: flex
+    flex-wrap: wrap
     float: left
     height: 40%
     margin-bottom: 2%
     opacity: 1
     width: 45%
+  
+  i
+    display: none
+
+    [data-page-content='list'] &
+      display: inline-block
 
   p
     white-space: pre-line
@@ -378,7 +382,11 @@ body
 .date
   font-size: 1vw
   position: relative
-  text-align: left
+  text-align: right
+
+  [data-page-content='list'] &
+    text-align: left
+
 
 .return
     cursor: pointer
@@ -408,10 +416,13 @@ body
 
   [data-orientation='landscape'] &
     font-size: 2.5vw
-    line-height: 1
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
+    align-items: center
+    display: flex
+    font-size: 1.1vw
     margin-left: 5%
+    white-space: nowrap
 
 
   [data-orientation='portrait'] &
