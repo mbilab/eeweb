@@ -391,12 +391,17 @@ body
       display: none
 
 .date
-  font-size: 1vw
   margin-top: 1em
   position: relative
   text-align: right
   width: 100%
 
+  [data-orientation='landscape'] &
+    font-size: 1vw
+
+  [data-orientation='portrait'] &
+    font-size: 3vw
+  
   [data-page-content='list'] &
     text-align: left
 
@@ -420,22 +425,24 @@ body
     .page-content[data-page-content="list"] &
       opacity: 0
 
-    .page-content[data-page-content="content"] &
-      opacity: 1
-
 .title
   display: inline-block
 
   [data-orientation='landscape'] &
     font-size: 3vw
+  
+  [data-orientation='landscape'] .page-content[data-page-content='list'] &
+    font-size: 1vw
 
   [data-orientation='portrait'] &
     font-size: 5vw
 
+  [data-orientation='portrait'] .page-content[data-page-content='list'] &
+    font-size: 3.5vw
+
   [data-page-content='list'] &
     align-items: center
     display: flex
-    font-size: 1.1vw !important
     margin-left: 5%
     white-space: nowrap
 
