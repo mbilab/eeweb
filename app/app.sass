@@ -510,31 +510,13 @@ body
       opacity: 0
       pointer-events: none
 
-    #member
-      opacity: 1
-
   &[data-status="group"]
-    #member
-      pointer-events: none
-
+  
   .overview
     opacity: 1
     
     [data-orientation='portrait'] &
       box-sizing: border-box
-
-#group
-  height: 100%
-  opacity: 1
-  overflow-y: auto
-  transition: opacity $normal-term ease-in-out
-  width: 100%
-  
-  [data-orientation='landscape'] &
-    align-items: center
-    display: flex
-    flex-wrap: wrap
-    justify-content: center
 
 .group
   align-items: center
@@ -547,6 +529,7 @@ body
   white-space: wrap
   
   [data-orientation='landscape'] &
+    float: left
     font-size: 1.5vw
     height: 30%
     margin: 1%
