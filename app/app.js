@@ -15,12 +15,20 @@ $(window).resize(() => $('body').attr('data-orientation',
 
 // show content referred to url
 
-if (window.location.hash) {
-  let page = window.location.hash.replace('#', '')
+//if (window.location.hash) {
+//  let page = window.location.hash.replace('#', '')
 
-  if(0 !== $(`.page[data-page='${page}']`).length)
-    $("body").attr("data-page", page)
-}
+//  if(0 !== $(`.page[data-page='${page}']`).length)
+//    $("body").attr("data-page", page)
+//}
+
+// pop state
+
+//window.onpopstate = function(event){
+//  let pstate = JSON.stringify(history.state.state.replace('#', ''))
+//  console.log(pstate)
+//  $("body").attr("data-page", "news")
+//}
 
 $("#main").click(function(){
   $("body").attr("data-page",$(this).data("page"))
@@ -38,7 +46,9 @@ $("#logo").click(() => {
 })
 
 $("#menu>a").click(function() {
-  $("body").attr("data-page",$(this).attr('href').replace('#', ''))
+  let state = $(this).attr('href')
+  history.pushState({"state": state}, null, state)
+  $("body").attr("data-page", state.replace('#', ''))
   $("body").removeAttr('data-menued')
   $(".page-content").attr("data-page-content","list")
   $(".item").removeClass('show')
