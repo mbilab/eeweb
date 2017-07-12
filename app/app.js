@@ -27,7 +27,7 @@ $(window).resize(() => $('body').attr('data-orientation',
 //window.onpopstate = function(event){
 //  let pstate = JSON.stringify(history.state.state.replace('#', ''))
 //  console.log(pstate)
-//  $("body").attr("data-page", "news")
+//  $("body").attr("data-page", pstate)
 //}
 
 $("#main").click(function(){
