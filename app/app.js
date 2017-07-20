@@ -24,11 +24,10 @@ $(window).resize(() => $('body').attr('data-orientation',
 
 // pop state
 
-//window.onpopstate = function(event){
-//  let pstate = JSON.stringify(history.state.state.replace('#', ''))
-//  console.log(pstate)
-//  $("body").attr("data-page", pstate)
-//}
+window.onpopstate = function(event){
+  let pState = history.state.state
+  $("body").attr("data-page", pState.replace('#', ''))
+}
 
 $("#main").click(function(){
   $("body").attr("data-page",$(this).data("page"))
