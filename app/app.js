@@ -14,12 +14,13 @@ $(window).resize(() => $('body').attr('data-orientation',
 ).resize()
 
 // show content referred to url
+
 window.onhashchange = function(){
-  let page = window.location.hash.replace('#', '')
- 
+  let page = window.location.hash.replace(/[^A-Za-z]/g, '')
   //if(0 !== $(`.page[data-page='${page}']`).length)
   $("body").attr("data-page", page)
 }
+
 
 // pop state
 
