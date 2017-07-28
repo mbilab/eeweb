@@ -18,16 +18,16 @@ $(window).resize(() => $('body').attr('data-orientation',
 window.onhashchange = function(){
   let page = window.location.hash.match(/[A-Za-z]+/)
   let num = window.location.hash.match(/\d+/)
-  
-  //if(0 !== $(`.page[data-page='${page}']`).length)
-  $("body").attr("data-page", page)
-  if(num){
-    console.log('hi')
-    let index = num[0]
-  }
 
+  if(window.location.hash.length==0){
+    console.log("hi")
+    $("body").attr("data-page", "landing")
+  }else{
+    $("body").attr("data-page", page)
+  }
 }
 onhashchange()
+
 
 
 // pop state
