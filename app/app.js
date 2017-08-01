@@ -17,25 +17,24 @@ $(window).resize(() => $('body').attr('data-orientation',
 
 window.onhashchange = function(){
   let page = window.location.hash.match(/[A-Za-z]+/)
-  let num = window.location.hash.match(/\d+/)
-
+  let num = window.location.hash.match(/\d+/)-1
+  let item = $(".page[data-page-id='news'] .page-content .item")[num]
   if(window.location.hash.length==0){
     console.log("hi")
     $("body").attr("data-page", "landing")
   }else{
     $("body").attr("data-page", page)
   }
+  if(num !== -1){
+    item.className+=" show"
+    $(".page-content").attr("data-page-content","")
+  }
+  else{
+    $(".item").removeClass("show")
+    $(".page-content").attr("data-page-content","list")
+  }
 }
 onhashchange()
-
-
-
-// pop state
-
-//window.onpopstate = function(event){
-// let pState = history.state.state
-// $("body").attr("data-page", pState.replace('#', ''))
-//}
 
 $("#main").click(function(){
   $("body").attr("data-page",$(this).data("page"))
@@ -59,14 +58,9 @@ $("#menu>a").click(function() {
 })
 
 $(".return").click(() => {
+  location.hash.match(/[A-Za-z]+/)
   $(".page-content").attr("data-page-content","list")
   $(".item").removeClass('show')
-})
-
-$(".item").click(function() {
-    $(".page-content").attr("data-page-content",$(this).index())
-    $(".item").removeClass('show')
-    $(this).addClass('show')
 })
 
 $(".group").click(() => {
