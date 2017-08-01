@@ -20,7 +20,6 @@ window.onhashchange = function(){
   let num = window.location.hash.match(/\d+/)-1
   let item = $(".page[data-page-id='news'] .page-content .item")[num]
   if(window.location.hash.length==0){
-    console.log("hi")
     $("body").attr("data-page", "landing")
   }else{
     $("body").attr("data-page", page)
@@ -35,6 +34,12 @@ window.onhashchange = function(){
   }
 }
 onhashchange()
+
+//style
+$(window).resize(() => {
+  if ("landscape" === $("body").attr("data-orientation"))
+    $("#logo").attr("href","#landing")
+})
 
 $("#main").click(function(){
   $("body").attr("data-page",$(this).data("page"))
