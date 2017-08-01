@@ -1,24 +1,33 @@
+// web framework
+
 import 'font-awesome/css/font-awesome.min.css'
+
+const $ = require('jquery')
+
+// custom modules
 
 import './app.sass'
 import './index.pug'
 
-const $ = require('jquery')
+///////////////////////////////////////////////////////
 
 // responsive logic
 
-$(window).resize(() => $('body').attr('data-orientation',
-  $(window).width() > $(window).height()
-  ? "landscape"
-  : "portrait")
-).resize()
+$(window).resize(() => {
+  let orientation = $(window).width() > $(window).height() ? 'landscape' : 'portrait'
+  $('body').attr('data-orientation', orientation)
+
+  if ('landscape' === orientation)
+    $("#logo").attr("href", "#landing")
+}).resize()
 
 // show content referred to url
 
-window.onhashchange = function(){
+window.onhashchange = () => {
   let page = window.location.hash.match(/[A-Za-z]+/)
-  let num = window.location.hash.match(/\d+/)-1
+  let itemID = window.location.hash.match(/\d+/)-1
   let item = $(".page[data-page-id='news'] .page-content .item")[num]
+
   if(window.location.hash.length==0){
     $("body").attr("data-page", "landing")
   }else{
@@ -35,20 +44,17 @@ window.onhashchange = function(){
 }
 onhashchange()
 
-//style
-$(window).resize(() => {
-  if ("landscape" === $("body").attr("data-orientation"))
-    $("#logo").attr("href","#landing")
-})
+// DOM event
 
-$("#main").click(function(){
-  $("body").attr("data-page",$(this).data("page"))
-  $("body").removeAttr('data-menued')
+$("#main").click(function() {
+  $("body").attr("data-page", $(this).data("page"))
+  $("body").removeAttr("data-menued")
 })
 
 $("#logo").click(() => {
   if ("landscape" === $("body").attr("data-orientation"))
     return $("body").attr("data-page", "landing")
+
   if ($("body").is("[data-menued]")) {
     $("body").removeAttr("data-menued")
   } else {
@@ -56,15 +62,14 @@ $("#logo").click(() => {
   }
 })
 
-$("#menu>a").click(function() {
+$("#menu>a").click(() => {
   $("body").removeAttr('data-menued')
-  $(".page-content").attr("data-page-content","list")
+  $(".page-content").attr("data-page-content", "list")
   $(".item").removeClass('show')
 })
 
 $(".return").click(() => {
-  location.hash.match(/[A-Za-z]+/)
-  $(".page-content").attr("data-page-content","list")
+  $(".page-content").attr("data-page-content", "list")
   $(".item").removeClass('show')
 })
 
