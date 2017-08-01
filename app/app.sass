@@ -266,64 +266,6 @@ body
     &:hover::-webkit-scrollbar-thumb
       background-color: rgba(122, 122, 122, 0.65)
 
-//.overview //! need to discuss
-  height: 100%
-  overflow-x: hidden
-  overflow-y: auto
-  position: relative
-  transition: opacity $normal-term
-  width: 100%
-
-//  .page-content[data-page-content="list"] &
-    opacity: 1
-
-//  .page-content[data-page-content="content"] &
-    opacity: 0
-    pointer-events: none
-
-//.header
-  float: left //! flexbox?
-  box-sizing: border-box
-  position: relative
-
-//  [data-orientation='landscape'] &
-    margin: 0 2.5%
-    margin-bottom: 5%
-    width: 45%
-
-//  [data-orientation='portrait'] &
-    padding: 1em .5em
-    width: 100%
-
-//.header + .header
- // border-top: 1px solid lighten($dark-color, 50%) //discuss
-
-//.date,.meta //! vertical alignment, css selector
-  cursor: pointer
-  font-family: 'mon'
-  overflow: hidden
-  position: relative
-  text-align: left
-
-//  [data-orientation='landscape'] &
-    font-size: 1.1vw
-    margin-top: 5%
-    line-height: 1.8
-
-//  [data-orientation='portrait'] &
-    font-size: 3vw
-    margin-top: 3%
-    line-height: 1.5
-
-//.date
-  [data-orientation='portrait'] &
-    display: inline
-    margin-left: 5%
-
-//.meta
-  [data-orientation='portrait'] &
-    display: block
-
 .item
   cursor: pointer
   font-family: 'mon'
