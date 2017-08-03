@@ -24,22 +24,16 @@ $(window).resize(() => {
 // show content referred to url
 
 window.onhashchange = () => {
-  let page = window.location.hash.match(/[A-Za-z]+/)
-  let itemID = window.location.hash.match(/\d+/)-1
-  let item = $(".page[data-page-id='news'] .page-content .item")[num]
+  let [page, itemID] = window.location.hash.match(/(\w+)(?:-(\d+))?/).slice(1, 3)
 
-  if(window.location.hash.length==0){
-    $("body").attr("data-page", "landing")
-  }else{
-    $("body").attr("data-page", page)
-  }
-  if(num !== -1){
-    item.className+=" show"
-    $(".page-content").attr("data-page-content","")
-  }
-  else{
-    $(".item").removeClass("show")
-    $(".page-content").attr("data-page-content","list")
+  if ($(`.page[data-page-id=${page}]`)) {
+    $('body').attr('data-page', page)
+
+    if(itemID) {
+      $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', '').children(`.item:nth-child(${itemID})`).addClass('show')
+    } else {
+      $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', 'list').children('.item').removeClass('show')
+    }
   }
 }
 onhashchange()
