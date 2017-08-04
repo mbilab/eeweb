@@ -283,7 +283,7 @@ body
 
 .item
   color: black
-  display: none
+  flex-wrap: wrap
   font-family: 'mon'
   height: 0
   opacity: 0
@@ -293,6 +293,7 @@ body
   width: 100%
 
   [data-orientation='portrait'] &
+    display: flex
     transition: opacity .4s,height .4s
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
     border-bottom: lighten(rgb(71, 66, 70), 50%) 2px solid
@@ -305,9 +306,11 @@ body
       margin-top: 1em
   
   [data-orientation='landscape'] &
+    display: block
     transition: opacity $normal-term 
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
+    display: flex
     float: left
     height: auto
     margin: 0 2% 2% 2%
@@ -334,6 +337,7 @@ body
     [data-orientation='portrait'] &
       font-size: 3vw
       line-height: 2
+      margin: 0
 
     [data-page-content='list'] &
       -webkit-line-clamp: 2
@@ -379,16 +383,15 @@ body
     margin-top: -2px
 
   [data-page-content='list'] &
-    margin-left: 2%
     white-space: nowrap
 
 .date
-  margin-top: 1em
   position: relative
   text-align: right
   width: 100%
 
   [data-orientation='landscape'] &
+    margin-top: 1em
     font-size: 1vw
 
   [data-orientation='portrait'] &
@@ -423,8 +426,6 @@ body
       opacity: 0
 
 .show
-  display: flex
-  flex-wrap: wrap
   height: 100%!important
   opacity: 1
   overflow-y: auto 
