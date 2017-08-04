@@ -40,14 +40,15 @@
 
 .fa
   color: #e2db1a
+  font-size: 1em
 
 .fa-4x
 
-  [data-orientation='landscape'] &
-    font-size: 3.5vw
-
   [data-orientation='portrait'] &
     font-size: 3.5vh
+
+  [data-orientation='landscape'] &
+    font-size: 3.5vw
 
 //// animation time
 
@@ -353,6 +354,38 @@ body
     [data-page-content='list'] &
       display: none
 
+.item .fa
+  background-color: black
+  border-radius: .2em
+  color: #e2db1a
+  color: white
+  font-size: 1em
+  text-align: center
+  height: 2em
+  line-height: 2
+  width: 2em
+
+.item .title
+  display: inline-block
+  line-height: 2
+
+  [data-orientation='landscape'] &
+    font-size: 3vw
+  
+  [data-orientation='landscape'] .page-content[data-page-content='list'] &
+    font-size: 1vw
+
+  [data-orientation='portrait'] &
+    font-size: 5vw
+
+  [data-orientation='portrait'] .page-content[data-page-content='list'] &
+    font-size: 1em
+    margin-top: -2px
+
+  [data-page-content='list'] &
+    margin-left: 2%
+    white-space: nowrap
+
 .date
   margin-top: 1em
   position: relative
@@ -392,27 +425,6 @@ body
 
     .page-content[data-page-content="list"] &
       opacity: 0
-
-.title
-  display: inline-block
-
-  [data-orientation='landscape'] &
-    font-size: 3vw
-  
-  [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    font-size: 1vw
-
-  [data-orientation='portrait'] &
-    font-size: 5vw
-
-  [data-orientation='portrait'] .page-content[data-page-content='list'] &
-    font-size: 3.5vw
-
-  [data-page-content='list'] &
-    align-items: center
-    display: flex
-    margin-left: 5%
-    white-space: nowrap
 
 .show
   display: block!important
