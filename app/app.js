@@ -1,6 +1,7 @@
 // web framework
 
 import 'font-awesome/css/font-awesome.min.css'
+import * as d3 from 'd3'
 
 const $ = require('jquery')
 
@@ -19,6 +20,16 @@ $(window).resize(() => {
 
   if ('landscape' === orientation)
     $("#logo").attr("href", "#landing")
+
+  $(".title").map( function(){
+    if(this.offsetWidth < this.scrollWidth){
+      $(this).addClass('wrap')
+    }
+    else{
+      $(this).removeClass('wrap')
+    }
+  })
+
 }).resize()
 
 // show content referred to url
@@ -32,6 +43,7 @@ window.onhashchange = () => {
 
       if(itemID) {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', '').children(`.item:nth-child(${itemID})`).addClass('show')
+        $('.item .title').removeClass('wrap')//discuss
       } else {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', 'list').children('.item').removeClass('show')
       }
