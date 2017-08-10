@@ -3,14 +3,14 @@ import { resolve } from 'path'
 import webpack from 'webpack'
 
 // config
-import opt from './option.json'
+import { server } from './option.json'
 
 export default {
   context: resolve('app'),
   devServer: {
-    host: opt[0].host,
+    host: server.host,
     inline: true,
-    port: opt[0].port,
+    port: server.port,
     stats: { chunkModules: false }
   },
   entry: './app.js',
