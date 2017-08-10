@@ -24,7 +24,7 @@ $(window).resize(() => {
     $("#logo").removeAttr("href")
   
   $(".title").map(function() {
-    if($(".item").width() < $(this).width()){
+    if (this.offsetWidth < this.scrollWidth) {
       $(this).addClass('wrap')
     }
     else{

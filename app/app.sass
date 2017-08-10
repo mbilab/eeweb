@@ -330,6 +330,7 @@ body
 
     [data-page-content='list'] &
       display: inline-block 
+      flex-shrink: 0
       margin-right: .5em
 
   p
@@ -372,7 +373,7 @@ body
   width: 2em
 
 .item .title
-  display: inline-block
+  display: flex
   line-height: 2
 
   [data-orientation='landscape'] &
@@ -458,9 +459,9 @@ body
     right: 57%
 
 .wrap
-  [data-page-content='list']
-  line-height: 1!important
-  white-space: initial !important
+  [data-page-content='list'] &
+    line-height: 1!important
+    white-space: initial !important
 
 //data-page controll
 
