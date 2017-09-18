@@ -1,7 +1,7 @@
 {
   "repository": "https://github.com/mbilab/eeweb.git",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server"
+    "start": "./node_modules/.bin/webpack"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.0",
@@ -27,7 +27,8 @@
     "dropbox": "^2.5.7",
     "express": "^4.15.4",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "momentjs": "^2.0.0"
   },
   "license": "MIT"
 }
