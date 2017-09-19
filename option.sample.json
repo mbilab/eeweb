@@ -3,7 +3,7 @@
     "host": "0.0.0.0",
     "port": "3000"
   },
-  "dropbox": {
+  "dropbox_api": {
     "doc_id":"mHq2WWxClAR0VTDQMlOSi",
     "export_format": "markdown"
   }
