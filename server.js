@@ -1,32 +1,50 @@
+//express
 const express = require('express')
 const app = express()
-const path = require('path')
-const webpack = require('webpack')
-const fs = require('fs')
-//const moment = require('moment')
 
+//node built-in module
+const path = require('path')
+const fs = require('fs')
+
+//HMR setting
+const webpack = require('webpack')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackConfig = require('./webpack.config.js')
+const compiler = webpack(webpackConfig)
+
+//npm module
+const moment = require('moment')
+
+//lib
 const dp = require('./lib/dropbox.js')
 
-//app.listen(1098, ()=>{console.log("server connect")})
+app.listen(1098, ()=>{console.log("server connect")})
 
 //app.use(express.static(path.resolve('./dist')))
 
+app.use(require('webpack-dev-middleware')(compiler, {
+      noInfo: true, 
+      publicPath: webpackConfig.output.publicPath
+}))
+    
+app.use(webpack_hot_middleware = webpackHotMiddleware(compiler))
+
 dp.data( it => {
+  let data = it.replace(/^\n+/,'')
   let output = {}
-  let text = it.split(/\-{10}/)
+  let arti = data.split(/\-{10}/).filter((e) => {return e}).slice(1,-1)
+  let obj = []
 
-  for (let i = 0, len = text.length; i < len; ++i) {
-      
-    if(text[i].match(/^(\n)*##/)){
-      
-        output["id_" + i] = {}
-        let arti = text[i].split(/([0-9]{4}\-[0-9]{1,2}\-[0-9]{1,2})/g)
-        let [title,date,content] = [arti[0].replace(/\n/g,""),arti[1],arti[2].replace(/\n/g,"<br>")]
-        output["id_" + i]={"title":title,"date":date,"content":content}
-      
-      }else continue
+  output["news"] = []
+  obj = output["news"]
+
+  function spPos(string, subString, index) {
+      return string.split(subString, index).join(subString).length
   }
-  
-  fs.writeFileSync("./app/res/data.json", JSON.stringify(output, null, 2))
-})
 
+  for (let i = 0, len = arti.length; i < len; ++i) {
+    obj.push({title: arti[i].slice(0,spPos(arti[i], "\n", 2)).replace(/\n+#+\s/g,""),date: arti[i].slice(spPos(arti[i], "\n", 3), spPos(arti[i], "\n", 4)).replace(/\n/g,""),content: arti[i].slice(spPos(arti[i], "\n", 4)).replace(/\n/,"")})
+  }
+
+  fs.writeFileSync("./app/res/data.json",JSON.stringify(output, null, 2))
+})    

@@ -58,7 +58,8 @@ onhashchange()
 
 //d3
 
-d3.json(news_data,(data) => {console.log(data)})
+// d3.json(news_data,(data) => {console.log(data)})
+//console.log(news_data)
 
 // DOM event
 
