@@ -1,7 +1,6 @@
 // web framework
 
 import 'font-awesome/css/font-awesome.min.css'
-import d3 from 'd3-selection'
 
 const $ = require('jquery')
 
@@ -9,6 +8,10 @@ const $ = require('jquery')
 
 import './app.sass'
 import './index.pug'
+
+// dropbox paper
+
+import news_data from './res/data.json'
 
 ///////////////////////////////////////////////////////
 
@@ -52,6 +55,10 @@ window.onhashchange = () => {
   }
 }
 onhashchange()
+
+//d3
+
+d3.json(news_data,(data) => {console.log(data)})
 
 // DOM event
 
