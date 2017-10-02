@@ -9,7 +9,7 @@ const fs = require('fs')
 //HMR setting
 const webpack = require('webpack')
 const webpackHotMiddleware = require('webpack-hot-middleware')
-const webpackConfig = require('./webpack.config.js')
+const webpackConfig = require('./webpack.config.babel.js')
 const compiler = webpack(webpackConfig)
 
 //npm module
