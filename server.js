@@ -30,21 +30,24 @@ app.use(webpack_hot_middleware = webpackHotMiddleware(compiler))
 
 //process data from dropbox paper and save it to the front end
 dp.data( it => {
-  let data = it.replace(/^\n+/,'')
-  let output = {}
-  let arti = data.split(/\-{10}/).filter((e) => {return e}).slice(1,-1)
-  let obj = []
 
-  output["news"] = []
-  obj = output["news"]
+let data = it.split(/\-{10}/).filter( e => { return e }).slice(1,-1)
+let output = {}
+let moment = require('moment')
+let obj = []
+let date
 
-  function spPos(string, subString, index) {
-      return string.split(subString, index).join(subString).length
-  }
+output["news"] = []
+obj = output["news"]
 
-  for (let i = 0, len = arti.length; i < len; ++i) {
-    obj.push({title: arti[i].slice(0,spPos(arti[i], "\n", 2)).replace(/\n+#+\s/g,""),date: arti[i].slice(spPos(arti[i], "\n", 3), spPos(arti[i], "\n", 4)).replace(/\n/g,""),content: arti[i].slice(spPos(arti[i], "\n", 4)).replace(/\n/,"")})
-  }
+for(let i = 0; i< data.length; ++i){
+  let title = data[i].match(/##(.)+/g)[0].replace(/^##\s*/,"")
+  let arti = data[i].replace(/##(.)+/,"").split(/\n/).filter( e => { return e })
+  
+  moment(arti[0]).isValid()?(date = arti[0], arti.shift(), obj.push({title: title, date: date, content: arti.join("\n")})):(obj.push({title: title, date: null, content: arti.join("\n")}))
 
-  fs.writeFileSync("./app/res/data.json",JSON.stringify(output, null, 2))
+}
+
+fs.writeFileSync("./app/res/data.json",JSON.stringify(output, null, 2))
+
 })    
