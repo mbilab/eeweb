@@ -15,12 +15,11 @@ const compiler = webpack(webpackConfig)
 //npm module
 const moment = require('moment')
 
-//lib
+//lib 
 const dp = require('./lib/dropbox.js')
 
+//express
 app.listen(1098, ()=>{console.log("server connect")})
-
-//app.use(express.static(path.resolve('./dist')))
 
 app.use(require('webpack-dev-middleware')(compiler, {
       noInfo: true, 
@@ -29,6 +28,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
     
 app.use(webpack_hot_middleware = webpackHotMiddleware(compiler))
 
+//process data from dropbox paper and save it to the front end
 dp.data( it => {
   let data = it.replace(/^\n+/,'')
   let output = {}
