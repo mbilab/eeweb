@@ -1,19 +1,19 @@
-import autoprefixer from 'autoprefixer'
-import { resolve } from 'path'
-import webpack from 'webpack'
+const autoprefixer = require('autoprefixer')
+const path = require('path')
+const webpack = require('webpack')
 
 // config
-import { server } from './option.json'
+const server = require('./option.json').server
 
-export default {
-  context: resolve('app'),
+module.exports = {
+  context: path.resolve('app'),
   devServer: {
     host: server.host,
     inline: true,
     port: server.port,
     stats: { chunkModules: false }
   },
-  entry: './app.js',
+  entry: ['./app.js','webpack-hot-middleware/client?reload=true'],
   module: {
     rules: [
       { test: /\.css$/, use: ['style-loader?insertAt=top', 'css-loader'] },
@@ -24,9 +24,15 @@ export default {
       { test: /\.sass$/, use: ['file-loader?name=[name].css', 'extract-loader', 'css-loader', { loader: 'postcss-loader', options: { plugins: [autoprefixer] } }, 'sass-loader'] }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
   output: {
     filename: 'app.js',
-    path: resolve('dist')
+    path: path.resolve('./dist'),
+    publicPath: `http://${server.host}:${server.port}/`
   }
 }
 
