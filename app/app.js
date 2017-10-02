@@ -58,8 +58,13 @@ onhashchange()
 
 //d3
 
-// d3.json(news_data,(data) => {console.log(data)})
-//console.log(news_data)
+let item = d3.selectAll("#announcement").selectAll(".item").data(news_data.news).enter().append("a").classed("item",true)
+let index = item.attr('href', (d,i) => { 
+  i++ 
+  return "#news-" + i })
+let title = item.selectAll(".title").data(news_data.news).enter().append("div").classed("title",true).text( it => { return it.title})
+let date = item.selectAll(".date").data(news_data.news).enter().append("div").classed("date",true).text( it => { return it.date})
+let content = item.selectAll("p").data(news_data.news).enter().append("p").text( it => {return it.content})
 
 // DOM event
 
