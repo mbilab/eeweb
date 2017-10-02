@@ -12,7 +12,6 @@ import './index.pug'
 // dropbox paper
 
 import news_data from './res/data.json'
-
 ///////////////////////////////////////////////////////
 
 // responsive logic
@@ -58,14 +57,14 @@ onhashchange()
 
 //d3
 
-let item = d3.selectAll("#announcement").selectAll(".item").data(news_data.news).enter().append("a").classed("item",true)
+let item = d3.selectAll("#announcement").selectAll(".item").data(news_data.news).enter().insert("a",".return").classed("item",true)
+let title = item.append("div").classed("title",true).text( it => { return it.title})
+let date = item.append("div").classed("date",true).text( it => { return it.date})
+let content = item.append("p").text( it => {return it.content})
+
 let index = item.attr('href', (d,i) => { 
   i++ 
   return "#news-" + i })
-let title = item.selectAll(".title").data(news_data.news).enter().append("div").classed("title",true).text( it => { return it.title})
-let date = item.selectAll(".date").data(news_data.news).enter().append("div").classed("date",true).text( it => { return it.date})
-let content = item.selectAll("p").data(news_data.news).enter().append("p").text( it => {return it.content})
-
 // DOM event
 
 $("#main").click(function() {
