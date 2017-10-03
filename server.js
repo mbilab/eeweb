@@ -12,6 +12,22 @@ const moment = require('moment')
 //lib 
 const dp = require('./lib/dropbox.js')
 
+//HMR setting
+const webpack = require('webpack')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackConfig = require('./webpack.config.babel.js')
+const compiler = webpack(webpackConfig)
+
+//express
+app.listen(1098, ()=>{console.log("server connect")})
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true, 
+  publicPath: webpackConfig.output.publicPath
+}))
+
+app.use(webpack_hot_middleware = webpackHotMiddleware(compiler))
+
 //process data from dropbox paper and save it to the front end
 dp.data(it => {
 
@@ -40,20 +56,5 @@ dp.data(it => {
 
 /*
 process.exit(0)
-
-//HMR setting
-const webpack = require('webpack')
-const webpackHotMiddleware = require('webpack-hot-middleware')
-const webpackConfig = require('./webpack.config.babel.js')
-const compiler = webpack(webpackConfig)
-
-//express
-app.listen(1098, ()=>{console.log("server connect")})
-
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true, 
-  publicPath: webpackConfig.output.publicPath
-}))
-
-app.use(webpack_hot_middleware = webpackHotMiddleware(compiler))
 */
+
