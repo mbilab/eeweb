@@ -73,19 +73,20 @@ $primary-color: rgb(226, 219, 26)
   justify-content: center
 
 ////////////////////////
-// body > logo, menu, content > page > left, right, watermark
+// body > logo, menu, content > page > left, right, watermark //! wrong?
 
-a
-  color: white
-  text-decoration: none
-
-body
+body // {{{ general
   font-family: mon, sans-serif
   margin: 0
   overflow: hidden
 
   &[data-orientation='portrait']
     background-color: lighten($dark-color, 10%)
+
+  a
+    color: white
+    text-decoration: none
+// }}}
   
 #logo // {{{
   +vertical-center
@@ -109,7 +110,7 @@ body
   transition: all $short-term
 
   a
-    transition: all ease-in-out .15s
+    transition: all ease-in-out .15s //! too long?
 
   [data-orientation='landscape'] &
     font-size: 1.2vw //! layout logic?

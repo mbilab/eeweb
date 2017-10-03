@@ -1,11 +1,11 @@
 html
   head
     script(src="https://d3js.org/d3.v4.js")
-    link(rel='stylesheet' href='./app.css' )
-    link(rel='icon' href='http://i.imgur.com/HXMns6K.png')
-    meta(content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width" name="viewport")
+    link(href="./app.css",rel="stylesheet")
+    link(href="http://i.imgur.com/HXMns6K.png",rel="icon")
+    meta(content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width",name="viewport")
     title NCKU EE
-  body(data-page="landing" data-orientation="landscape")
+  body(data-page="landing",data-orientation="landscape")
     a#logo E
     #menu
       a(href='#landing') Home
@@ -14,7 +14,7 @@ html
       a(href='#faculty') Faculty #[span.extend  & Research]
       //a(href='#scholarship') Scholarship
       //a(href='#upload') Upload
-    #main
+    #page
       .page(data-page-id="landing")
         .theme National Cheng Kung University#[br]Electronic Engineering
         .watermark ELECTRONIC
