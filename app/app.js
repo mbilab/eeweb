@@ -57,7 +57,7 @@ onhashchange()
 
 //d3
 
-let item = d3.selectAll("#announcement").selectAll(".item").data(news_data.news).enter().insert("a",".return").classed("item",true)
+let item = d3.selectAll(".page[data-page-id='news'] .page-content").selectAll(".item").data(news_data.news).enter().insert("a",".return").classed("item",true)
 let title = item.append("div").classed("title",true).text( it => { return it.title})
 let date = item.append("div").classed("date",true).text( it => { return it.date})
 let content = item.append("p").text( it => {return it.content})

@@ -73,10 +73,10 @@ $primary-color: rgb(226, 219, 26)
   justify-content: center
 
 ////////////////////////
-// body > logo, menu, content > page > left, right, watermark //! wrong?
+// body > #logo #menu #page > .page > .page-info .page-content  //! wrong?
 
 body // {{{ general
-  font-family: mon, sans-serif
+  font-family: mon, monospace
   margin: 0
   overflow: hidden
 
@@ -107,10 +107,10 @@ body // {{{ general
 // }}}
 
 #menu // {{{
-  transition: all $short-term
+  transition: padding ease-in-out $short-term
 
   a
-    transition: all ease-in-out .15s //! too long?
+    transition: padding ease-in-out $short-term //! too long?
 
   [data-orientation='landscape'] &
     font-size: 1.2vw //! layout logic?
@@ -212,7 +212,7 @@ body // {{{ general
     height: 2em
     width: 100%
 
-  .theme
+  .title
     color: $primary-color
     font: 700 4vw 'mon'
 
@@ -249,7 +249,7 @@ body // {{{ general
       font-size: 1.2vw
       line-height: 1.7
       position: relative
-      top: 6em
+      top: 15%
       transition: opacity $normal-term
   
     [data-orientation='portrait'] &
@@ -267,6 +267,9 @@ body // {{{ general
     font-size: 5vw
     height: calc(100% - 2em)
     width: 100%
+
+    &::-webkit-scrollbar
+      width: 0px
 
   [data-orientation='portrait'][data-page='faculty'] &
     box-sizing: border-box
