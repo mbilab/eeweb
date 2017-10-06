@@ -214,7 +214,7 @@ body // {{{ general
 
   .title
     color: $primary-color
-    font: 700 4vw 'mon'
+    font: 900 4vw 'mon'
 
     [data-orientation='landscape'] &
       position: relative
@@ -342,7 +342,7 @@ body // {{{ general
 
     [data-orientation='landscape'] &
       font-size: 1vw
-      line-height: 2.5
+      line-height: 2
 
     [data-orientation='portrait'] &
       font-size: 3vw
@@ -364,33 +364,22 @@ body // {{{ general
     [data-page-content='list'] &
       display: none
 
-.item .fa
-  background-color: black
-  border-radius: .2em
-  color: #e2db1a
-  color: white
-  //display: inline-block 保留icon?
-  font-size: 1em
-  text-align: center
-  height: 2em
-  line-height: 2
-  width: 2em
-
 .item .title
   display: flex
+  font-weight: 900
   line-height: 2
 
   [data-orientation='landscape'] &
-    font-size: 3vw
+    font-size: 2.5vw
   
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    font-size: 1vw
+    font-size: 1.2vw
 
   [data-orientation='portrait'] &
     font-size: 5vw
 
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
-    font-size: 1em
+    font-size: 4.5vw
     //margin-top: -2px why?
 
   [data-page-content='list'] &
@@ -402,6 +391,7 @@ body // {{{ general
   width: 100%
 
   [data-orientation='landscape'] &
+    line-height: 1.5
     margin-top: 1em
     font-size: 1vw
 

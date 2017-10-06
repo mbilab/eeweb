@@ -42,38 +42,28 @@ $(window).resize(() => {
 window.onhashchange = () => {
   if(window.location.hash){
     let [page, itemID] = window.location.hash.match(/(\w+)(?:-(\d+))?/).slice(1, 3)
-
     if ($(`.page[data-page-id=${page}]`)) {
       $('body').attr('data-page', page)
 
       if(itemID) {
-        $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', '').children(`.item:nth-child(${itemID})`).addClass('show')
+        $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', '')
+        $(`#news .item:nth-child(${itemID})`).addClass('show')
       } else {
-        $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', 'list').children('.item').removeClass('show')
+        $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', 'list')
+        $('#news .item').removeClass('show')
       }
     }
   }
 }
 onhashchange()
 
-//d3
-
-//let item = d3.selectAll(".page[data-page-id='news'] .page-content").selectAll(".item").data(news_data.news).enter().insert("a",".return").classed("item",true)
-//let title = item.append("div").classed("title",true).text( it => { return it.title})
-//let date = item.append("div").classed("date",true).text( it => { return it.date})
-//let content = item.append("p").text( it => {return it.content})
-//
-//let index = item.attr('href', (d,i) => { 
-//  i++ 
-//  return "#news-" + i })
-
 //mustache
 
 let data = news_data.news
-let template = $('#news').html();
-Mustache.parse(template);   // optional, speeds up future uses
-let rendered = Mustache.render(template,{news:data});
-$('.page-content').html(rendered);
+let template = $('#news+script').html()
+let rendered = Mustache.render(template,{ news: data })
+
+$('#news').html(rendered)
 
 // DOM event
 
