@@ -34,15 +34,18 @@ dp.data(it => {
   let data = it.split(/\n\n\-{10}\n/).slice(1, -1)
   let moment = require('moment')
   let news = []
+  let i = 0
 
   for (let v of data) {
     let match = v.match(/##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
     let date = null
     if (moment(match[2]).isValid())
-      date = moment(match[2])
+      date = moment(match[2]).format('lll')
     else
       match[3] = `${match[2]}\n${match[3]}`
+    i++
     news.push({
+      index: i,
       title: match[1],
       date: date,
       content: match[3],
@@ -53,8 +56,4 @@ dp.data(it => {
     news: news
   }, null, 2))
 })    
-
-/*
-process.exit(0)
-*/
 
