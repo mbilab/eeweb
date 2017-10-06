@@ -25,6 +25,14 @@ html
           .description Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           .watermark ACTIVITIES
         .page-content(data-page-content="list")
+          script#news(type="x-tmpl-mustache")
+            |{{#news}}
+            <a class="item "href='#news-1')>
+              <div class="title"> {{ title }} </div>
+              <div class="date"> {{ date }} </div>
+              <p> {{ content }} </p>
+            </a>
+            |{{/news}}     
           .return
             a(href='#news')
             i.fa.fa-arrow-circle-left.fa-4x     
