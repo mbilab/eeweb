@@ -72,7 +72,7 @@ $('#news').html(rendered)
 
 // DOM event
 
-$("#main").click(function() {
+$("#page").click(function() {
   $("body").attr("data-page", $(this).data("page"))
   $("body").removeAttr("data-menued")
 })
