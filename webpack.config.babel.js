@@ -6,14 +6,14 @@ const webpack = require('webpack')
 const server = require('./option.json').server
 
 module.exports = {
-  context: path.resolve('app'),
   devServer: {
-    host: server.host,
-    inline: true,
+    allowedHosts: ['zoro.ee.ncku.edu.tw'],
+    host: '0.0.0.0',
     port: server.port,
-    stats: { chunkModules: false }
+    stats: { colors: true, modules: false },
   },
-  entry: ['./app.js','webpack-hot-middleware/client?reload=true'],
+  //entry: ['./app.js','webpack-hot-middleware/client?reload=true'],
+  entry: ['./app/app.js'],
   module: {
     rules: [
       { test: /\.css$/, use: ['style-loader?insertAt=top', 'css-loader'] },
@@ -24,16 +24,14 @@ module.exports = {
       { test: /\.sass$/, use: ['file-loader?name=[name].css', 'extract-loader', 'css-loader', { loader: 'postcss-loader', options: { plugins: [autoprefixer] } }, 'sass-loader'] }
     ]
   },
+  output: {
+    filename: 'app.js',
+    path: `${__dirname}/dist`,
+  },
   plugins: [
     new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
   ],
-  output: {
-    filename: 'app.js',
-    path: path.resolve('./dist'),
-    publicPath: `http://${server.host}:${server.port}/`
-  }
 }
 
 // vi:et

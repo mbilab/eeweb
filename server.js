@@ -52,7 +52,7 @@ dp.data(it => {
     })
   }
 
-  fs.writeFileSync('./app/res/data.json', JSON.stringify({
+  fs.writeFileSync('./dist/data.json', JSON.stringify({
     news: news
   }, null, 2))
 })    
