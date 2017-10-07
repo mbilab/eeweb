@@ -13,11 +13,18 @@ import './index.pug'
 
 // dropbox paper
 
-import data from '../dist/data.json'
-moment.locale('zh-tw')
-for (let v of data.news) {
-  v.date = moment(v.date).format('ll ddd')
-}
+//import data from '../dist/data.json'
+$.get('data.json', data => {
+  moment.locale('zh-tw')
+  for (let v of data.news) {
+    v.date = moment(v.date).format('ll ddd')
+  }
+
+  let template = $('#news+script').html()
+  let html = Mustache.render(template, { news: data.news })
+
+  $('#news').html(html)
+})
 
 ///////////////////////////////////////////////////////
 
@@ -62,13 +69,6 @@ window.onhashchange = () => {
   }
 }
 onhashchange()
-
-//mustache
-
-let template = $('#news+script').html()
-let rendered = Mustache.render(template, { news: data.news })
-
-$('#news').html(rendered)
 
 // DOM event
 

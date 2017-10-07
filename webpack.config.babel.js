@@ -8,6 +8,7 @@ const server = require('./option.json').server
 module.exports = {
   devServer: {
     allowedHosts: ['zoro.ee.ncku.edu.tw'],
+    contentBase: `${__dirname}/dist`,
     host: '0.0.0.0',
     port: server.port,
     stats: { colors: true, modules: false },
