@@ -1,6 +1,7 @@
 // web framework
 
 import 'font-awesome/css/font-awesome.min.css'
+import moment from 'moment'
 import Mustache from 'mustache/mustache.min.js'
 
 const $ = require('jquery')
@@ -12,7 +13,12 @@ import './index.pug'
 
 // dropbox paper
 
-import news_data from './res/data.json'
+import data from '../dist/data.json'
+moment.locale('zh-tw')
+for (let v of data.news) {
+  v.date = moment(v.date).format('ll ddd')
+}
+
 ///////////////////////////////////////////////////////
 
 // responsive logic
@@ -59,9 +65,8 @@ onhashchange()
 
 //mustache
 
-let data = news_data.news
 let template = $('#news+script').html()
-let rendered = Mustache.render(template,{ news: data })
+let rendered = Mustache.render(template, { news: data.news })
 
 $('#news').html(rendered)
 
