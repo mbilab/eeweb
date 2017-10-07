@@ -14,4 +14,6 @@ eeweb
 * item bottom margin bug while resizing
 * .description top margin while resizing
 * icon, bg to local? |no icon
-* use real (chinese) articles
+* .page-content should be #news
+* .return should be outside .page-content
+* why I cannot use .page-content .item
