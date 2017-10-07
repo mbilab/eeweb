@@ -17,3 +17,5 @@ eeweb
 * .page-content should be #news
 * .return should be outside .page-content
 * why I cannot use .page-content .item
+* transparent inside the logo
+* make sure everythin in .item is necessary
