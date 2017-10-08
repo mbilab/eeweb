@@ -19,3 +19,4 @@ eeweb
 * why I cannot use .page-content .item
 * transparent inside the logo
 * make sure everythin in .item is necessary
+* why I cannot use postcss-autoreset

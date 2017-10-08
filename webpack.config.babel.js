@@ -1,4 +1,5 @@
-const autoprefixer = require('autoprefixer')
+import autoprefixer from 'autoprefixer'
+import postcssAutoreset from 'postcss-autoreset'
 
 module.exports = {
     devServer: {
@@ -15,7 +16,15 @@ module.exports = {
             { test: /\.(jpeg|jpg|png|ico)$/, use: 'url-loader?limit=10000' },
             { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
             { test: /\.pug$/, use: ['file-loader?name=[name].html', 'extract-loader', 'html-loader', 'pug-html-loader'] },
-            { test: /\.sass$/, use: ['file-loader?name=[name].css', 'extract-loader', 'css-loader', { loader: 'postcss-loader', options: { plugins: [autoprefixer] } }, 'sass-loader'] }
+            { test: /\.sass$/, use: [
+                'file-loader?name=[name].css',
+                'extract-loader',
+                'css-loader',
+                { loader: 'postcss-loader', options: { plugins: [
+                    autoprefixer,
+                ]}},
+                'sass-loader',
+            ]}
         ]
     },
     output: {
