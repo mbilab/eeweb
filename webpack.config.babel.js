@@ -1,5 +1,6 @@
 import autoprefixer from 'autoprefixer'
 import postcssAutoreset from 'postcss-autoreset'
+import webpack from 'webpack'
 
 module.exports = {
     devServer: {
@@ -35,7 +36,7 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = [
-    new webpack.optimize.uglifyjsplugin({
+    new webpack.optimize.UglifyJsPlugin({
         compress: { warnings: false },
         output: { comments: false },
     }),
