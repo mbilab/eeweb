@@ -34,7 +34,7 @@ module.exports = {
     },
 }
 
-if (process.env.NODE_ENV === 'production') {
+if ('production' === process.env.NODE_ENV) {
   module.exports.plugins = [
     new webpack.optimize.UglifyJsPlugin({
         compress: { warnings: false },

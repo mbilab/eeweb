@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mbilab/eeweb.git"
+    "url": "git+https://github.com/mbilab/eeweb.git"
   },
-  "license": "MIT",
   "author": "Tien-Hao Chang <darby.chang@gmail.com>",
+  "license": "ISC",
   "dependencies": {
     "autoprefixer": "^7.1.0",
     "babel-core": "^6.23.1",
