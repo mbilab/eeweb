@@ -4,7 +4,7 @@ import webpack from 'webpack'
 
 module.exports = {
     devServer: {
-        allowedHosts: ['zoro.ee.ncku.edu.tw'],
+        allowedHosts: ['zoro.ee.ncku.edu.tw','merry.ee.ncku.edu.tw'],
         contentBase: `${__dirname}/dist`,
         host: '0.0.0.0',
         stats: { colors: true, modules: false },
