@@ -94,6 +94,7 @@ body // {{{ general
 #logo // {{{
   +vertical-center
   background-color: $primary-color
+  line-height: normal
   position: fixed
   z-index: 100
 
@@ -247,7 +248,6 @@ body // {{{ general
   .description
     [data-orientation='landscape'] &
       color: #bdb2c3
-      float: left
       font-size: 1.2vw
       line-height: 1.7
       position: relative
@@ -326,21 +326,13 @@ body // {{{ general
     transition: opacity $normal-term 
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    height: auto
+    height: 11.6vw
     margin: 0 2% 2% 2%
     width: 45%
 
   [data-page-content='list'] &
-    border-top: lighten($dark-color, 50%) 1px solid
+    border-bottom: lighten($dark-color, 50%) 1px solid
     opacity: 1
-
-  i
-    display: none
-
-    [data-page-content='list'] &
-      display: inline-block 
-      flex-shrink: 0
-      margin-right: .5em
 
   img
     margin: .5vw
@@ -350,6 +342,15 @@ body // {{{ general
 
     [data-page-content='list'] &
       display: none
+
+  &::after
+    background: rgb(255,255,255) 
+    bottom: 0
+    content: "..."
+    padding-left: 3px
+    position: absolute
+    right: 0
+    text-align: right
 // }}}
 
 .item > .title // {{{
@@ -396,9 +397,9 @@ body // {{{ general
     z-index: 100
 
     [data-orientation="landscape"] &
-      bottom: 5%
+      bottom: 9%
       font-size: 1vw
-      right: 5%
+      right: 7%
 
     [data-orientation='portrait'] &
       position: fixed
@@ -411,7 +412,7 @@ body // {{{ general
       position: absolute
       width: 100%
 
-    .page-content[data-page-content="list"] &
+    .page-content[data-page-content="list"]~&
       opacity: 0
 
 .watermark

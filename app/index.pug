@@ -23,18 +23,17 @@ html
           .title NEWS#[span.extend  & EVENTS]
           .description Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
           .watermark ACTIVITIES
-        .page-content(data-page-content="list")
-          #news
-          script(type="x-tmpl-mustache")
-            | {{#news}}
-            a.item(href=`#news-{{index}}`)
-              .title {{title}}
-              .date {{date}}
-              p {{content}}
-            | {{/news}}     
-          .return
-            a(href='#news')
-            i.fa.fa-arrow-circle-left.fa-4x     
+        .page-content#news(data-page-content="list")
+        script(type="x-tmpl-mustache")
+          | {{#news}}
+          a.item(href=`#news-{{index}}`)
+            .title {{title}}
+            .date {{date}}
+            p {{content}}
+          | {{/news}}     
+        .return
+          a(href='#news')
+          i.fa.fa-arrow-circle-left.fa-4x     
       // }}} news
       // {{{ course
       .page(data-page-id="course")
