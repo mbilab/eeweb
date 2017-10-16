@@ -9,7 +9,7 @@ const opt = require('./option.json')
 const parseDropbox = (data, toFile=true) => {
     data = data.toString().split(/\n\n\-{10}\n/).slice(1, -1)
     const news = []
-    let i = 0
+    let i = 1
 
     for (let v of data) {
         let match = v.match(/##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
