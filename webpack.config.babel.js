@@ -15,6 +15,7 @@ module.exports = {
             { test: /\.css$/, use: ['style-loader', 'css-loader'] },
             { test: /\.(eot|otf|svg|ttf|woff(2)?)(\?[a-z0-9]+)?$/, use: 'file-loader?name=fonts/[hash:7].[ext]' },
             { test: /\.(jpeg|jpg|png|ico)$/, use: 'url-loader?limit=10000' },
+            { test: /\.(ico)$/, use: 'file-loader?name=res/[name].[ext]' },
             { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
             { test: /\.pug$/, use: ['file-loader?name=[name].html', 'extract-loader', 'html-loader', 'pug-html-loader'] },
             { test: /\.sass$/, use: [

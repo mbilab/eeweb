@@ -10,6 +10,7 @@ const $ = require('jquery')
 
 import './app.sass'
 import './index.pug'
+import './res/favicon.ico'
 
 // dropbox paper
 
