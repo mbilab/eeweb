@@ -326,7 +326,7 @@ body // {{{ general
     transition: opacity $normal-term 
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    height: 11.6vw
+    height: auto
     margin: 0 2% 2% 2%
     width: 45%
 
@@ -346,11 +346,11 @@ body // {{{ general
   &::after
     background: rgb(255,255,255) 
     bottom: 0
-    content: "..."
-    padding-left: 3px
+    content: "More..."
+    font-size: 1vw
+    font-style: italic
     position: absolute
-    right: 0
-    text-align: right
+    width: 100%
 // }}}
 
 .item > .title // {{{

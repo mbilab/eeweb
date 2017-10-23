@@ -48,6 +48,12 @@ $(window).resize(() => {
       $(this).removeClass('wrap')
     }
   })
+  
+  let height = $(".page-content .title").outerHeight(true) + $(".date").outerHeight(true)
+  let fontSize = $(".item p").css("font-size")
+  let totalHeight = height + parseInt(fontSize)*7
+
+  $(".item").css("height",totalHeight)
 
 }).resize()
 
@@ -70,6 +76,9 @@ window.onhashchange = () => {
   }
 }
 onhashchange()
+
+//line-clamp
+
 
 // DOM event
 
