@@ -25,6 +25,8 @@ $.get('data.json', data => {
   let html = Mustache.render(template, { news: data.news })
 
   $('#news').html(html)
+
+  $(window).resize()
 })
 
 ///////////////////////////////////////////////////////
@@ -32,30 +34,34 @@ $.get('data.json', data => {
 // responsive logic
 
 $(window).resize(() => {
-  let orientation = $(window).width() > $(window).height() ? 'landscape' : 'portrait'
-  $('body').attr('data-orientation', orientation)
-
-  if ('landscape' === orientation)
-    $("#logo").attr("href", "#landing")
-  else
-    $("#logo").removeAttr("href")
-  
-  $(".title").map(function() {
-    if (this.offsetWidth < this.scrollWidth) {
-      $(this).addClass('wrap')
-    }
-    else{
-      $(this).removeClass('wrap')
-    }
-  })
-  
   let height = $(".page-content .title").outerHeight(true) + $(".date").outerHeight(true)
   let fontSize = $(".item p").css("font-size")
-  let totalHeight = height + parseInt(fontSize)*7
+  let orientation = $(window).width() > $(window).height() ? 'landscape' : 'portrait'
+  
+  $('body').attr('data-orientation', orientation)
 
-  $(".item").css("height",totalHeight)
+  if ('landscape' === orientation){
+    $("#logo").attr("href", "#landing")
+    
+    let itemHeight = height + parseInt(fontSize)*7 //item height
+    $(".item").css("height",itemHeight)
+  
+  } else{
+    $("#logo").removeAttr("href")
+  
+    let itemHeight = height + parseInt(fontSize)*7.5 //item height
+    $(".item").css("height",itemHeight)
+  
+  }
+    
+  $(".item").each( function(){ //multiline ellipsis
+    if($(this).children("p").height() >= parseInt(fontSize)*7)
+      $(this).attr("data-ellipsis","true")
+    else
+      $(this).removeAttr("data-ellipsis")
+  })
 
-}).resize()
+})
 
 // show content referred to url
 

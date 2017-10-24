@@ -11,7 +11,7 @@ eeweb
 * yarn start
 
 # issue
-* item bottom margin bug while resizing
+* item bottom margin bug while resizing |done
 * .description top margin while resizing |done
 * icon, bg to local? |no icon done
 * .page-content should be #news |done
