@@ -26,7 +26,7 @@ module.exports = {
                     autoprefixer,
                 ]}},
                 'sass-loader',
-            ]}
+            ]},
         ]
     },
     output: {

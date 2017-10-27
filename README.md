@@ -11,12 +11,7 @@ eeweb
 * yarn start
 
 # issue
-* item bottom margin bug while resizing |done
-* .description top margin while resizing |done
-* icon, bg to local? |no icon done
-* .page-content should be #news |done
-* .return should be outside .page-content |done
-* why I cannot use .page-content .item
-* transparent inside the logo
-* make sure everythin in .item is necessary
+* favicon to local and transparent inside?
+* resize when open url#news
+* check all font-size, margin..., use em if possible
 * why I cannot use postcss-autoreset

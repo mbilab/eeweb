@@ -56,7 +56,7 @@ $(window).resize(() => {
     
   $(".item").each( function(){ //multiline ellipsis
     if($(this).children("p").height() >= parseInt(fontSize)*7)
-      $(this).attr("data-ellipsis","true")
+      $(this).attr("data-ellipsis","")
     else
       $(this).removeAttr("data-ellipsis")
   })
