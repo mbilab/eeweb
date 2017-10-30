@@ -34,26 +34,23 @@ $.get('data.json', data => {
 // responsive logic
 
 $(window).resize(() => {
-  let height = $(".page-content .title").outerHeight(true) + $(".date").outerHeight(true)
-  let fontSize = $(".item p").css("font-size")
   let orientation = $(window).width() > $(window).height() ? 'landscape' : 'portrait'
   
   $('body').attr('data-orientation', orientation)
 
   if ('landscape' === orientation){
     $("#logo").attr("href", "#landing")
-    
-    let itemHeight = height + parseInt(fontSize)*7 //item height
-    $(".item").css("height",itemHeight)
-  
   } else{
     $("#logo").removeAttr("href")
-  
-    let itemHeight = height + parseInt(fontSize)*7.5 //item height
-    $(".item").css("height",itemHeight)
-  
   }
     
+  
+  let height = $(".page-content .title").outerHeight(true) + $(".date").outerHeight(true)
+  let fontSize = $(".item p").css("font-size")
+  let itemHeight = height + parseInt(fontSize)*7 //item height
+  
+  $(".item").css("height",itemHeight)
+  
   $(".item").each( function(){ //multiline ellipsis
     if($(this).children("p").height() >= parseInt(fontSize)*7)
       $(this).attr("data-ellipsis","")
