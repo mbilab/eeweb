@@ -83,9 +83,6 @@ window.onhashchange = () => {
 }
 onhashchange()
 
-//line-clamp
-
-
 // DOM event
 
 $("#page").click(function() {

@@ -303,6 +303,7 @@ body // {{{ general
       border-top: 0px
   
   [data-orientation='landscape'] &
+    font-size: 1vw
     transition: opacity $normal-term 
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
@@ -340,23 +341,22 @@ body // {{{ general
   color: $bold-color
 
   [data-orientation='landscape'] &
-    font-size: 2.5vw
+    font-size: 2.5em
   
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    font-size: 1.2vw
+    font-size: 1.2em
 
   [data-orientation='portrait'] &
-    font-size: 5vw
+    font-size: 1.67em
 
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
-    font-size: 4.5vw
+    font-size: 1.5em
 // }}}
 
 .item > .date // {{{
 
   [data-orientation='landscape'] &
     margin-top: 1em
-    font-size: 1vw
 
   [data-orientation='portrait'] &
     margin-top: .5em
@@ -364,9 +364,6 @@ body // {{{ general
   
 .item > p // {{{
   white-space: pre-line
-  
-  [data-orientation='landscape'] &
-    font-size: 1vw
 
   [data-orientation='portrait'] &
     margin-bottom: 0
@@ -378,7 +375,7 @@ body // {{{ general
   bottom: 0
   content: "更多..."
   display: none
-  padding: .5em 0 .5em
+  padding: .75em 0 .75em
   position: absolute
   text-align: center
   width: 100%
