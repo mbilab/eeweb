@@ -106,7 +106,8 @@ $("#menu>a").click(() => {
 
 $(".return").click(() => {
   $(".page-content").attr("data-page-content", "list")
-  $(".item").removeClass('show')
+  $(".item").removeClass('show').scrollTop(0)
+  //$(".item").scrollTop(0)
 })
 
 $(".group").click(() => {
