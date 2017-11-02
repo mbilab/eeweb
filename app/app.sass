@@ -206,19 +206,19 @@ body // {{{ general
   position: relative
 
 .page-info // {{{
+  font-size: 4vw
   margin-right: 1%
 
   [data-orientation='landscape'] &
     width: 32%
 
   [data-orientation='portrait'] &
-    font-size: 5vw
-    height: 2em
+    height: 2.5em
     width: 100%
 
   .title
     color: $primary-color
-    font: 900 4vw 'mon'
+    font: 900 1em 'mon'
 
     [data-orientation='landscape'] &
       position: relative
@@ -226,7 +226,7 @@ body // {{{ general
 
     [data-orientation='portrait'] &
       +vertical-center
-      margin-left: 15vw
+      margin-left: 3.5em
       height: 100%
 
     .extend
@@ -237,7 +237,7 @@ body // {{{ general
   .description
     [data-orientation='landscape'] &
       color: #bdb2c3
-      font-size: 1.2vw
+      font-size: .3em
       line-height: 1.7
       position: relative
       top: 5em
@@ -300,7 +300,6 @@ body // {{{ general
     padding: 0 1em
     
     &:first-child
-      border-top: 0px
       margin-top: 1em
   
   [data-orientation='landscape'] &
@@ -308,7 +307,6 @@ body // {{{ general
     transition: opacity $normal-term 
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    height: auto
     margin: 0 2% 2% 2%
     width: 45%
 
@@ -407,7 +405,7 @@ body // {{{ general
   [data-orientation='landscape'] &
     bottom: 0
     color: rgba(92, 86, 92, 0.47)
-    font-size: 10vw
+    font-size: 2.5em
     font-weight: 900
     position: absolute
     right: 0

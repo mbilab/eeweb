@@ -12,6 +12,6 @@ eeweb
 
 # issue
 * favicon to local and transparent inside?
-* resize when open url#news
-* check all font-size, margin..., use em if possible
+* resize when open url#news |done
+* check all font-size, margin..., use em if possible |done
 * why I cannot use postcss-autoreset
