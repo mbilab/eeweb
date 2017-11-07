@@ -24,6 +24,11 @@ module.exports = {
                 'css-loader',
                 { loader: 'postcss-loader', options: { plugins: [
                     autoprefixer,
+                    postcssAutoreset({
+                        reset: {
+                            //margin: 0
+                        }
+                    })
                 ]}},
                 'sass-loader',
             ]},

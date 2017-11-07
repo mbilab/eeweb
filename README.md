@@ -11,7 +11,7 @@ eeweb
 * yarn start
 
 # issue
-* favicon to local and transparent inside?
+* favicon to local and transparent inside? |change another favicon
 * resize when open url#news |done
 * check all font-size, margin..., use em if possible |done
-* why I cannot use postcss-autoreset
+* why I cannot use postcss-autoreset |done
