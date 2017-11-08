@@ -26,6 +26,7 @@ const parseDropbox = (data, toFile=true) => {
         })
     }
     data = { news: news }
+    data.news.reverse()
 
     if (toFile)
         fs.writeFileSync('./dist/data.json', JSON.stringify(data, null, 2))
