@@ -27,6 +27,7 @@ $.get('data.json', data => {
   $('#news').html(html)
 
   $(window).resize()
+  window.onhashchange()
 })
 
 ///////////////////////////////////////////////////////
@@ -70,6 +71,7 @@ window.onhashchange = () => {
 
       if(itemID) {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', '')
+        $('#news .item').removeClass('show')
         $(`#news .item:nth-child(${itemID})`).addClass('show')
       } else {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', 'list')
@@ -107,6 +109,7 @@ $("#menu>a").click(() => {
 $(".return").click(() => {
   $(".page-content").attr("data-page-content", "list")
   $(".item").removeClass('show').scrollTop(0)
+  $(window).resize()
 })
 
 $(".group").click(() => {
