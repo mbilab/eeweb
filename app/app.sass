@@ -1,3 +1,4 @@
+////////////////////////
 // global setting
 
 //// font
@@ -10,7 +11,7 @@
   font-family: mon_bold
   src: url('res/font/Montserrat-Regular.otf')
 
-////size
+//// size
 
 .size-small
   width: 20%
@@ -44,9 +45,6 @@
 
 .fa-4x
 
-  [data-orientation='portrait'] &
-    font-size: 3.5vh
-
   [data-orientation='landscape'] &
     font-size: 3.5vw
 
@@ -75,7 +73,7 @@ $text-color: rgb(68, 63, 70)
   justify-content: center
 
 ////////////////////////
-// body > #logo #menu #page > .page > .page-info .page-content  //! wrong?
+// body > #logo #menu #page > .page > .page-info .page-content
 
 body // {{{ general
   font-family: mon, "Microsoft JhengHei", monospace
@@ -114,10 +112,10 @@ body // {{{ general
   transition: padding ease-in-out $short-term
 
   a
-    transition: padding ease-in-out $short-term //! too long?
+    transition: padding ease-in-out $short-term
 
   [data-orientation='landscape'] &
-    font-size: 1.2vw //! layout logic?
+    font-size: 1.2vw
     left: 42%
     position: absolute
     top: 2.79em
@@ -280,20 +278,27 @@ body // {{{ general
 // }}}
 
 .item // {{{
+  box-sizing: border-box
   color: $text-color
   display: inline-block
   opacity: 0
   overflow: hidden
   position: relative
-  text-align: left //! needed?
+  transition: height $short-term, opacity $short-term, padding $short-term
+
+  [data-orientation='landscape'] &
+    font-size: 1vw
+    transition: opacity $normal-term
+
+  [data-orientation='landscape'] .page-content[data-page-content='list'] &
+    margin: 0 2% 2% 2%
+    width: 45%
 
   [data-orientation='portrait'] &
-    box-sizing: border-box //! needed?
     font-size: 3vw
-    transition: height .4s, opacity .4s, padding .4s //! short-term?
     
     &.show
-      padding: 2em 1em 0 //! &.show needed?
+      padding: 2em 1em 0
   
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
     margin-bottom: 1em
@@ -302,26 +307,17 @@ body // {{{ general
     &:first-child
       margin-top: 1em
   
-  [data-orientation='landscape'] &
-    font-size: 1vw
-    transition: opacity $normal-term //! check portrait
-
-  [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    margin: 0 2% 2% 2% //! % or em?
-    width: 45% //! % or em?
-
   [data-page-content='list'] &
     border-bottom: lighten($dark-color, 50%) 1px solid
     opacity: 1
 
   [data-page-content=''] &
-    height: 0 !important //! data-page-content needed?
+    height: 0 !important
 
   &.show
-    height: 100% !important //! imporant needed?
+    height: 100% !important
     opacity: 1
     overflow-y: auto 
-    width: 100% //! .show needed?
   
 // }}}
 
@@ -351,9 +347,8 @@ body // {{{ general
     font-size: 1.5em
 // }}}
 
-.item > .date // {{{
+.item > .date
   margin-top: 1em
-// }}}
   
 .item > p // {{{
   white-space: pre-line
@@ -362,46 +357,47 @@ body // {{{ general
     margin-bottom: 0
 // }}}
 
-.item[data-ellipsis]::after //! use class?
-  background: rgba(lighten($dark-color, 60%), .9)
+.item[data-ellipsis]::after // {{{ //! use class?
+  background: rgba(lighten($dark-color, 70%), .9)
   bottom: 0
   content: "更多..."
   display: none
   left: 0
-  padding: .5em 0 .5em
+  padding: .2em 0 .2em
   position: absolute
   right: 0
   text-align: center
 
   [data-page-content='list'] &
     display: block
+// }}}
 
-.return
-    cursor: pointer
-    position: absolute
-    transition: all $short-term
-    z-index: 100
+.return // {{{
+  cursor: pointer
+  position: absolute
+  transition: all $short-term
+  z-index: 100 //! needed?
 
-    [data-orientation="landscape"] &
-      bottom: 9%
-      font-size: 1vw
-      right: 7%
+  [data-orientation='landscape'] & //! please test
+    bottom: 9% //! use em?
+    font-size: 1vw
+    right: 7% //! use em?
 
-    [data-orientation='portrait'] &
-      position: fixed
-      top: 5vw
-      transform: translateY(-50%)
-      right: 4%
+  [data-orientation='portrait'] &
+    // similar layout to #logo
+    +vertical-center
+    font-size: 5vw
+    right: .5em
+    height: 2em
 
-    a
-      height: 100%
-      position: absolute
-      width: 100%
+  a
+    font-size: 1.5em
 
-    .page-content[data-page-content="list"]~&
-      opacity: 0
+  .page-content[data-page-content='list']~&
+    display: none
+// }}}
 
-.watermark
+.watermark // {{{
   [data-orientation='landscape'] &
     bottom: 0
     color: rgba(92, 86, 92, 0.47)
@@ -416,16 +412,20 @@ body // {{{ general
 
   [data-page-id='landing'] &
     right: 57%
+// }}}
 
-.wrap
+.wrap //! how to test?
   [data-page-content='list'] &
     line-height: 1!important
     white-space: initial !important
 
-//data-page controll
+////////////////////////
+// pages
 
-[data-page-id="landing"]
-  
+//// landing
+
+[data-page-id='landing'] // {{{
+
   .theme
     color: white
     font-weight: 100
@@ -435,27 +435,28 @@ body // {{{ general
     top: 50%
     transform: translateY(-50%)
 
-  [data-orientation='landscape'] &
-    
-    .theme
+    [data-orientation='landscape'] &
+      display: inline-block
       font-size: 2vw
       left: 23%
       text-align: left
 
-  [data-orientation='portrait'] &
-    
-    .theme
+    [data-orientation='portrait'] &
       font-size: 5vw
       text-align: center
+// }}}
+
+//// news
 
 [data-page-id='news']
-  
+
   .page-content
     background-color: rgb(255,255,255)
 
-// lab page
+//// faculty
 
 [data-page="faculty"]
+
   &[data-status="member"]
     #group
       opacity: 0
@@ -463,19 +464,18 @@ body // {{{ general
 
   &[data-status="group"]
   
-  .overview
-    opacity: 1
+    .overview
+      opacity: 1
     
-    [data-orientation='portrait'] &
-      box-sizing: border-box
+      [data-orientation='portrait'] &
+        box-sizing: border-box
 
 .group
-  align-items: center
+  +vertical-center
   background: $primary-color
-  color: #000
   display: flex
-  font-family: 'mon_bold'
-  justify-content: center
+  color: $dark-color
+  font-family: mon_bold
   text-align: center
   white-space: wrap
   
