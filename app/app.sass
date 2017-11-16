@@ -67,10 +67,11 @@ $text-color: rgb(68, 63, 70)
   position: absolute
   width: 100%
 
-=vertical-center
+=vertical-center($display: inline-flex)
   align-items: center
-  display: inline-flex
+  display: $display
   justify-content: center
+  text-align: center
 
 ////////////////////////
 // body > #logo #menu #page > .page > .page-info .page-content
@@ -471,13 +472,11 @@ body // {{{ general
         box-sizing: border-box
 
 .group
-  +vertical-center
+  +vertical-center(flex)
   background: $primary-color
-  display: flex
+  box-sizing: border-box
   color: $dark-color
   font-family: mon_bold
-  text-align: center
-  white-space: wrap
   
   [data-orientation='landscape'] &
     float: left
@@ -487,10 +486,12 @@ body // {{{ general
     width: 26%
 
   [data-orientation='portrait'] &
-    font-size: 3.5vw
-    height: 9em
-    margin: 1.5em auto
-    width: 18em
+    font-size: 8vw
+    height: 6em
+    line-height: 1.2
+    margin: .5em auto
+    padding: .5em
+    width: 80%
 
     &:first-child
       margin-top: 0
