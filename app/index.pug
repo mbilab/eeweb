@@ -4,15 +4,15 @@ html
     link(href="https://i.imgur.com/gtvXxbV.png" rel="icon")
     meta(content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width" name="viewport")
     title NCKU EE
-  body(data-page="landing",data-orientation="landscape")
+  body(data-orientation="landscape" data-page="landing")
     a#logo E
     #menu
-      a(href='#landing') Home
-      a(href='#news') News #[span.extend &  Events]
-      //a(href='#course') Courses
-      a(href='#faculty') Faculty #[span.extend  & Research]
-      //a(href='#scholarship') Scholarship
-      //a(href='#upload') Upload
+      a(href="#landing") Home
+      a(href="#news") News #[span.extend &  Events]
+      //a(href="#course") Courses
+      a(href="#faculty") Faculty #[span.extend  & Research]
+      //a(href="#scholarship") Scholarship
+      //a(href="#upload") Upload
     #page
       .page(data-page-id="landing")
         .theme National Cheng Kung University#[br]Electronic Engineering
@@ -32,7 +32,7 @@ html
             p {{content}}
           | {{/news}}     
         .return
-          a(href='#news')
+          a(href="#news")
           i.fa.fa-arrow-circle-left.fa-4x     
       // }}} news
       // {{{ course
@@ -74,6 +74,6 @@ html
           .group
             span Nano
       // }}} faculty
-    script(src='./app.js')
+    script(src="./app.js")
 
 // vi:et

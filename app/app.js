@@ -45,14 +45,13 @@ $(window).resize(() => {
     $("#logo").removeAttr("href")
   }
     
-  
   let height = $(".page-content .title").outerHeight(true) + $(".date").outerHeight(true)
   let fontSize = $(".item p").css("font-size")
   let itemHeight = height + parseInt(fontSize)*7 //item height
-  
+
   $(".item").css("height",itemHeight)
-  
-  $(".item").each( function(){ //multiline ellipsis
+
+  $(".item").each( function(){ // multiline ellipsis
     if($(this).children("p").height() >= parseInt(fontSize)*7)
       $(this).attr("data-ellipsis","")
     else

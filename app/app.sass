@@ -279,21 +279,21 @@ body // {{{ general
       background-color: rgba(122, 122, 122, 0.65)
 // }}}
 
-.item // {{{ //!
+.item // {{{
   color: $text-color
   display: inline-block
   opacity: 0
   overflow: hidden
   position: relative
-  text-align: left
+  text-align: left //! needed?
 
   [data-orientation='portrait'] &
-    box-sizing: border-box
+    box-sizing: border-box //! needed?
     font-size: 3vw
-    transition: height .4s, opacity .4s, padding .4s
+    transition: height .4s, opacity .4s, padding .4s //! short-term?
     
     &.show
-      padding: 2em 1em 0
+      padding: 2em 1em 0 //! &.show needed?
   
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
     margin-bottom: 1em
@@ -304,36 +304,35 @@ body // {{{ general
   
   [data-orientation='landscape'] &
     font-size: 1vw
-    transition: opacity $normal-term 
+    transition: opacity $normal-term //! check portrait
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    margin: 0 2% 2% 2%
-    width: 45%
+    margin: 0 2% 2% 2% //! % or em?
+    width: 45% //! % or em?
 
   [data-page-content='list'] &
     border-bottom: lighten($dark-color, 50%) 1px solid
     opacity: 1
 
   [data-page-content=''] &
-    height: 0!important
+    height: 0 !important //! data-page-content needed?
 
   &.show
-    height: 100%!important
+    height: 100% !important //! imporant needed?
     opacity: 1
     overflow-y: auto 
+    width: 100% //! .show needed?
+  
+// }}}
+
+.item img // {{{ //! how to test this?
+  margin: .5vw
+
+  [data-orientation='portrait'] &
     width: 100%
-  
-  img
-    margin: .5vw
 
-    [data-orientation='portrait'] &
-      width: 100%
-
-    [data-page-content='list'] &
-      display: none
-
-  
-
+  [data-page-content='list'] &
+    display: none
 // }}}
 
 .item > .title // {{{
@@ -363,15 +362,16 @@ body // {{{ general
     margin-bottom: 0
 // }}}
 
-.item[data-ellipsis]::after
-  background: rgba(255,255,255,.9)
+.item[data-ellipsis]::after //! use class?
+  background: rgba(lighten($dark-color, 60%), .9)
   bottom: 0
   content: "更多..."
   display: none
-  padding: .75em 0 .75em
+  left: 0
+  padding: .5em 0 .5em
   position: absolute
+  right: 0
   text-align: center
-  width: 100%
 
   [data-page-content='list'] &
     display: block
