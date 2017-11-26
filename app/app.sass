@@ -292,6 +292,7 @@ body // {{{ general
     transition: opacity $normal-term
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
+    height: 11.6em
     margin: 0 2% 2% 2%
     width: 45%
 
@@ -302,6 +303,7 @@ body // {{{ general
       padding: 2em 1em 0
   
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
+    height: 12.5em
     margin-bottom: 1em
     padding: 0 1em
     
@@ -313,10 +315,10 @@ body // {{{ general
     opacity: 1
 
   [data-page-content=''] &
-    height: 0 !important
+    height: 0
 
   &.show
-    height: 100% !important
+    height: 100%
     opacity: 1
     overflow-y: auto 
   
@@ -358,7 +360,7 @@ body // {{{ general
     margin-bottom: 0
 // }}}
 
-.item[data-ellipsis]::after // {{{ //! use class?
+.ellipsis::after // {{{ //! use class?
   background: rgba(lighten($dark-color, 70%), .9)
   bottom: 0
   content: "更多..."
@@ -377,12 +379,11 @@ body // {{{ general
   cursor: pointer
   position: absolute
   transition: all $short-term
-  z-index: 100 //! needed?
 
   [data-orientation='landscape'] & //! please test
-    bottom: 9% //! use em?
+    bottom: 9% //! use em? //use %
     font-size: 1vw
-    right: 7% //! use em?
+    right: 7% //! use em? //use %
 
   [data-orientation='portrait'] &
     // similar layout to #logo

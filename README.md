@@ -12,4 +12,4 @@ eeweb
 
 # issue
 * why I cannot use postcss-autoreset |done
-* prevent js for .item height 
+* prevent js for .item height |done
