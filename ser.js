@@ -10,7 +10,6 @@ const parseDropbox = (data, toFile=true) => {
     data = data.toString().split(/\n\n\-{10}\n/).slice(1, -1)
     const news = []
     let i = 1
-
     for (let v of data) {
         let match = v.match(/##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
         let date = null
@@ -18,6 +17,11 @@ const parseDropbox = (data, toFile=true) => {
             date = moment(match[2]).format('lll')
         else
             match[3] = `${match[2]}\n${match[3]}`
+        
+        match[3] = match[3].replace(/\!\[/g,"<img ")
+        match[3] = match[3].replace(/\]\(/g,"src='")
+        match[3] = match[3].replace(/\)/g,"'>")
+        
         news.push({
             content: match[3],
             date: date,
@@ -27,6 +31,8 @@ const parseDropbox = (data, toFile=true) => {
     }
     data = { news: news }
     data.news.reverse()
+
+    console.log(data)
 
     if (toFile)
         fs.writeFileSync('./dist/data.json', JSON.stringify(data, null, 2))
