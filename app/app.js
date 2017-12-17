@@ -28,6 +28,11 @@ $.get('data.json', data => {
 
   $(window).resize()
   window.onhashchange()
+
+  //let parser = new DOMParser()
+  //let string = $(".item > p").text().match(/(<[^>]*>)/g)
+  //let dom = parser.parseFromString(string,"text/html")
+
 })
 
 ///////////////////////////////////////////////////////
