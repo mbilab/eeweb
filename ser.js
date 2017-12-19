@@ -18,8 +18,8 @@ const parseDropbox = (data, toFile=true) => {
         else
             match[3] = `${match[2]}\n${match[3]}`
         
-        match[3] = match[3].replace(/\!\[/g,"<img ")
-        match[3] = match[3].replace(/\]\(/g,"src='")
+        match[3] = match[3].replace(/\!\[/g,"<img class='")
+        match[3] = match[3].replace(/\]\(/g,"' src='")
         match[3] = match[3].replace(/\)/g,"'>")
         
         news.push({
@@ -31,8 +31,6 @@ const parseDropbox = (data, toFile=true) => {
     }
     data = { news: news }
     data.news.reverse()
-
-    console.log(data)
 
     if (toFile)
         fs.writeFileSync('./dist/data.json', JSON.stringify(data, null, 2))
