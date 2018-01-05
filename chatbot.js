@@ -5,6 +5,8 @@ const app = express().use(bodyParser.json())
 const opt = require('./option.json')
 const https = require('https')
 const request = require('request')
+const sqlite3 = require('sqlite3').verbose()
+
 
 const httpsOpt = {
   ca: fs.readFileSync('./ssl/ca_bundle.crt'),
@@ -15,7 +17,6 @@ const httpsOpt = {
 
 https.createServer(httpsOpt, app).listen(opt.chat_port, () => { console.log(`listen on ${opt.chat_port}`) })
 
-  
 app.post('/webhook', (req, res) => {  
    
     let body = req.body
@@ -34,7 +35,7 @@ app.post('/webhook', (req, res) => {
         let sender_psid = webhook_event.sender.id
         //console.log('Sender PSID: ' + sender_psid)
 
-				// Check if the event is a message or postback and
+				// Check if the event is a message
   			if (webhook_event.message)
     			handleMessage(sender_psid, webhook_event.message)        
       
@@ -106,12 +107,41 @@ function handleMessage(sender_psid, received_message){
   let response
 
   // Check if the message contains text
-  if (received_message.text) {    
+  if (received_message.text == '訂閱') {    
 
     // Create the payload for a basic text message
     response = {
-      "text": `You sent the message: "${received_message.text}".`
+      "text": '感謝訂閱, 用戶會在更新時收到通知'
     }
+   
+    //open database
+    let db = new sqlite3.Database('./sender.db', err => {
+	    if(err)
+		    return console.log(err.message)
+
+	    console.log('connect to sender.db')
+    })
+    
+    db.run(`SELECT * FROM sender WHERE id = ${sender_psid}`, err => {  
+      if(err)
+        return console.log("select error : "+err.message)
+        
+      db.run(`INSERT INTO sender(id) VALUES(${sender_psid})`, err => {
+        if(err)
+          return console.log("insert error : "+err.message)
+
+        console.log(`client:${sender_psid} insert`)
+      })
+    
+    }) 
+
+    db.close( err => {
+      if(err)
+        console.error(err.message)
+
+      console.log('close sender.db')
+    })
+
   }  
   
   // Sends the response message
