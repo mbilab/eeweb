@@ -1,7 +1,0 @@
-{
-  "doc_id": "dropbox paper's id",
-  "refresh_interval": "300000",
-  "socket_port": "8081",
-  "page_token": "your facebook's page token",
-  "chat_port": "your chatbot port"
-}
