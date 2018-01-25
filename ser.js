@@ -10,7 +10,6 @@ const parseDropbox = (data, toFile=true) => {
     data = data.toString().split(/\n+\-{10}\n/).slice(1, -1)
     const news = []
     let i = 1
-
     moment.locale('zh-tw')
     for (let v of data) {
         let match = v.match(/##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
@@ -27,7 +26,7 @@ const parseDropbox = (data, toFile=true) => {
             if(!img[1])
                 img[1] = 'size-small'
 
-            match[3] = `${match[3].substring(0, pos)}<img class="${img[1]}" src="${img[2]}">${match[3].substring(pos + img[0].length)}`
+            match[3] = `${match[3].substring(0, pos)}<img class="${img[1]}" src="${img[2]}">${match[3].substring(pos + img[0].length + 2)}`
         }
 
         //match[3] = match[3].replace(/\!\[/g,"<img class='")
