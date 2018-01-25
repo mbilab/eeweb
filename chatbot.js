@@ -2,7 +2,7 @@ const fs = require('fs')
 const bodyParser = require('body-parser')
 const express = require('express')
 const app = express().use(bodyParser.json())
-const opt = require('./option.json')
+const config = require('./config.json')
 const https = require('https')
 const request = require('request')
 const sqlite3 = require('sqlite3').verbose()
@@ -15,7 +15,7 @@ const httpsOpt = {
 }
 
 
-https.createServer(httpsOpt, app).listen(opt.chat_port, () => { console.log(`listen on ${opt.chat_port}`) })
+https.createServer(httpsOpt, app).listen(config.chatbotPort, () => { console.log(`listen on ${config.chatbotPort}`) })
 
 app.post('/webhook', (req, res) => {  
    
@@ -80,7 +80,7 @@ app.get('/webhook', (req, res) => {
 
 function sendTextMessage(sender, text) {
   
-  const page_token = opt.page_token
+  const page_token = config.pageToken
   
   messageData = {
     text:text
@@ -162,7 +162,7 @@ function callSendAPI(sender_psid, response){
 	// Send the HTTP request to the Messenger Platform
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": opt.page_token },
+    "qs": { "access_token": config.pageToken },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
@@ -178,10 +178,10 @@ function callSendAPI(sender_psid, response){
 
 //podcast testing
 
-let subscriber = JSON.parse(fs.readFileSync('./sender.json','utf-8'))
-let subscriber_id = subscriber.sender_id
-let _message = {"text": "news!!!"}
+//let subscriber = JSON.parse(fs.readFileSync('./sender.json','utf-8'))
+//let subscriber_id = subscriber.sender_id
+//let _message = {"text": "news!!!"}
 
-console.log(subscriber_id)
-callSendAPI(subscriber_id, _message)
+//console.log(subscriber_id)
+//callSendAPI(subscriber_id, _message)
   
