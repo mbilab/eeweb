@@ -10,11 +10,13 @@ const parseDropbox = (data, toFile=true) => {
     data = data.toString().split(/\n+\-{10}\n/).slice(1, -1)
     const news = []
     let i = 1
+
+    moment.locale('zh-tw')
     for (let v of data) {
         let match = v.match(/##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
         let date = null
-        if (moment(match[2]).isValid())
-            date = moment(match[2]).format('lll')
+        if (moment(match[2].substring(3)).isValid())
+            date = `${match[2].substring(0,3)}${moment(match[2].substring(3)).format('ll ddd')}`
         else
             match[3] = `${match[2]}\n${match[3]}`
         
