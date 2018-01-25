@@ -16,10 +16,10 @@ import './res/favicon.ico'
 
 //import data from '../dist/data.json'
 $.get('data.json', data => {
-  moment.locale('zh-tw')
-  for (let v of data.news) {
-    v.date = moment(v.date).format('ll ddd')
-  }
+  //moment.locale('zh-tw')
+  //for (let v of data.news) {
+  //  v.date = moment(v.date).format('ll ddd')
+  //}
 
   let template = $('#news+script').html()
   let html = Mustache.render(template, { news: data.news })
