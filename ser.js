@@ -19,11 +19,21 @@ const parseDropbox = (data, toFile=true) => {
             date = `${match[2].substring(0,3)}${moment(match[2].substring(3)).format('ll ddd')}`
         else
             match[3] = `${match[2]}\n${match[3]}`
-        
-        match[3] = match[3].replace(/\!\[/g,"<img class='")
-        match[3] = match[3].replace(/\]\(/g,"' src='")
-        match[3] = match[3].replace(/\)/g,"'>")
-        
+
+        while( match[3].match(/\!\[/) ){
+            let img = match[3].match(/\!\[(.*?)\]\((.*?)\)/)
+            let pos = match[3].indexOf(img[0])
+            
+            if(!img[1])
+                img[1] = 'size-small'
+
+            match[3] = `${match[3].substring(0, pos)}<img class="${img[1]}" src="${img[2]}">${match[3].substring(pos + img[0].length)}`
+        }
+
+        //match[3] = match[3].replace(/\!\[/g,"<img class='")
+        //match[3] = match[3].replace(/\]\(/g,"' src='")
+        //match[3] = match[3].replace(/\)/g,"'>")
+
         news.push({
             content: match[3],
             date: date,
