@@ -11,6 +11,9 @@ eeweb
 # develop
 * yarn start
 
+# update data
+* ./serv.js get
+
 # chatbot
 * node chatbot.js to activate the chatbot
 
