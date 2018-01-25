@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
+const config = require('./config.json')
 const dp = require('./lib/dropbox.js')
 const fs = require('fs')
 const moment = require('moment')
-const opt = require('./option.json')
 
 // parse data from dropbox paper and save it to the front end
 const parseDropbox = (data, toFile=true) => {
-    data = data.toString().split(/\n\n\-{10}\n/).slice(1, -1)
+    data = data.toString().split(/\n+\-{10}\n/).slice(1, -1)
     const news = []
     let i = 1
     for (let v of data) {
@@ -44,15 +44,15 @@ if ('get' === process.argv[2]) {
 } else {
     const clients = {}
     let data = JSON.parse(fs.readFileSync('./dist/data.json', 'utf8'))
-    const io = require('socket.io')(opt.socket_port)
-    console.log(`socket on ${opt.socket_port}`)
+    const io = require('socket.io')(config.socketPort)
+    console.log(`socket on ${config.socketPort}`)
 
     const refresh = () => {
         data = parseDropbox(dp.getSync(), false)
         for (let k in clients)
             clients[k].emit('data', data)
     }
-    setInterval(refresh, opt.refresh_interval)
+    setInterval(refresh, config.refreshInterval)
     io.on('refresh', refresh)
 
     io.on('connection', socket => {

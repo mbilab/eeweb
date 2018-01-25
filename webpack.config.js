@@ -15,8 +15,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      { test: /\.(eot|otf|svg|ttf|woff(2)?)(\?[a-z0-9]+)?$/, use: 'file-loader?name=fonts/[hash:7].[ext]' },
-      { test: /\.(jpeg|jpg|png|ico)$/, use: 'url-loader?limit=10000' },
+      { test: /\.(eot|ico|jpeg|jpg|otf|png|svg|ttf|woff(2)?)(\?[a-z0-9]+)?$/, use: 'file-loader?name=fonts/[hash:5].[ext]' },
       { test: /\.(ico)$/, use: 'file-loader?name=res/[name].[ext]' },
       { test: /\.pug$/, use: ['file-loader?name=[name].html', 'extract-loader', 'html-loader', 'pug-html-loader'] },
       { test: /\.sass$/, use: [

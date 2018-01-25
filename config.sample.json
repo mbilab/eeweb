@@ -1,7 +1,7 @@
 {
   "allowedHosts": ["zoro.ee.ncku.edu.tw"],
   "chatbotPort": 1092,
-  "docId": "dropbox paper's id",
+  "dropboxId": "dropbox paper's id",
   "pageToken": "your facebook's page token",
   "refreshInterval": 300000,
   "socketPort": 1091,
