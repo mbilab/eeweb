@@ -22,14 +22,7 @@ module.exports = {
         'file-loader?name=[name].css',
         'extract-loader',
         'css-loader',
-        { loader: 'postcss-loader', options: { plugins: [
-          autoprefixer,
-          postcssAutoreset({
-            reset: {
-              //margin: 0
-            }
-          })
-        ]}},
+        { loader: 'postcss-loader', options: { plugins: [ autoprefixer ]}},
         'sass-loader',
       ]},
     ]

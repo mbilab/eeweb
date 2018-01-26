@@ -25,7 +25,6 @@
     "moment": "^2.18.1",
     "mustache": "^2.3.0",
     "node-sass": "^4.5.3",
-    "postcss-autoreset": "^2.0.1",
     "postcss-loader": "^2.0.6",
     "pug-html-loader": "^1.1.4",
     "sass-loader": "^6.0.6",
