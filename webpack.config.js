@@ -1,6 +1,5 @@
 const autoprefixer = require('autoprefixer')
 const config = require('./config')
-const postcssAutoreset = require('postcss-autoreset')
 const webpack = require('webpack')
 
 module.exports = {
