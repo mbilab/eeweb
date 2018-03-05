@@ -1,34 +1,34 @@
 html
   head
+    link(href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet")
     link(href="./app.css" rel="stylesheet")
     link(href="https://i.imgur.com/gtvXxbV.png" rel="icon")
     meta(content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width" name="viewport")
     title NCKU EE
   body(data-orientation="landscape" data-page="landing")
-    a#logo E
+    a#logo #[i.fas.fa-home]NCKUEE
     #menu
       a(href="#landing") Home
+      br
       a(href="#news") News #[span.extend &  Events]
       //a(href="#course") Courses
+      br
       a(href="#faculty") Faculty #[span.extend  & Research]
       //a(href="#scholarship") Scholarship
       //a(href="#upload") Upload
     #page
       .page(data-page-id="landing")
-        .theme National Cheng Kung University#[br]Electronic Engineering
-        .watermark ELECTRONIC
+        .theme National Cheng Kung University#[br]#[span.sub Department of Electronic Engineering]
       // {{{ news
       .page(data-page-id="news")
         .page-info
-          .title NEWS#[span.extend  & EVENTS]
-          .description Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-          .watermark ACTIVITIES
+          .title NEWS#[br] & EVENTS
         .page-content#news(data-page-content="list")
         script(type="x-tmpl-mustache")
           | {{#news}}
           a.item(href=`#news-{{index}}`)
+            .date #[span 講座資訊]{{date}}
             .title {{title}}
-            .date {{date}}
             p {{{content}}}
           | {{/news}}     
         .return
@@ -39,15 +39,11 @@ html
       .page(data-page-id="course")
         .page-info
           span.title OUR#[span.extend COURES]
-          span.description Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-          .watermark ACTIVITY
       // }}} course
       // {{{ faculty
       .page(data-page-id="faculty")
         .page-info
           .title FACULTY#[span.extend  & RESEARCH]
-          .description Vivamus molestie dui vel varius auctor. Mauris interdum, libero ut efficitur gravida, orci lectus eleifend erat, nec pellentesque massa odio at nulla. Cras id pharetra orci, lacinia aliquet metus.
-          .watermark RESEARCH
         .page-content
           .group
             span Instrument System and Chip

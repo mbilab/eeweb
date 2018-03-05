@@ -2,6 +2,8 @@
 // global setting
 
 //// font
+@import url('https://fonts.googleapis.com/css?family=Karla')
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css)
 
 @font-face
   font-family: mon
@@ -10,6 +12,11 @@
 @font-face
   font-family: mon_bold
   src: url('res/font/Montserrat-Regular.otf')
+
+////font-awesome
+
+.fas
+  margin-right: 10px
 
 //// size
 
@@ -52,10 +59,11 @@ $short-term: .2s
 
 //// color setting
 
-$bold-color: rgb(0, 0, 0)
+$bold-color: #4A4A4A
 $dark-color: rgb(68, 63, 70)
-$primary-color: rgb(226, 219, 26)
-$text-color: rgb(68, 63, 70)
+$primary-color: #E2DB1A
+$sub-color: #5C3D78
+$text-color: #979797
 
 //// mixin
 
@@ -74,7 +82,7 @@ $text-color: rgb(68, 63, 70)
 // body > #logo #menu #page > .page > .page-info .page-content
 
 body // {{{ general
-  font-family: mon, "Microsoft JhengHei", monospace
+  font-family: 'Noto Sans TC', "Microsoft JhengHei", monospace
   line-height: 1.5
   margin: 0
   overflow: hidden
@@ -90,16 +98,17 @@ body // {{{ general
 #logo // {{{
   +vertical-center
   background-color: $primary-color
+  font-family: 'Karla', 'sans-serif'
   line-height: normal
   position: fixed
   z-index: 100
 
   [data-orientation='landscape'] &
-    font-size: 2.5vw
-    left: .8em
-    top: .8em
-    padding: .22em .508em
-
+    font-size: 25px
+    height: 60px
+    left: 50px
+    top: 50px
+    width: 165px
   [data-orientation='portrait'] &
     font-size: 5vw
     height: 2em
@@ -113,22 +122,17 @@ body // {{{ general
     transition: padding ease-in-out $short-term
 
   [data-orientation='landscape'] &
-    font-size: 1.2vw
-    left: 42%
+    bottom: 50px
+    font-size: 18px
+    font-weight: bold
     position: absolute
-    top: 2.79em
-    transform: translate(-50%)
-    white-space: nowrap
     z-index: 100
 
     a
-      border-bottom: 2.5px solid transparent
-      margin-left: 3.5em
-      padding-bottom: 1em
+      margin-left: 50px
   
       &:hover
-        border-bottom-color: $primary-color
-        padding-bottom: .2em
+        color: $primary-color
 
       &:first-child
         display: none
@@ -177,13 +181,14 @@ body // {{{ general
 .page // {{{
   +full-size
   box-sizing: border-box
+  display: flex
   opacity: 0
   pointer-events: none
   transition: all $normal-term ease-in-out
   z-index: 1
 
   [data-orientation='landscape'] &
-    padding: 8.5% 6% 4% 3.5%
+    padding: 50px
     
   [data-orientation='portrait'] &
     padding: 0
@@ -202,11 +207,11 @@ body // {{{ general
   position: relative
 
 .page-info // {{{
+  flex-shrink: 0
   font-size: 4vw
-  margin-right: 1%
 
   [data-orientation='landscape'] &
-    width: 32%
+    width: 300px
 
   [data-orientation='portrait'] &
     height: 2.5em
@@ -214,34 +219,19 @@ body // {{{ general
 
   .title
     color: $primary-color
-    font: 900 1em 'mon'
+    font: bold 36px 'karla'
+    font-style: italic
 
     [data-orientation='landscape'] &
       position: relative
-      top: 1em
+      top: 113px
 
     [data-orientation='portrait'] &
       +vertical-center
       margin-left: 3.5em
       height: 100%
-
-    .extend
-      color: white
-      margin-left: .25em
-      white-space: nowrap
-
-  .description
-    [data-orientation='landscape'] &
-      color: #bdb2c3
-      font-size: .3em
-      line-height: 1.7
-      position: relative
-      top: 5em
-      transition: opacity $normal-term
   
-    [data-orientation='portrait'] &
-      display: none
-// }}}
+  // }}}
   
 .page-content // {{{
 
@@ -249,8 +239,6 @@ body // {{{ general
   overflow: auto
 
   [data-orientation='landscape'] &
-    padding: 2% 3%
-    width: 67%
 
   [data-orientation='portrait'] &
     font-size: 5vw
@@ -289,9 +277,7 @@ body // {{{ general
     transition: opacity $normal-term
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    height: 12em
-    margin: 0 2% 2% 2%
-    width: 45%
+    width: 100%
 
   [data-orientation='portrait'] &
     font-size: 3vw
@@ -308,7 +294,7 @@ body // {{{ general
       margin-top: 1em
   
   [data-page-content='list'] &
-    border-bottom: lighten($dark-color, 50%) 1px solid
+    border-bottom: $bold-color 2px solid
     opacity: 1
 
   [data-page-content=''] &
@@ -322,7 +308,6 @@ body // {{{ general
 // }}}
 
 .item img // {{{ //! how to test this?
-  margin: .5vw
 
   [data-orientation='portrait'] &
     width: 100%
@@ -333,6 +318,8 @@ body // {{{ general
 
 .item > .title // {{{
   color: $bold-color
+  font-weight: bold
+  padding: 12px 20px
 
   [data-orientation='landscape'] &
     font-size: 2.5em
@@ -347,29 +334,26 @@ body // {{{ general
     font-size: 1.5em
 // }}}
 
-.item > .date
-  margin-top: 1em
+.item > .date 
+  background-color: #F3F3F3
+  color: $text-color
+  font-size: 12px
+  line-height: 30px
   
+  > span
+    color: $sub-color
+    font-weight: bold
+    margin: 20px
+
 .item > p // {{{
+  margin: 20px
   white-space: pre-line
+
+  [data-page-content='list'] &
+    display: none
 
   [data-orientation='portrait'] &
     margin-bottom: 0
-// }}}
-
-.ellipsis::after // {{{ //! use class?
-  background: rgba(lighten($dark-color, 70%), .9)
-  bottom: 0
-  content: "更多..."
-  display: none
-  left: 0
-  padding: .2em 0 .2em
-  position: absolute
-  right: 0
-  text-align: center
-
-  [data-page-content='list'] &
-    display: block
 // }}}
 
 .return // {{{
@@ -396,23 +380,6 @@ body // {{{ general
     display: none
 // }}}
 
-.watermark // {{{
-  [data-orientation='landscape'] &
-    bottom: 0
-    color: rgba(92, 86, 92, 0.47)
-    font-size: 2.5em
-    font-weight: 900
-    position: absolute
-    right: 0
-    white-space: nowrap
-
-  [data-orientation='portrait'] &
-    display: none
-
-  [data-page-id='landing'] &
-    right: 57%
-// }}}
-
 .wrap //! how to test?
   [data-page-content='list'] &
     line-height: 1!important
@@ -424,21 +391,24 @@ body // {{{ general
 //// landing
 
 [data-page-id='landing'] // {{{
+  
+  align-items: center
+  display: flex
+  justify-content: center
+
+  .sub
+    font-size: 36px
 
   .theme
     color: white
-    font-weight: 100
-    line-height: 2
+    font-family: 'karla'
+    font-weight: bold
+    letter-spacing: -1px
     position: relative
     text-shadow: 2px 2px 10px rgb(0, 0, 0) 
-    top: 50%
-    transform: translateY(-50%)
 
     [data-orientation='landscape'] &
-      display: inline-block
-      font-size: 2vw
-      left: 23%
-      text-align: left
+      font-size: 48px
 
     [data-orientation='portrait'] &
       font-size: 5vw

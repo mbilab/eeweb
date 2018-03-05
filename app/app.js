@@ -1,6 +1,5 @@
 // web framework
 
-import 'font-awesome/css/font-awesome.min.css'
 import moment from 'moment'
 import Mustache from 'mustache/mustache.min.js'
 
