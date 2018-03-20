@@ -2,16 +2,8 @@
 // global setting
 
 //// font
-@import url('https://fonts.googleapis.com/css?family=Karla')
+@import url('https://fonts.googleapis.com/css?family=Barlow')
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css)
-
-@font-face
-  font-family: mon
-  src: url('res/font/Montserrat-Light.otf')
-
-@font-face
-  font-family: mon_bold
-  src: url('res/font/Montserrat-Regular.otf')
 
 ////font-awesome
 
@@ -82,7 +74,7 @@ $text-color: #979797
 // body > #logo #menu #page > .page > .page-info .page-content
 
 body // {{{ general
-  font-family: 'Noto Sans TC', "Microsoft JhengHei", monospace
+  font-family: 'Barlow', 'Noto Sans CJK TC', "Microsoft JhengHei", monospace
   line-height: 1.5
   margin: 0
   overflow: hidden
@@ -98,7 +90,6 @@ body // {{{ general
 #logo // {{{
   +vertical-center
   background-color: $primary-color
-  font-family: 'Karla', 'sans-serif'
   line-height: normal
   position: fixed
   z-index: 100
@@ -110,9 +101,11 @@ body // {{{ general
     top: 50px
     width: 165px
   [data-orientation='portrait'] &
-    font-size: 5vw
-    height: 2em
-    width: 2em
+    font-size: 20px
+    height: 48px
+    left: 20px
+    top: 20px
+    width: 132px
 // }}}
 
 #menu // {{{
@@ -146,7 +139,7 @@ body // {{{ general
 
     a
       display: block
-      margin: 2em 0 0 1em
+      margin: 50 0 0 90
 
       .extend
         display: block
@@ -219,7 +212,7 @@ body // {{{ general
 
   .title
     color: $primary-color
-    font: bold 36px 'karla'
+    font: bold 36px 'barlow'
     font-style: italic
 
     [data-orientation='landscape'] &
@@ -394,14 +387,23 @@ body // {{{ general
   
   align-items: center
   display: flex
-  justify-content: center
+
+  [data-orientation='landscape'] &
+    justify-content: center
+
+  [data-orientation='portrait'] &
+    left: 50px
 
   .sub
-    font-size: 36px
+    [data-orientation='landscape'] &
+      font-size: 36px
+
+    [data-orientation='portrait'] &
+      font-size: 24px 
+    
 
   .theme
     color: white
-    font-family: 'karla'
     font-weight: bold
     letter-spacing: -1px
     position: relative
@@ -411,8 +413,7 @@ body // {{{ general
       font-size: 48px
 
     [data-orientation='portrait'] &
-      font-size: 5vw
-      text-align: center
+      font-size: 36px
 // }}}
 
 //// news
