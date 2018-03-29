@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const child_process = require('child_process')
 const config = require('./config.json')
 const dp = require('./lib/dropbox.js')
 const fs = require('fs')
@@ -49,6 +50,10 @@ const parseDropbox = (data, toFile=true) => {
 if ('get' === process.argv[2]) {
     //dp.get(parseDropbox) // async
     parseDropbox(dp.getSync()) // sync
+    child_process.exec("php ./dist/chatbot.php post", (err, stdout, stderr) => { //sending message to subscriber
+        if (err) throw err
+    })
+
 } else {
     const clients = {}
     let data = JSON.parse(fs.readFileSync('./dist/data.json', 'utf8'))
