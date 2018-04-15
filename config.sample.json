@@ -1,5 +1,6 @@
 {
   "allowedHosts": ["your host"],
+  "authorizationToken": "your dropbox papaer authorization token",
   "chatbotPort": 1092,
   "dropboxId": "id of your dropbox paper",
   "facebookToken": "page token of your facebook",
