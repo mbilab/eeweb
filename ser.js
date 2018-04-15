@@ -5,6 +5,7 @@ const config = require('./config.json')
 const dp = require('./lib/dropbox.js')
 const fs = require('fs')
 const moment = require('moment')
+const sqlite3 = require('sqlite3').verbose() 
 
 // parse data from dropbox paper and save it to the front end
 const parseDropbox = (data, toFile=true) => {
@@ -48,34 +49,45 @@ const parseDropbox = (data, toFile=true) => {
 }
 
 if ('get' === process.argv[2]) {
-    //dp.get(parseDropbox) // async
-    parseDropbox(dp.getSync()) // sync
+    parseDropbox(dp.getSync().content) // sync
     child_process.exec("php ./dist/chatbot.php post", (err, stdout, stderr) => { //sending message to subscriber
         if (err) throw err
     })
 
-} else {
-    const clients = {}
-    let data = JSON.parse(fs.readFileSync('./dist/data.json', 'utf8'))
-    const io = require('socket.io')(config.socketPort)
-    console.log(`socket on ${config.socketPort}`)
+} else{
+    //const refresh = () => {
+        let meta = JSON.parse(dp.getSync().metadata.toString())
+        let current = moment(meta.last_updated_date).format('YYYY-MM-DD HH:MM:SS.SSS')
+        //open database
+        let db = new sqlite3.Database('./data.db', err => {
+            if (err)
+                return err.message
+        })
+       
+        let sql = 'select * from meta'
+        
+        db.get(sql, [], (err, row) => {
+            if (err)
+                return err.message
 
-    const refresh = () => {
-        data = parseDropbox(dp.getSync(), false)
-        for (let k in clients)
-            clients[k].emit('data', data)
-    }
-    setInterval(refresh, config.refreshInterval)
-    io.on('refresh', refresh)
-
-    io.on('connection', socket => {
-        clients[socket.id] = socket
-        socket.emit('data', data)
-    })
-
-    io.on('disconnect', socket => {
-        delete clients[socket.id]
-    })
+            if( row.update_date != current){
+                db.run(`UPDATE meta SET update_date = "${current}"`, err => { //update update time
+                    if (err)
+                        return err.message
+                })
+                
+                child_process.exec("php ./dist/chatbot.php post", (err, stdout, stderr) => { //sending message to subscriber
+                    if (err) throw err
+                })        
+            }
+        })
+         
+        // close the database connection
+         db.close()
+    //}
+    
+    //setInterval(refresh, config.refreshInterval)
+     
 }
 
 // vi:et:sw=4:ts=4
