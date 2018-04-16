@@ -101,14 +101,6 @@ $("#logo").click(() => {
 
 $("#menu>a").click(() => {
   $("body").removeAttr('data-menued')
-  $(".page-content").attr("data-page-content", "list")
-  $(".item").removeClass('show')
-})
-
-$(".return").click(() => {
-  $(".page-content").attr("data-page-content", "list")
-  $(".item").removeClass('show').scrollTop(0)
-  $(window).resize()
 })
 
 $(".group").click(() => {

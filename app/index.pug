@@ -16,7 +16,7 @@ html
       //a(href="#upload") Upload
     #page
       .page(data-page-id="landing")
-        .theme National Cheng Kung University#[br]#[span.sub Department of Electronic Engineering]
+        .theme National Cheng Kung University#[br]#[.sub Department of Electronic Engineering]
       // {{{ news
       .page(data-page-id="news")
         .page-info
@@ -29,9 +29,6 @@ html
             .title {{title}}
             p {{{content}}}
           | {{/news}}     
-        .return
-          a(href="#news")
-            i.fa.fa-arrow-circle-left
       // }}} news
       // {{{ course
       .page(data-page-id="course")
