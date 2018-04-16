@@ -55,7 +55,7 @@ if ('get' === process.argv[2]) {
     })
 
 } else{
-    //const refresh = () => {
+    const refresh = () => {
         let meta = JSON.parse(dp.getSync().metadata.toString())
         let current = moment(meta.last_updated_date).format('YYYY-MM-DD HH:MM:SS.SSS')
         //open database
@@ -84,9 +84,9 @@ if ('get' === process.argv[2]) {
          
         // close the database connection
          db.close()
-    //}
+    }
     
-    //setInterval(refresh, config.refreshInterval)
+    setInterval(refresh,60000)
      
 }
 
