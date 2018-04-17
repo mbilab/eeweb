@@ -76,6 +76,8 @@ if ('get' === process.argv[2]) {
                         return err.message
                 })
                 
+                parseDropbox(dp.getSync().content) // update content in front end
+                
                 child_process.exec("php ./dist/chatbot.php post", (err, stdout, stderr) => { //sending message to subscriber
                     if (err) throw err
                 })        
@@ -86,7 +88,7 @@ if ('get' === process.argv[2]) {
          db.close()
     }
     
-    setInterval(refresh,60000)
+    setInterval(refresh, config.refreshInterval)
      
 }
 
