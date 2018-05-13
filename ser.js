@@ -5,7 +5,8 @@ const config = require('./config.json')
 const dp = require('./lib/dropbox.js')
 const fs = require('fs')
 const moment = require('moment')
-const sqlite3 = require('sqlite3').verbose() 
+const sqlite3 = require('sqlite3').verbose()
+const urlencode = require('urlencode')
 
 // parse data from dropbox paper and save it to the front end
 const parseDropbox = (data, toFile=true) => {
@@ -25,11 +26,26 @@ const parseDropbox = (data, toFile=true) => {
             let img = match[3].match(/\!\[(.*?)\]\((.*?)\)/)
 
             let pos = match[3].indexOf(img[0])
-            
+
             if(!img[1])
                 img[1] = 'size-small'
 
             match[3] = `${match[3].substring(0, pos)}<img class="${img[1]}" src="${img[2]}">${match[3].substring(pos + img[0].length + 2)}`
+        }
+
+        query = /https\:\/\/www\.dropbox.*dl\=\d\n?/g
+
+        file = match[3].match(query)
+        match[3] = match[3].replace(query,"")
+
+        if(null != file) {
+            for (let v of file) {
+                file_info = v.match(/.*\/(.*)\.(\w*)\?/).slice(1,3)
+                file_name = urlencode.decode(file_info[0]) //附件檔案名稱
+                file_type = file_info[1] //附件檔案格式
+
+                console.log(file_name+"     "+file_type)
+            }
         }
 
         news.push({
@@ -50,9 +66,9 @@ const parseDropbox = (data, toFile=true) => {
 
 if ('get' === process.argv[2]) {
     parseDropbox(dp.getSync().content) // sync
-    child_process.exec("php ./dist/chatbot.php post", (err, stdout, stderr) => { //sending message to subscriber
+    /*child_process.exec("php ./dist/chatbot.php post", (err, stdout, stderr) => { //sending message to subscriber
         if (err) throw err
-    })
+    })*/
 
 } else{
     const refresh = () => {
@@ -63,9 +79,9 @@ if ('get' === process.argv[2]) {
             if (err)
                 return err.message
         })
-       
+
         let sql = 'select * from meta'
-        
+
         db.get(sql, [], (err, row) => {
             if (err)
                 return err.message
@@ -75,21 +91,21 @@ if ('get' === process.argv[2]) {
                     if (err)
                         return err.message
                 })
-                
+
                 parseDropbox(dp.getSync().content) // update content in front end
-                
+
                 child_process.exec("php ./dist/chatbot.php post", (err, stdout, stderr) => { //sending message to subscriber
                     if (err) throw err
-                })        
+                })
             }
         })
-         
+
         // close the database connection
          db.close()
     }
-    
+
     setInterval(refresh, config.refreshInterval)
-     
+
 }
 
 // vi:et:sw=4:ts=4
