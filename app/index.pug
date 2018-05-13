@@ -21,14 +21,16 @@ html
       .page(data-page-id="news")
         .page-info
           .title NEWS#[br] & EVENTS
-        .page-content#news(data-page-content="list")
-        script(type="x-tmpl-mustache")
-          | {{#news}}
-          a.item(href=`#news-{{index}}`)
-            .date #[span 講座資訊]{{date}}
-            .title {{title}}
-            p {{{content}}}
-          | {{/news}}     
+        #page-content
+          .selector
+          .page-content#news(data-page-content="list")
+          script(type="x-tmpl-mustache")
+            | {{#news}}
+            .item(id=`news-{{index}}`)
+              .date #[span 講座資訊]{{date}}
+              .title {{title}}
+              p {{{content}}}
+            | {{/news}}     
       // }}} news
       // {{{ course
       .page(data-page-id="course")

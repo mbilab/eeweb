@@ -168,7 +168,7 @@ body // {{{ general
 
   [data-orientation='portrait'][data-menued] &
     box-shadow: -1vw 1vw 2vw darken($dark-color, 5%)
-    transform: translateY(289px)
+    transform: translateY(289px) scale(0.9)
     transform-origin: bottom
 // }}}
 
@@ -285,6 +285,7 @@ body // {{{ general
 
   [data-page-content='list'] &
     border-bottom: $bold-color 2px solid
+    cursor: pointer
     opacity: 1
 
   [data-page-content=''] &
@@ -338,8 +339,6 @@ body // {{{ general
   [data-page-content='list'] &
     display: none
 
-  [data-orientation='portrait'] &
-    margin-bottom: 0
 // }}}
 
 .wrap //! how to test?

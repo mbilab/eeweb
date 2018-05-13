@@ -25,14 +25,22 @@ $.get('data.json', data => {
 
   $('#news').html(html)
 
-  $(window).resize()
-  window.onhashchange()
 
   //let parser = new DOMParser()
   //let string = $(".item > p").text().match(/(<[^>]*>)/g)
   //let dom = parser.parseFromString(string,"text/html")
 
+  $(".item").click( function() {
+    let id = $(this).attr("id")
+    window.location.href = `http://merry.ee.ncku.edu.tw:1096/#${id}`
+  })
+  
+  $(window).resize()
+  window.onhashchange()
+
 })
+
+
 
 ///////////////////////////////////////////////////////
 
