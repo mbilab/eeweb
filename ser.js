@@ -39,13 +39,19 @@ const parseDropbox = (data, toFile=true) => {
         match[3] = match[3].replace(query,"")
 
         if(null != file) {
+
+            match[3] += "<div class='file'>"
             for (let v of file) {
                 file_info = v.match(/.*\/(.*)\.(\w*)\?/).slice(1,3)
                 file_name = urlencode.decode(file_info[0]) //附件檔案名稱
                 file_type = file_info[1] //附件檔案格式
 
-                console.log(file_name+"     "+file_type)
+                match[3] += `<div class="${file_type}">
+                                <span>${file_type}</span>
+                                <a href="${v}">${file_name}</a>
+                             </div>`
             }
+            match[3] += "</div>"
         }
 
         news.push({
