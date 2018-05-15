@@ -34,7 +34,7 @@ $.get('data.json', data => {
     let id = $(this).attr("id")
     window.location.href = `http://merry.ee.ncku.edu.tw:1096/#${id}`
   })
-  
+
   $(window).resize()
   window.onhashchange()
 
@@ -48,7 +48,7 @@ $.get('data.json', data => {
 
 $(window).resize(() => {
   let orientation = $(window).width() > $(window).height() ? 'landscape' : 'portrait'
-  
+
   $('body').attr('data-orientation', orientation)
 
   if ('landscape' === orientation){
@@ -56,7 +56,7 @@ $(window).resize(() => {
   } else{
     $("#logo").removeAttr("href")
   }
-    
+
   let fontSize = $(".item p").css("font-size")
 
   $(".item").each( function(){ // multiline ellipsis
@@ -108,7 +108,11 @@ $("#logo").click(() => {
 })
 
 $("#menu>a").click(() => {
-  $("body").removeAttr('data-menued')
+  if ($("body").is("[data-menued]")) {
+    $("body").removeAttr("data-menued")
+  } else {
+    $("body").attr("data-menued", "")
+  }
 })
 
 $(".group").click(() => {

@@ -351,10 +351,11 @@ body // {{{ general
   color: #ffffff
   display: inline-flex
   font-weight: bold
-  height: 60px
-  margin-bottom: 10px
 
   [data-orientation="landscape"] &
+
+    height: 60px
+    margin-bottom: 10px
 
     >div:first-child
       border-right: 1px solid rgba(255, 255, 255, 0.3)
@@ -362,14 +363,26 @@ body // {{{ general
       margin-right: 20px
       padding: 5px 20px
 
+  [data-orientation="portrait"] &
+
+    height: 40px
+    margin-bottom: 0
+
+    >div:first-child
+      display: none
+
 .label
   cursor: pointer
-  margin-right: 20px
   [data-orientation="landscape"] &
     font-size: 14px
+    margin-right: 20px
 
-    &:hover
-      color: $primary-color
+  [data-orientation="portrait"] &
+    font-size: 14px
+    margin: 0 20px
+
+  &:hover
+    color: $primary-color
 
 .wrap //! how to test?
   [data-page-content='list'] &
