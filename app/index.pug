@@ -23,6 +23,10 @@ html
           .title NEWS#[br] & EVENTS
         #page-content
           .selector
+            div 篩選
+            .label #講座資訊
+            .label #活動公告
+            .label #課程資訊
           .page-content#news(data-page-content="list")
           script(type="x-tmpl-mustache")
             | {{#news}}
@@ -30,7 +34,7 @@ html
               .date #[span 講座資訊]{{date}}
               .title {{title}}
               p {{{content}}}
-            | {{/news}}     
+            | {{/news}}
       // }}} news
       // {{{ course
       .page(data-page-id="course")

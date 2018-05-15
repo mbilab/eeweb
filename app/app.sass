@@ -86,7 +86,7 @@ body // {{{ general
     color: white
     text-decoration: none
 // }}}
-  
+
 #logo // {{{
   +vertical-center
   background-color: $primary-color
@@ -125,7 +125,7 @@ body // {{{ general
 
     a
       margin-left: 50px
-  
+
       &:hover
         color: $primary-color
 
@@ -142,7 +142,7 @@ body // {{{ general
     a
       display: block
       margin-top: 30px
-      
+
       &:first-child
         margin-top: 0
 
@@ -183,11 +183,11 @@ body // {{{ general
 
   [data-orientation='landscape'] &
     padding: 50px
-    
+
   [data-orientation='portrait'] &
     flex-wrap: wrap
     padding: 0
-    
+
 @each $page in landing news faculty
   [data-page='#{$page}'] .page[data-page-id='#{$page}']
     opacity: 1
@@ -230,9 +230,13 @@ body // {{{ general
       text-align: right
       position: relative
       right: 20px
-  
+
   // }}}
-  
+
+#page-content
+  display: flex
+  flex-direction: column
+
 .page-content // {{{
 
   box-sizing: border-box
@@ -258,7 +262,7 @@ body // {{{ general
       background-color: $primary-color
 
   &[data-page-content="content"]
-    
+
     &:hover::-webkit-scrollbar-thumb
       background-color: rgba(122, 122, 122, 0.65)
 // }}}
@@ -279,7 +283,7 @@ body // {{{ general
 
   [data-orientation='portrait'] &
     font-size: 3vw
-  
+
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
     width: 100%
 
@@ -294,8 +298,8 @@ body // {{{ general
   &.show
     height: 100%
     opacity: 1
-    overflow-y: auto 
-  
+    overflow-y: auto
+
 // }}}
 
 .item img // {{{ //! how to test this?
@@ -313,7 +317,7 @@ body // {{{ general
   font-weight: bold
   padding: 12px 20px
   line-height: normal
-  
+
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
     font-size: 1.2em
 
@@ -321,12 +325,12 @@ body // {{{ general
     font-size: 1.5em
 // }}}
 
-.item > .date 
+.item > .date
   background-color: #F3F3F3
   color: $text-color
   font-size: 12px
   line-height: 30px
-  
+
   > span
     color: $sub-color
     font-weight: bold
@@ -341,6 +345,32 @@ body // {{{ general
 
 // }}}
 
+.selector
+  align-items: center
+  background-color: #5C3D78
+  color: #ffffff
+  display: inline-flex
+  font-weight: bold
+  height: 60px
+  margin-bottom: 10px
+
+  [data-orientation="landscape"] &
+
+    >div:first-child
+      border-right: 1px solid rgba(255, 255, 255, 0.3)
+      font-size: 18px
+      margin-right: 20px
+      padding: 5px 20px
+
+.label
+  cursor: pointer
+  margin-right: 20px
+  [data-orientation="landscape"] &
+    font-size: 14px
+
+    &:hover
+      color: $primary-color
+
 .wrap //! how to test?
   [data-page-content='list'] &
     line-height: 1!important
@@ -352,7 +382,7 @@ body // {{{ general
 //// landing
 
 [data-page-id='landing'] // {{{
-  
+
   align-items: center
   display: flex
 
@@ -366,7 +396,7 @@ body // {{{ general
     [data-orientation='portrait'] &
       font-size: 24px
       font-weight: normal
-    
+
 
   .theme
     color: white
@@ -376,7 +406,7 @@ body // {{{ general
 
     [data-orientation='landscape'] &
       font-size: 48px
-      text-shadow: 2px 2px 10px rgb(0, 0, 0) 
+      text-shadow: 2px 2px 10px rgb(0, 0, 0)
 
     [data-orientation='portrait'] &
       box-sizing: border-box
@@ -401,10 +431,10 @@ body // {{{ general
       pointer-events: none
 
   &[data-status="group"]
-  
+
     .overview
       opacity: 1
-    
+
       [data-orientation='portrait'] &
         box-sizing: border-box
 
@@ -414,7 +444,7 @@ body // {{{ general
   box-sizing: border-box
   color: $dark-color
   font-family: mon_bold
-  
+
   [data-orientation='landscape'] &
     float: left
     font-size: 1.5vw
@@ -435,3 +465,39 @@ body // {{{ general
 
   img
     display: none
+
+/////////////file style
+.docx, .pdf, .mp3
+  align-items: center
+  border: 1px solid #DAE0E5
+  box-sizing: border-box
+  display: inline-flex
+  margin: 0 5 5 0
+  height: 40px
+  padding: 0 15px 0 0
+
+  span
+    font-weight: bold
+    margin: 0 15px
+
+  a
+    color: $dark-color
+
+  &:hover
+    background: #f1f3f1
+
+  [data-orientation='landscape'] &
+    font-size: 14px
+
+  [data-orientation='portrait'] &
+    font-size: 12px
+
+.file
+  margin-left: 20px
+
+
+
+
+
+
+
