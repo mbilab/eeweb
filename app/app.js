@@ -105,3 +105,4 @@ $("#menu>a").click(() => {
 $(".group").click(() => {
   $(".lab_board").attr("data-status","member")
 })
+
