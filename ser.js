@@ -45,9 +45,10 @@ const parseDropbox = (data, toFile=true) => {
                 file_info = v.match(/.*\/(.*)\.(\w*)\?/).slice(1,3)
                 file_name = urlencode.decode(file_info[0]) //附件檔案名稱
                 file_type = file_info[1] //附件檔案格式
+                file_icon = file_type.toUpperCase()
 
                 match[3] += `<div class="${file_type}">
-                                <span>${file_type}</span>
+                                <span>${file_icon}</span>
                                 <a href="${v}">${file_name}</a>
                              </div>`
             }
