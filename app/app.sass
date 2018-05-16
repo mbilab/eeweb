@@ -246,7 +246,7 @@ body // {{{ general
 
   [data-orientation='portrait'] &
     font-size: 5vw
-    height: calc(100% - 88px)
+    height: calc(100% - 128px)
     width: 100%
 
     &::-webkit-scrollbar
@@ -350,6 +350,7 @@ body // {{{ general
   background-color: #5C3D78
   color: #ffffff
   display: inline-flex
+  font-size: 14px
   font-weight: bold
 
   [data-orientation="landscape"] &
@@ -371,18 +372,35 @@ body // {{{ general
     >div:first-child
       display: none
 
+  &[data-page-content=""]
+
+    >div:first-child
+      display: none
+
 .label
   cursor: pointer
   [data-orientation="landscape"] &
-    font-size: 14px
     margin-right: 20px
 
   [data-orientation="portrait"] &
-    font-size: 14px
     margin: 0 20px
+
+  [data-page-content=""] &
+    display: none
 
   &:hover
     color: $primary-color
+
+.back
+  align-items: center
+  cursor: pointer
+  display: flex
+  font-size: 18px
+  font-weight: bold
+  margin-left: 20px
+
+  [data-page-content = list] &
+    display: none
 
 .wrap //! how to test?
   [data-page-content='list'] &
@@ -507,6 +525,16 @@ body // {{{ general
 
 .file
   margin-left: 20px
+
+span
+  .docx &
+    color: #03a9f4
+
+  .pdf &
+    color: #d50000
+
+  .mp3 &
+    color: #ff9100
 
 
 

@@ -25,11 +25,6 @@ $.get('data.json', data => {
 
   $('#news').html(html)
 
-
-  //let parser = new DOMParser()
-  //let string = $(".item > p").text().match(/(<[^>]*>)/g)
-  //let dom = parser.parseFromString(string,"text/html")
-
   $(".item").click( function() {
     let id = $(this).attr("id")
     window.location.href = `http://merry.ee.ncku.edu.tw:1096/#${id}`
@@ -57,15 +52,6 @@ $(window).resize(() => {
     $("#logo").removeAttr("href")
   }
 
-  let fontSize = $(".item p").css("font-size")
-
-  $(".item").each( function(){ // multiline ellipsis
-    if($(this).children("p").height() >= parseInt(fontSize)*7)
-      $(this).addClass('ellipsis')
-    else
-      $(this).removeClass('ellipsis')
-  })
-
 })
 
 // show content referred to url
@@ -78,17 +64,18 @@ window.onhashchange = () => {
 
       if(itemID) {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', '')
+        $('.selector').attr('data-page-content','')
         $('#news .item').removeClass('show')
         $(`#news .item:nth-last-child(${itemID})`).addClass('show')
       } else {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', 'list')
+        $('.selector').attr('data-page-content','list')
         $('#news .item').removeClass('show')
       }
     }
   }
 }
 onhashchange()
-
 // DOM event
 
 $("#page").click(function() {
