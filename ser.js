@@ -18,7 +18,7 @@ const parseDropbox = (data, toFile=true) => {
         let match = v.match(/##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
         let date = null
         if (moment(match[2].substring(3)).isValid())
-            date = `${match[2].substring(0,3)}${moment(match[2].substring(3)).format('ll ddd')}`
+            date = `${match[2].substring(0,3)}${moment(match[2].substring(3)).format('ll dddd')}`
         else
             match[3] = `${match[2]}\n${match[3]}`
 
