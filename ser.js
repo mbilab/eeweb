@@ -28,7 +28,7 @@ const parseDropbox = (data, toFile=true) => {
             let pos = match[3].indexOf(img[0])
 
             if(!img[1])
-                img[1] = 'size-small'
+                img[1] = 'size-normal'
 
             match[3] = `${match[3].substring(0, pos)}<img class="${img[1]}" src="${img[2]}">${match[3].substring(pos + img[0].length + 2)}`
         }
