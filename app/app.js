@@ -27,7 +27,7 @@ $.get('data.json', data => {
 
   $(".item").click( function() {
     let id = $(this).attr("id")
-    window.location.href = `http://merry.ee.ncku.edu.tw:1096/#${id}`
+    window.location.href = `./#${id}`
   })
 
   $(window).resize()
