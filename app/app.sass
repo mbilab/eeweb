@@ -2,7 +2,7 @@
 // global setting
 
 //// font
-@import url('https://fonts.googleapis.com/css?family=Barlow')
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,700')
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css)
 
 ////font-awesome
@@ -45,6 +45,7 @@ $short-term: .2s
 
 $bold-color: #4A4A4A
 $dark-color: rgb(68, 63, 70)
+$gray-color: #F3F3F3
 $primary-color: #E2DB1A
 $sub-color: #5C3D78
 $text-color: #979797
@@ -159,8 +160,8 @@ body // {{{
       width: 43%
 
   [data-orientation='portrait'][data-menued] &
-    box-shadow: -1vw 1vw 2vw darken($dark-color, 5%)
-    transform: translateY(289px) scale(0.9)
+    box-shadow: 0 15px 15px 5px rgba(0, 0, 0, 0.5)
+    transform: translateY(270px) scale(0.9)
     transform-origin: bottom
 // }}}
 
@@ -195,7 +196,7 @@ body // {{{
 
 .page-info // {{{
   flex-shrink: 0
-  font-size: 4vw //! vw?
+  //font-size: 4vw //! vw?
 
   [data-orientation='landscape'] &
     width: 300px
@@ -206,8 +207,8 @@ body // {{{
 
   .title
     color: $primary-color
-    font: bold 36px 'barlow'
-    font-style: italic //! why not in font?
+    font: italic bold 36px 'barlow'
+    //font-style: italic //! why not in font?
 
     [data-orientation='landscape'] &
       position: relative //! needed?
@@ -293,9 +294,8 @@ body // {{{
 // }}}
 
 .item img // {{{ //! how to test this?
-
-  [data-orientation='portrait'] &
-    width: 100%
+  height: auto
+  max-width: 100%
 
   [data-page-content='list'] &
     display: none
@@ -305,18 +305,25 @@ body // {{{
   color: $bold-color
   font-size: 20px
   font-weight: bold
-  padding: 12px 20px
   line-height: normal
 
+  [data-orientation='landscape'] &
+    padding: 40px 90px
+
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
-    font-size: 1.2em
+    font-size: 24px
+    padding: 12px 20px
+
+  [data-orientation='portrait'] &
+    padding: 20px
 
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
-    font-size: 1.5em
+    font-size: 20px
+    padding: 12px 20px
 // }}}
 
 .item > .date
-  background-color: #F3F3F3
+  background-color: $gray-color
   color: $text-color
   font-size: 12px
   line-height: 30px
@@ -324,11 +331,25 @@ body // {{{
   > span
     color: $sub-color
     font-weight: bold
-    margin: 20px
+
+    [data-orientation='landscape'] &
+      margin: 0 20 0 90
+
+    [data-orientation='landscape'] .page-content[data-page-content='list'] &
+      margin: 20px
+
+    [data-orientation='portrait'] &
+      margin: 20px
 
 .item > p // {{{
-  margin: 20px
+  line-height: 1.8
   white-space: pre-line
+
+  [data-orientation='landscape'] &
+    margin: 0 90 50 90
+
+  [data-orientation='portrait'] &
+    margin: 0 20 50 20
 
   [data-page-content='list'] &
     display: none
@@ -418,6 +439,7 @@ body // {{{
 
       .sub
         font-size: 36px
+        font-weight: 400
 
     [data-orientation='portrait'] &
       font-size: 40px
@@ -482,6 +504,7 @@ body // {{{
 .docx, .pdf, .mp3
   align-items: center
   border: 1px solid #DAE0E5
+  border-radius: 3px
   box-sizing: border-box
   display: inline-flex
   margin: 0 5 5 0
@@ -505,14 +528,34 @@ body // {{{
     font-size: 12px
 
 .file
-  margin-left: 20px
+  border-top: 1px solid $gray-color
+  border-bottom: 1px solid $gray-color
+  font-size: 12px
+  line-height: 40px
+
+  [data-orientation='landscape'] &
+    margin: 0 90px
+
+  [data-orientation='portrait'] &
+    margin: 20px
+
+  [data-page-content='list'] &
+    border: none
+    margin: 0 20px
+
+    > div:first-child
+      display: none
+
+  > div:last-child
+    margin: 0 5 20 0
 
 span
-  .docx &
-    color: #03a9f4
+    .docx &
+      color: #03a9f4
 
-  .pdf &
-    color: #d50000
+    .pdf &
+      color: #d50000
 
-  .mp3 &
-    color: #ff9100
+    .mp3 &
+      color: #ff9100
+
