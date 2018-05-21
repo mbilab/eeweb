@@ -275,6 +275,9 @@ body // {{{
   [data-orientation='portrait'] &
     font-size: 14px
 
+    &:first-child
+      border-top: #4A4A4A solid 2px
+
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
     width: 100%
 
@@ -302,11 +305,11 @@ body // {{{
 
 .item > .title // {{{
   color: $bold-color
+  font-size: 30px
   font-weight: bold
   line-height: normal
 
   [data-orientation='landscape'] &
-    font-size: 36px
     padding: 40px 90px
 
   [data-orientation='landscape'] .page-content[data-page-content='list'] &
@@ -314,7 +317,6 @@ body // {{{
     padding: 12px 20px
 
   [data-orientation='portrait'] &
-    font-size: 24px
     padding: 20px
 
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
@@ -362,6 +364,7 @@ body // {{{
   display: inline-flex
   font-size: 14px
   font-weight: bold
+  letter-spacing: -1px
 
   [data-orientation="landscape"] &
 
@@ -531,7 +534,6 @@ body // {{{
   border-top: 1px solid $gray-color
   border-bottom: 1px solid $gray-color
   font-size: 12px
-  line-height: 40px
 
   [data-orientation='landscape'] &
     margin: 0 90px
@@ -545,6 +547,9 @@ body // {{{
 
     > div:first-child
       display: none
+
+  > div:first-child
+    padding: 20px 0
 
   > div:last-child
     margin: 0 5 20 0
