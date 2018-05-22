@@ -98,7 +98,7 @@ $("#menu>a").click(() => {
   }
 })
 
-$(".group").click(() => {
+$(".group").click( function(){
   $(".lab_board").attr("data-status","member")
 })
 
