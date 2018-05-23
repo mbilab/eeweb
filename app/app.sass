@@ -186,7 +186,7 @@ body // {{{
   [data-page='#{$page}'] .page[data-page-id='#{$page}']
     opacity: 1
     pointer-events: auto
-  [data-page='#{$page}'][data-menued] .page[data-page-id='#{$page}']
+  [data-orientation='portrait'][data-page='#{$page}'][data-menued] .page[data-page-id='#{$page}']
     pointer-events: none
 // }}}
 
@@ -234,6 +234,7 @@ body // {{{
 
   box-sizing: border-box
   overflow: auto
+  width: 100%
 
   [data-orientation='landscape'] &
 
@@ -243,9 +244,6 @@ body // {{{
 
     &::-webkit-scrollbar
       width: 0px
-
-  [data-page='faculty'] &
-    width: 100%
 
   [data-orientation='portrait'][data-page='faculty'] &
     box-sizing: border-box
