@@ -203,7 +203,12 @@ body // {{{
     width: 300px
 
   [data-orientation='portrait'] &
+    align-items : center
+    box-sizing: border-box
+    display: flex
     height: 88px
+    justify-content: flex-end
+    padding-right: 20px
     width: 100%
 
   .title
@@ -216,14 +221,8 @@ body // {{{
       top: 113px
 
     [data-orientation='portrait'] & //! all needed?
-      align-items: center
-      display: flex
       font-size: 22px
-      height: 100%
-      justify-content: flex-end
       text-align: right
-      position: relative
-      right: 20px
   // }}}
 
 #page-content //! don't change the architecture
