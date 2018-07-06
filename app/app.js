@@ -60,12 +60,10 @@ window.onhashchange = () => {
 
       if(itemID) {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', '')
-        $('.selector').attr('data-page-content','')
         $('#news .item').removeClass('show')
         $(`#news .item:nth-last-child(${itemID})`).addClass('show')
       } else {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', 'list')
-        $('.selector').attr('data-page-content','list')
         $('#news .item').removeClass('show')
       }
     }

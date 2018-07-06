@@ -238,7 +238,7 @@ body // {{{
   [data-orientation='landscape'] &
 
   [data-orientation='portrait'] &
-    height: calc(100% - 128px)
+    height: calc(100% - 88px)
     width: 100%
 
     &::-webkit-scrollbar
@@ -325,6 +325,7 @@ body // {{{
   [data-orientation='portrait'] .page-content[data-page-content='list'] &
     font-size: 20px
     padding: 12px 20px
+    pointer-events: none
 // }}}
 
 .item > .date
@@ -390,7 +391,7 @@ body // {{{
     >div:first-child
       display: none
 
-  &[data-page-content=""] //! what's this?
+  [data-page-content=""] & //! what's this?
 
     >div:first-child
       display: none
@@ -459,8 +460,18 @@ body // {{{
 
 [data-page-id='news'] // {{{
 
-  .page-content
+  #news
     background-color: rgb(255, 255, 255)
+    overflow: auto
+
+    [data-orientation='landscape'] &
+      height: calc(100% - 70px)
+
+    [data-orientation='portrait'] &
+      height: calc(100% - 40px)
+
+    &::-webkit-scrollbar
+      width: 0
 // }}}
 
 [data-page='faculty'] // {{{
