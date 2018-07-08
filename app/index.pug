@@ -25,7 +25,7 @@ html
       .page(data-page-id="news")
         .page-info
           .title NEWS#[br] & EVENTS
-        .page-content(data-page-content="list")
+        .page-content(data-page-content="list" data-page-selection="")
           .selector
             div 篩選
             .label #講座資訊
@@ -35,7 +35,7 @@ html
           #news
           script(type="x-tmpl-mustache")
             |{{#news}}
-            .item(id=`news-{{index}}`)
+            .item( id=`news-{{index}}` class=`{{type}}` )
               .date #[span 講座資訊]{{date}}
               .title {{title}}
               p {{{content}}}

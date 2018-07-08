@@ -12,11 +12,24 @@ const urlencode = require('urlencode')
 const parseDropbox = (data, toFile=true) => {
     data = data.toString().split(/\n+\-{10}\n/).slice(1, -1)
     const news = []
+    const data_type = ['lecture','activity','others']
     let i = 1
     moment.locale('zh-tw')
     for (let v of data) {
         let match = v.match(/##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
         let date = null
+        let content_type = 'others'
+
+        for (let m of data_type) {
+            let type = match[1].match(/\[(.+?)\]/)
+
+            if (type) {
+                if( m == type[1])
+                    content_type = m
+            }
+
+        }
+
         if (moment(match[2].substring(3)).isValid())
             date = `${moment(match[2].substring(3)).format('ll dddd')}`
         else
@@ -57,6 +70,7 @@ const parseDropbox = (data, toFile=true) => {
             date: date,
             index: i++,
             title: match[1],
+            type: content_type,
         })
     }
     data = { news: news }
