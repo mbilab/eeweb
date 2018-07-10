@@ -28,7 +28,7 @@
     "pug-html-loader": "^1.1.4",
     "sass-loader": "^6.0.6",
     "socket.io": "^2.0.3",
-    "sqlite3": "^3.1.13",
+    "sqlite3": "^4.0.1",
     "style-loader": "^0.19.0",
     "urlencode": "^1.1.0",
     "webpack": "^3.6.0",
