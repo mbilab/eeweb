@@ -1,0 +1,23 @@
+.selector
+  +vertical-center(flex, flex-start)
+  background-color: $sub-color
+  color: white
+  font: bold 14px 'inherit'
+  letter-spacing: .5px
+
+  [data-orientation='landscape'] &
+    height: 60px
+    margin-bottom: 10px
+
+  [data-orientation='portrait'] &
+    height: 40px
+
+.selector >:first-child // 篩選
+  display: none
+
+  [data-orientation='landscape'] [data-page-content='list'] &
+    border-right: 1px solid rgba(255, 255, 255, 0.3)
+    display: block
+    font-size: 18px
+    margin-right: 20px
+    padding: 0 20px

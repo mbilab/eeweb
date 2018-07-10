@@ -19,15 +19,22 @@ $text-color: #979797
   position: absolute
   width: 100%
 
-=vertical-center($display: inline-flex)
+=vertical-center($display: inline-flex, $justify: center)
   align-items: center
   display: $display
-  justify-content: center
+  justify-content: $justify
   text-align: center
 // }}}
 
 ////////////////////////
 // global {{{
+
+// box-sizing
+html
+  box-sizing: border-box
+
+*, *:before, *:after
+  box-sizing: inherit
 
 //// font
 @import url(https://fonts.googleapis.com/css?family=Barlow:400,700)
@@ -49,7 +56,7 @@ $text-color: #979797
 // body > #logo, #menu, #page > .page > .page-info, .page-content
 
 body // {{{
-  font-family: 'Barlow', 'Noto Sans CJK TC', "Microsoft JhengHei", monospace
+  font-family: Barlow, 'Noto Sans CJK TC', 'Microsoft JhengHei', monospace
   line-height: 1.5
   margin: 0
   overflow: hidden
@@ -146,7 +153,6 @@ body // {{{
 
 .page // {{{
   +full-size
-  box-sizing: border-box
   display: flex
   opacity: 0
   pointer-events: none
@@ -157,7 +163,7 @@ body // {{{
     padding: 50px
 
   [data-orientation='portrait'] &
-    flex-wrap: wrap
+    flex-direction: column
     padding: 0
 
 @each $page in landing news faculty
@@ -168,71 +174,39 @@ body // {{{
     pointer-events: none
 // }}}
 
-.page-info, .page-content
-  float: left
-  height: 100%
-  position: relative
-
 .page-info // {{{
   flex-shrink: 0
+
+  .title
+    color: $primary-color
+    font: italic bold 36px 'inherit'
 
   [data-orientation='landscape'] &
     width: 300px
 
+    .title
+      margin-top: 113px
+
   [data-orientation='portrait'] &
-    align-items : center
-    box-sizing: border-box
-    display: flex
+    +vertical-center(flex, flex-end)
     height: 88px
-    justify-content: flex-end
-    padding-right: 20px
-    width: 100%
 
-  .title
-    color: $primary-color
-    font: italic bold 36px 'barlow'
-
-    [data-orientation='landscape'] &
-      position: relative
-      top: 113px
-
-    [data-orientation='portrait'] &
+    .title
       font-size: 22px
+      margin-right: 20px
       text-align: right
   // }}}
 
 .page-content // {{{
-
-  box-sizing: border-box
-  overflow: auto
-  width: 100%
+  overflow: hidden
 
   [data-orientation='portrait'] &
     height: calc(100% - 88px)
-    width: 100%
-
-    &::-webkit-scrollbar
-      width: 0px
-
-  [data-orientation='portrait'][data-page='faculty'] &
-    box-sizing: border-box
-    display: flex
-    flex-wrap: wrap
-    padding: 7vw 0
-
-  &[data-page-content="list"]
-
-    &:hover::-webkit-scrollbar-thumb
-      background-color: $primary-color
-
-  &[data-page-content="content"]
-
-    &:hover::-webkit-scrollbar-thumb
-      background-color: rgba(122, 122, 122, 0.65)
 // }}}
 
+@import 'news'
+
 .item // {{{ //! only in news?
-  box-sizing: border-box
   color: black
   display: inline-block
   opacity: 0
@@ -331,42 +305,6 @@ body // {{{
     display: none
 // }}}
 
-.selector //! only in news?
-  align-items: center
-  background-color: #5C3D78
-  color: #ffffff
-  display: inline-flex
-  font-size: 14px
-  font-weight: bold
-  letter-spacing: .5px
-  width: 100%
-
-  [data-orientation="landscape"] &
-
-    height: 60px
-    margin-bottom: 10px
-
-    >div:first-child
-      border-right: 1px solid rgba(255, 255, 255, 0.3)
-      display: none
-      font-size: 18px
-      margin-right: 20px
-      padding: 5px 20px
-
-  [data-orientation="portrait"] &
-
-    height: 40px
-    margin-bottom: 0
-    overflow-x: auto
-
-    >div:first-child
-      display: none !important
-
-  [data-page-content="list"] &
-
-    >div:first-child
-      display: block
-
 .label
   cursor: pointer
   [data-orientation="landscape"] &
@@ -455,6 +393,11 @@ body // {{{
       [data-orientation='portrait'] &
         box-sizing: border-box
 // }}}
+
+[data-orientation='portrait'][data-page='faculty'] .page-content
+  display: flex
+  flex-wrap: wrap
+  padding: 7vw 0
 
 .group
   +vertical-center(inline-flex)
