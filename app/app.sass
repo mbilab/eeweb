@@ -378,6 +378,7 @@ body // {{{
 
     >div:first-child
       border-right: 1px solid rgba(255, 255, 255, 0.3)
+      display: none
       font-size: 18px
       margin-right: 20px
       padding: 5px 20px
@@ -389,12 +390,12 @@ body // {{{
     overflow-x: auto
 
     >div:first-child
-      display: none
+      display: none!important
 
-  [data-page-content=""] & //! what's this?
+  [data-page-content="list"] & //! what's this?
 
     >div:first-child
-      display: none
+      display: block
 
 .label
   cursor: pointer
