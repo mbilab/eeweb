@@ -1,10 +1,10 @@
 {
   "allowedHosts": ["your host"],
-  "authorizationToken": "your dropbox papaer authorization token",
-  "chatbotPort": 1092,
+  "authorizationToken": "authorization token of your dropbox papaer",
+  "chatbotPort": 1098,
   "dropboxId": "id of your dropbox paper",
   "facebookToken": "page token of your facebook",
   "refreshInterval": 300000,
-  "socketPort": 1091,
-  "webpackPort": 1090
+  "socketPort": 1097,
+  "webpackPort": 1096
 }

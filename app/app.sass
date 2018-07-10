@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow:400,700')
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css)
 
-////font-awesome
+//// font-awesome
 
 .fas
   margin-right: 10px
@@ -197,7 +197,6 @@ body // {{{
 
 .page-info // {{{
   flex-shrink: 0
-  //font-size: 4vw //! vw?
 
   [data-orientation='landscape'] &
     width: 300px
@@ -214,28 +213,21 @@ body // {{{
   .title
     color: $primary-color
     font: italic bold 36px 'barlow'
-    //font-style: italic //! why not in font?
 
     [data-orientation='landscape'] &
-      position: relative //! needed?
+      position: relative
       top: 113px
 
-    [data-orientation='portrait'] & //! all needed?
+    [data-orientation='portrait'] &
       font-size: 22px
       text-align: right
   // }}}
-
-//#page-content //! don't change the architecture
-  display: flex
-  flex-direction: column
 
 .page-content // {{{
 
   box-sizing: border-box
   overflow: auto
   width: 100%
-
-  [data-orientation='landscape'] &
 
   [data-orientation='portrait'] &
     height: calc(100% - 88px)
@@ -298,7 +290,7 @@ body // {{{
     overflow-y: auto
 // }}}
 
-.item img // {{{ //! how to test this?
+.item img // {{{
   height: auto
   max-width: 100%
 
@@ -390,9 +382,9 @@ body // {{{
     overflow-x: auto
 
     >div:first-child
-      display: none!important
+      display: none !important
 
-  [data-page-content="list"] & //! what's this?
+  [data-page-content="list"] &
 
     >div:first-child
       display: block
@@ -422,11 +414,6 @@ body // {{{
 
   [data-page-content = list] &
     display: none
-
-.wrap //! how to test?
-  [data-page-content='list'] &
-    line-height: 1!important
-    white-space: initial !important
 
 ////////////////////////
 // pages
@@ -583,4 +570,3 @@ span
 
     .mp3 &
       color: #ff9100
-
