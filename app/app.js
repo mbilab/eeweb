@@ -28,10 +28,7 @@ $.get('data.json', data => {
 
   $(window).resize()
   window.onhashchange()
-
 })
-
-
 
 ///////////////////////////////////////////////////////
 
