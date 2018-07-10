@@ -41,13 +41,7 @@ $(window).resize(() => {
   let orientation = $(window).width() > $(window).height() ? 'landscape' : 'portrait'
 
   $('body').attr('data-orientation', orientation)
-
-  if ('landscape' === orientation){
-    $("#logo").attr("href", "#landing")
-  } else{
-    $("#logo").removeAttr("href")
-  }
-
+  $('#logo').attr('href', 'landscape' === orientation ? '#landing' : '#')
 })
 
 // show content referred to url

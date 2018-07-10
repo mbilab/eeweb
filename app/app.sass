@@ -1,48 +1,11 @@
 ////////////////////////
-// global setting
-
-//// font
-@import url('https://fonts.googleapis.com/css?family=Barlow:400,700')
-@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css)
-
-//// font-awesome
-
-.fas
-  margin-right: 10px
-
-//// size
-
-.size-normal
-  height: auto
-  max-width: 100%
-
-//// scroll bar
-
-.page-content, .item, #group, #member
-
-  &::-webkit-scrollbar
-    width: 0px
-    background-color: transparent
-
-  &::-webkit-scrollbar-thumb, &::-webkit-scrllbar-track
-    border-radius: 10px
-    background-color: transparent
-
-//// font awesome
-
-.fa
-  color: #e2db1a
-
-  [data-orientation='landscape'] &
-    font-size: 2em
+// definitions {{{
 
 //// animation time
-
 $normal-term: .6s
 $short-term: .2s
 
-//// color setting
-
+//// color
 $bold-color: #4A4A4A
 $dark-color: rgb(68, 63, 70)
 $gray-color: #F3F3F3
@@ -51,7 +14,6 @@ $sub-color: #5C3D78
 $text-color: #979797
 
 //// mixin
-
 =full-size
   height: 100%
   position: absolute
@@ -62,6 +24,26 @@ $text-color: #979797
   display: $display
   justify-content: center
   text-align: center
+// }}}
+
+////////////////////////
+// global {{{
+
+//// font
+@import url(https://fonts.googleapis.com/css?family=Barlow:400,700)
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css)
+
+//// scroll bar //! how to test these?
+.page-content, .item, #group, #member
+
+  &::-webkit-scrollbar
+    background-color: transparent
+    width: 0px
+
+  &::-webkit-scrollbar-thumb, &::-webkit-scrllbar-track
+    background-color: transparent
+    border-radius: 10px
+// }}}
 
 ////////////////////////
 // body > #logo, #menu, #page > .page > .page-info, .page-content
@@ -72,12 +54,12 @@ body // {{{
   margin: 0
   overflow: hidden
 
-  &[data-orientation='portrait']
-    background-color: lighten($dark-color, 10%)
-
   a
     color: white
     text-decoration: none
+
+  &[data-orientation='portrait']
+    background-color: lighten($dark-color, 10%)
 // }}}
 
 #logo // {{{
@@ -88,14 +70,17 @@ body // {{{
   position: fixed
   z-index: 100
 
+  i
+    margin-right: 10px
+
   [data-orientation='landscape'] &
     font-size: 25px
     height: 60px
     left: 50px
     top: 50px
     width: 165px
+
   [data-orientation='portrait'] &
-    cursor: pointer
     font-size: 20px
     height: 48px
     left: 20px
@@ -105,40 +90,33 @@ body // {{{
 
 #menu // {{{
   font-size: 18px
-  transition: padding ease-in-out $short-term
+  position: absolute
 
   a
     display: block
-    transition: padding ease-in-out $short-term
+
+    &:hover
+      color: $primary-color
 
   [data-orientation='landscape'] &
     bottom: 50px
     font-weight: bold
-    position: absolute
     z-index: 100
 
     a
       margin-left: 50px
 
-      &:hover
-        color: $primary-color
-
-      &:first-child
+      &:first-child // Home
         display: none
 
   [data-orientation='portrait'] &
     left: 20px
-    position: absolute
     top: 98px
     transform: translateX(-100%)
     width: 10em
 
-    a
-      display: block
+    a + a
       margin-top: 30px
-
-      &:first-child
-        margin-top: 0
 
   [data-orientation='portrait'][data-menued] &
     transform: translateX(0)
@@ -155,7 +133,7 @@ body // {{{
     background: rgba($dark-color, .9)
     content: ''
     pointer-events: none
-    transition: all $short-term ease-in-out
+    transition: width $short-term ease-in-out
 
     [data-orientation='landscape'][data-page='landing'] &
       width: 43%
@@ -172,7 +150,7 @@ body // {{{
   display: flex
   opacity: 0
   pointer-events: none
-  transition: all $normal-term ease-in-out
+  transition: padding $short-term ease-in-out
   z-index: 1
 
   [data-orientation='landscape'] &
