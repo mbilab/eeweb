@@ -4,6 +4,7 @@
   "description": "Not the official website of NCKU EE",
   "scripts": {
     "build": "NODE_ENV=production webpack -p --progress",
+    "get": "./ser.js get",
     "start": "webpack-dev-server --progress"
   },
   "repository": {
