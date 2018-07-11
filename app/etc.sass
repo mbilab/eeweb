@@ -1,6 +1,3 @@
-////////////////////////
-// pages
-
 [data-page-id='landing'] // {{{
   align-items: center
   display: flex
@@ -81,64 +78,3 @@
 
   img
     display: none
-
-/////////////file style
-.docx, .pdf, .mp3
-  align-items: center
-  border: 1px solid #DAE0E5
-  border-radius: 3px
-  box-sizing: border-box
-  display: inline-flex
-  margin: 0 5 5 0
-  height: 40px
-  padding: 0 15px 0 0
-
-  span
-    font-weight: bold
-    margin: 0 15px
-
-  a
-    color: $dark-color
-
-  &:hover
-    background: #f1f3f1
-
-  [data-orientation='landscape'] &
-    font-size: 14px
-
-  [data-orientation='portrait'] &
-    font-size: 12px
-
-.file
-  border-top: 1px solid $gray-color
-  border-bottom: 1px solid $gray-color
-  font-size: 12px
-
-  [data-orientation='landscape'] &
-    margin: 0 90px
-
-  [data-orientation='portrait'] &
-    margin: 20px
-
-  [data-page-content='list'] &
-    border: none
-    margin: 0 20px
-
-    > div:first-child
-      display: none
-
-  > div:first-child
-    padding: 20px 0
-
-  > div:last-child
-    margin: 0 5 20 0
-
-span
-    .docx &
-      color: #03a9f4
-
-    .pdf &
-      color: #d50000
-
-    .mp3 &
-      color: #ff9100

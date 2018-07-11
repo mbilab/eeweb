@@ -35,7 +35,7 @@ html
           #news
           script(type="x-tmpl-mustache")
             |{{#news}}
-            .item( id=`news-{{index}}` class=`{{type}}` )
+            .item(class=`{{type}}` id=`news-{{index}}`)
               .date #[span.label 講座資訊]{{date}}
               .title {{title}}
               p {{{content}}}

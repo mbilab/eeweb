@@ -45,7 +45,7 @@
 // }}}
 
 ////////////////////////
-// #news > .item > .title, .date
+// #news > .item > .date, .title, .file
 
 [data-page-id='news'] #news
   +scroll
@@ -78,16 +78,6 @@
     overflow: hidden
 // }}}
 
-.item > .title // {{{
-  color: $bold-color
-  font: bold 30px / normal 'inherit'
-  +lp(padding, 40px 90px, 20px)
-
-  [data-page-content='list'] &
-    +lp(font-size, 24px, 20px)
-    padding: 12px 20px
-// }}}
-
 .item > .date // {{{
   background-color: $gray-color
   color: $text-color
@@ -101,4 +91,63 @@
 
   [data-orientation='landscape'] .page-content[data-page-content=''] &
     padding-left: 90px
+// }}}
+
+.item > .title // {{{
+  color: $bold-color
+  font: bold 30px / normal 'inherit'
+  +lp(padding, 40px 90px, 20px)
+
+  [data-page-content='list'] &
+    +lp(font-size, 24px, 20px)
+    padding: 12px 20px
+// }}}
+
+.item > .file // {{{
+  font-size: 12px
+  margin: 0 20px
+  padding-bottom: 20px
+
+  [data-page-content=''] &
+    border-top: 1px solid $gray-color
+    border-bottom: 1px solid $gray-color
+
+  [data-orientation='landscape'] .page-content[data-page-content=''] &
+    margin: 0 90px
+// }}}
+
+.item > .file >:first-child // 附件 {{{
+  padding: 20px 0
+
+  [data-page-content='list'] &
+    display: none
+// }}}
+
+.item > .file > .docx, .mp3, .pdf // {{{
+  +vertical-center
+  border: 1px solid lighten($text-color, 20%)
+  border-radius: 3px
+  +lp(font-size, 14px, 12px)
+  margin: 0 5px 5px 0
+  height: 40px
+  padding: 0 15px
+
+  &:hover
+    background: $gray-color
+
+  span
+    font-weight: bold
+    margin-right: 15px
+
+  &.docx span
+    color: #03a9f4
+
+  &.mp3 span
+    color: #ff9100
+
+  &.pdf span
+    color: #d50000
+
+  a
+    color: $dark-color
 // }}}
