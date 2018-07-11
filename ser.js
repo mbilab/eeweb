@@ -10,6 +10,7 @@ const urlencode = require('urlencode')
 
 // parse data from dropbox paper and save it to the front end
 const parseDropbox = (data, toFile=true) => {
+    fs.writeFileSync('./dist/raw_data', data.toString())
     data = data.toString().split(/\n+\-{10}\n/).slice(1, -1)
     const news = []
     const data_type = ['lecture','activity','others']
