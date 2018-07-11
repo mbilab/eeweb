@@ -1,17 +1,12 @@
-.selector
+.selector // {{{
   +vertical-center(flex, flex-start)
   background-color: $sub-color
   color: white
   flex-shrink: 0
   font: bold 14px 'inherit'
+  +lp(height, 60px, 40px)
   letter-spacing: .5px
-
-  [data-orientation='landscape'] &
-    height: 60px
-    margin-bottom: 10px
-
-  [data-orientation='portrait'] &
-    height: 40px
+  +lp(margin-bottom, 10px, 2px)
 
 .selector >:first-child // 篩選
   display: none
@@ -22,8 +17,22 @@
     font-size: 18px
     margin-right: 20px
     padding: 0 20px
+// }}}
 
 [data-page-id='news'] #news
   +scroll
   background-color: white
   flex-grow: 1
+
+.item // {{{
+  color: black
+  +lp(font-size, 16px, 14px)
+
+  [data-page-content='list'] &
+    border-bottom: $bold-color 2px solid
+    cursor: pointer
+
+  [data-page-content=''] &:not(.show)
+    height: 0
+    overflow: hidden
+// }}}

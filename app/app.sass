@@ -19,6 +19,13 @@ $text-color: #979797
   position: absolute
   width: 100%
 
+=lp($prop, $l, $p)
+  [data-orientation='landscape'] &
+    #{$prop}: $l
+
+  [data-orientation='portrait'] &
+    #{$prop}: $p
+
 =scroll
   overflow: auto
 
@@ -72,27 +79,18 @@ body // {{{
 #logo // {{{
   +vertical-center
   background-color: $primary-color
+  +lp(font-size, 25px, 20px)
   font-weight: bold
+  +lp(height, 60px, 48px)
+  +lp(left, 50px, 20px)
   line-height: normal
   position: fixed
+  +lp(top, 50px, 20px)
+  +lp(width, 165px, 132px)
   z-index: 100
 
   i
     margin-right: 10px
-
-  [data-orientation='landscape'] &
-    font-size: 25px
-    height: 60px
-    left: 50px
-    top: 50px
-    width: 165px
-
-  [data-orientation='portrait'] &
-    font-size: 20px
-    height: 48px
-    left: 20px
-    top: 20px
-    width: 132px
 // }}}
 
 #menu // {{{
@@ -155,16 +153,13 @@ body // {{{
   +full-size
   display: flex
   opacity: 0
+  +lp(padding, 50px, 0)
   pointer-events: none
   transition: padding $short-term ease-in-out
   z-index: 1
 
-  [data-orientation='landscape'] &
-    padding: 50px
-
   [data-orientation='portrait'] &
     flex-direction: column
-    padding: 0
 
 @each $page in landing news faculty
   [data-page='#{$page}'] .page[data-page-id='#{$page}']
