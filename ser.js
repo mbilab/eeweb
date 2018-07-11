@@ -91,7 +91,7 @@ if ('get' === process.argv[2]) {
   parseDropbox(content)
 } else{
   const refresh = () => {
-    let meta = JSON.parse(dp.getSync().metadata.toString())
+    let meta = JSON.parse(dp.getMetadataSync())
     let current = moment(meta.last_updated_date).format('YYYY-MM-DD HH:MM:SS.SSS')
     //open database
     let db = new sqlite3.Database('./data.db', err => {
@@ -111,7 +111,7 @@ if ('get' === process.argv[2]) {
             return err.message
         })
 
-        parseDropbox(dp.getSync().content) // update content in front end
+        parseDropbox(dp.getSync()) // update content in front end
 
         child_process.exec("php ./dist/chatbot.php post", (err, stdout, stderr) => { //sending message to subscriber
           if (err) throw err
