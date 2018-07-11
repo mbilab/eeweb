@@ -1,0 +1,31 @@
+[data-page='faculty']
+
+  &[data-orientation='landscape'] .page-content
+    flex-wrap: wrap
+    justify-content: space-between
+
+  &[data-orientation='portrait'] .page-content
+    +scroll
+    padding: 7vw 0
+
+.group
+  +vertical-center
+  background: $primary-color
+  +lp(font-size, 24px, 8vw)
+  color: $dark-color
+  cursor: pointer
+  overflow: hidden
+  transition: background-color $short-term ease-in-out
+
+  &:hover
+    background-color: rgba($primary-color, .8)
+
+  [data-orientation='landscape'] &
+    height: 32%
+    width: 32%
+
+  [data-orientation='portrait'] &
+    flex-shrink: 0
+    height: 6em
+    margin: 0 auto 1em
+    width: 80%

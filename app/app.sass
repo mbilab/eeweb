@@ -198,7 +198,27 @@ body // {{{
   flex-grow: 1
 
 ////////////////////////
-// pages
+// each page
+
+[data-page-id='landing'] // {{{
+  +vertical-center(flex)
+
+  h1
+    color: white
+    +lp(font-size, 48px, 40px)
+    font-weight: bold
+    letter-spacing: -1px
+
+    .sub
+      +lp(font-size, 36px, 24px)
+      +lp(font-weight, 400, normal)
+
+    [data-orientation='landscape'] &
+      text-shadow: 2px 2px 10px rgb(0, 0, 0)
+
+    [data-orientation='portrait'] &
+      padding: 0 20px
+// }}}
 
 @import 'news'
-@import 'etc'
+@import 'faculty'
