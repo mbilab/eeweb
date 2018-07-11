@@ -9,6 +9,7 @@ const $ = require('jquery')
 
 import './app.sass'
 import './index.pug'
+import '@fortawesome/fontawesome-free/css/all.css'
 import './res/favicon.ico'
 
 // dropbox paper
