@@ -57,10 +57,10 @@ const parseDropbox = (data, toFile=true) => {
                 file_type = file_info[1] //附件檔案格式
                 file_icon = file_type.toUpperCase()
 
-                match[3] += `<div class="${file_type}">
-                                <span>${file_icon}</span>
-                                <a href="${v}">${file_name}</a>
-                             </div>`
+                match[3] += `<a class="${file_type}" href="${v}" target="blank">
+                                <span class="file_type">${file_icon}</span>
+                                <span>${file_name}</span>
+                             </a>`
             }
             match[3] += "</div>"
         }
