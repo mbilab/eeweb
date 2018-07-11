@@ -1,3 +1,6 @@
+////////////////////////
+// .selector > .label, .back
+
 .selector // {{{
   +vertical-center(flex, flex-start)
   background-color: $sub-color
@@ -7,17 +10,42 @@
   +lp(height, 60px, 40px)
   letter-spacing: .5px
   +lp(margin-bottom, 10px, 2px)
+  padding: 0 20px
+// }}}
 
-.selector >:first-child // 篩選
+.selector > *
+  margin-right: 20px
+
+.selector >:first-child // 篩選 {{{
   display: none
 
   [data-orientation='landscape'] [data-page-content='list'] &
     border-right: 1px solid rgba(255, 255, 255, 0.3)
     display: block
     font-size: 18px
-    margin-right: 20px
-    padding: 0 20px
+    padding-right: 20px
 // }}}
+
+.selector > .label // {{{
+  cursor: pointer
+
+  &:hover
+    color: $primary-color
+
+  [data-page-content=''] &
+    display: none
+// }}}
+
+.selector > .back // {{{
+  cursor: pointer
+  font: bold 18px 'inherit'
+
+  [data-page-content='list'] &
+    display: none
+// }}}
+
+////////////////////////
+// #news > .item > .title, .date
 
 [data-page-id='news'] #news
   +scroll
@@ -28,11 +56,49 @@
   color: black
   +lp(font-size, 16px, 14px)
 
+  > .title
+
+  img
+    max-width: 100%
+
+  p
+    line-height: 1.8
+    +lp(margin, 0 90px 50px, 0 20px 50px)
+    white-space: pre-line
+
   [data-page-content='list'] &
     border-bottom: $bold-color 2px solid
     cursor: pointer
 
+    img, p
+      display: none
+
   [data-page-content=''] &:not(.show)
     height: 0
     overflow: hidden
+// }}}
+
+.item > .title // {{{
+  color: $bold-color
+  font: bold 30px / normal 'inherit'
+  +lp(padding, 40px 90px, 20px)
+
+  [data-page-content='list'] &
+    +lp(font-size, 24px, 20px)
+    padding: 12px 20px
+// }}}
+
+.item > .date // {{{
+  background-color: $gray-color
+  color: $text-color
+  font: 12px / 30px 'inherit'
+  padding: 0 20px
+
+  > .label
+    color: $sub-color
+    font-weight: bold
+    margin-right: 20px
+
+  [data-orientation='landscape'] .page-content[data-page-content=''] &
+    padding-left: 90px
 // }}}
