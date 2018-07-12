@@ -8,73 +8,48 @@ const moment = require('moment')
 const sqlite3 = require('sqlite3').verbose()
 const urlencode = require('urlencode')
 
-// parse data from dropbox paper and save it to the front end
+// parse data from dropbox paper
 const parseDropbox = (data, toFile=true) => {
-  data = data.toString().split(/\n+\-{10}\n/).slice(1, -1)
+  data = data.split(/\n+\-{10}\n/).slice(1, -1)
+
   const news = []
-  const data_type = ['lecture','activity','others']
-  let i = 1
-  moment.locale('zh-tw')
   for (let v of data) {
-    let match = v.match(/##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
-    let date = null
-    let content_type = 'others'
+    let match = v.match(/^##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
+    if (match.index)
+      throw Error(`wrong format: ${v}`)
 
-    for (let m of data_type) {
-      let type = match[1].match(/\[(.+?)\]/)
+    const title = match[1] // title
 
-      if (type) {
-        if( m == type[1])
-          content_type = m
-      }
-
-    }
-
-    if (moment(match[2].substring(3)).isValid())
-      date = `${moment(match[2].substring(3)).format('ll dddd')}`
+    // date {{{
+    let date = moment(match[2].substring(3))
+    if (date.isValid())
+      date = date.format()
     else
       match[3] = `${match[2]}\n${match[3]}`
+    // }}}
 
-    while( match[3].match(/\!\[/) ){
-      let img = match[3].match(/\!\[(.*?)\]\((.*?)\)/)
+    let content = match[3].replace(/\!\[(.*?)\]\((.*?)\)/g, '<img src="$2">') // images
 
-      let pos = match[3].indexOf(img[0])
-
-      match[3] = `${match[3].substring(0, pos)}<img src="${img[2]}">${match[3].substring(pos + img[0].length + 2)}`
-    }
-
-    query = /https\:\/\/www\.dropbox.*dl\=\d\n*/g
-
-    file = match[3].match(query)
-    match[3] = match[3].replace(query,"")
-
-    if(null != file) {
-
-      match[3] += "<div class='file'><div>附件</div>"
-      for (let v of file) {
-        file_info = v.match(/.*\/(.*)\.(\w*)\?/).slice(1,3)
-        file_name = urlencode.decode(file_info[0]) //附件檔案名稱
-        file_type = file_info[1] //附件檔案格式
-        file_icon = file_type.toUpperCase()
-
-        match[3] += `<a class="${file_type}" href="${v}" target="blank">
-                                <span class="file_type">${file_icon}</span>
-                                <span>${file_name}</span>
-                             </a>`
-      }
-      match[3] += "</div>"
-    }
+    // files {{{
+    let files
+    const regex = /https:\/\/www\.dropbox.*dl\=\d\n*/g
+    if (files = content.match(regex)) {
+      content = content.replace(regex, '')
+      for (let v of files)
+        content += v.replace(/^(https:\/\/www\.dropbox.*)\/(.*)\.(\w+)\?dl\=\d+\n*$/,
+          (url, prefix, file, ext) => `<a href="${prefix}/${file}.${ext}">${urlencode.decode(file)}</a>`)
+      content += '\n'
+    } // }}}
 
     news.push({
-      content: match[3],
+      content: content,
       date: date,
-      index: i++,
-      title: match[1],
-      type: content_type,
+      index: news.length,
+      title: title,
     })
   }
+
   data = { news: news }
-  data.news.reverse()
 
   if (toFile)
     fs.writeFileSync('./dist/data.json', JSON.stringify(data, null, 2))
@@ -87,9 +62,9 @@ if ('get' === process.argv[2]) {
   fs.writeFileSync('./dist/data.txt', content)
   parseDropbox(content)
 } else if ('parse' === process.argv[2]) {
-  const content = fs.readFileSync('./dist/data.txt')
+  const content = fs.readFileSync('./dist/data.txt').toString()
   parseDropbox(content)
-} else{
+} else { // {{{
   const refresh = () => {
     let meta = JSON.parse(dp.getMetadataSync())
     let current = moment(meta.last_updated_date).format('YYYY-MM-DD HH:MM:SS.SSS')
@@ -124,6 +99,6 @@ if ('get' === process.argv[2]) {
   }
 
   setInterval(refresh, config.refreshInterval)
-}
+} // }}}
 
 // vi:et:sw=2:ts=2
