@@ -2,7 +2,7 @@
 
 const child_process = require('child_process')
 const config = require('./config.json')
-const dp = require('./lib/dropbox.js')
+const dp = require('./lib/dropbox.js')(config)
 const fs = require('fs')
 const moment = require('moment')
 const sqlite3 = require('sqlite3').verbose()
@@ -55,7 +55,7 @@ const parseDropbox = (data, toFile=true) => {
 
 if ('get' === process.argv[2]) {
   const content = dp.getSync()
-  fs.writeFileSync('./dist/data.txt', content)
+  fs.writeFileSync('./log/data.txt', content)
   parseDropbox(content)
 } else if ('parse' === process.argv[2]) {
   const content = fs.readFileSync('./dist/data.txt').toString()
