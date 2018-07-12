@@ -31,20 +31,16 @@ const parseDropbox = (data, toFile=true) => {
     let content = match[3].replace(/\!\[(.*?)\]\((.*?)\)/g, '<img src="$2">') // images
 
     // files {{{
-    let files
     const regex = /https:\/\/www\.dropbox.*dl\=\d\n*/g
-    if (files = content.match(regex)) {
-      content = content.replace(regex, '')
-      for (let v of files)
-        content += v.replace(/^(https:\/\/www\.dropbox.*)\/(.*)\.(\w+)\?dl\=\d+\n*$/,
-          (url, prefix, file, ext) => `<a href="${prefix}/${file}.${ext}">${urlencode.decode(file)}</a>`)
-      content += '\n'
-    } // }}}
+    const files = content.match(regex)
+    if (files) content = content.replace(regex, '')
+    // }}}
 
     news.push({
       content: content,
       date: date,
-      index: news.length,
+      files: files,
+      index: news.length + 1,
       title: title,
     })
   }

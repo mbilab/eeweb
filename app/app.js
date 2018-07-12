@@ -1,7 +1,8 @@
 // web framework
 
 import moment from 'moment'
-import Mustache from 'mustache/mustache.min.js'
+import Mustache from 'mustache/mustache.min'
+import urlencode from 'urlencode'
 
 const $ = require('jquery')
 
@@ -16,6 +17,15 @@ import './res/favicon.ico'
 
 //import data from '../dist/data.json'
 $.get('data.json', data => {
+  for (let v of data.news) {
+    if (!v.files) continue
+    v.content += '<div class="file">'
+    for (let f of v.files)
+      v.content += f.replace(/^(https:\/\/www\.dropbox.*)\/(.*)\.(\w+)\?dl\=\d+\n*$/,
+        (url, prefix, file, ext) => `<a href="${prefix}/${file}.${ext}">${urlencode.decode(file)}</a>`)
+    v.content += '</div>'
+  }
+  data.news.reverse()
 
   let template = $('#news+script').html()
   let html = Mustache.render(template, { news: data.news })
@@ -53,7 +63,7 @@ window.onhashchange = () => {
       if(itemID) {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', '')
         $('#news .item').removeClass('show')
-        $(`#news .item:nth-last-child(${itemID})`).addClass('show')
+        $(`#news .item#${page}-${itemID}`).addClass('show')
       } else {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', 'list')
         $('#news .item').removeClass('show')
@@ -91,3 +101,5 @@ $("#menu>a").click(() => {
 $(".group").click( function(){
   $(".lab_board").attr("data-status","member")
 })
+
+// vi:et:sw=2:ts=2

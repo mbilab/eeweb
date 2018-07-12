@@ -112,21 +112,20 @@
     border-top: 1px solid $gray-color
     border-bottom: 1px solid $gray-color
 
+    &:before
+      content: '附件'
+      display: block
+      padding: 20px 0
+
   [data-orientation='landscape'] .page-content[data-page-content=''] &
     margin: 0 90px
 // }}}
 
-.item > .file >:first-child // 附件 {{{
-  padding: 20px 0
-
-  [data-page-content='list'] &
-    display: none
-// }}}
-
-.item > .file > .docx, .mp3, .pdf // {{{
+.item > .file > a // {{{
   +vertical-center
   border: 1px solid lighten($text-color, 20%)
   border-radius: 3px
+  color: $dark-color
   +lp(font-size, 14px, 12px)
   margin: 0 5px 5px 0
   height: 40px
@@ -135,19 +134,19 @@
   &:hover
     background: $gray-color
 
-  span
-    color: $dark-color
+  &:before
+    font-weight: bold
     margin-right: 15px
 
-  .file_type
-    font-weight: bold
-
-  &.docx .file_type
+  &[href$='docx']:before
     color: #03a9f4
+    content: 'DOCX'
 
-  &.mp3 .file_type
+  &[href$='mp3']:before
     color: #ff9100
+    content: 'MP3'
 
-  &.pdf .file_type
+  &[href$='pdf']:before
     color: #d50000
+    content: 'PDF'
 // }}}
