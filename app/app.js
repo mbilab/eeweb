@@ -32,7 +32,7 @@ $.get('data.json', data => {
 
   $('#news').html(html)
 
-  $(".item").click( function() {
+  $("[data-page-content='list'] .item").click( function() {
     let id = $(this).attr("id")
     window.location.href = `./#${id}`
   })
