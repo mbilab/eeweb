@@ -55,10 +55,10 @@ const parseDropbox = (data, toFile=true) => {
 
 if ('get' === process.argv[2]) {
   const content = dp.getSync()
-  fs.writeFileSync('./log/data.txt', content)
+  fs.writeFileSync('./dist/data.txt', content)
   parseDropbox(content)
 } else if ('parse' === process.argv[2]) {
-  const content = fs.readFileSync('./dist/data.txt').toString()
+  const content = fs.readFileSync('./dist/data.txt')
   parseDropbox(content)
 } else { // {{{
   const refresh = () => {

@@ -17,7 +17,11 @@ import './res/favicon.ico'
 
 //import data from '../dist/data.json'
 $.get('data.json', data => {
+  moment.locale('zh-tw')
+
   for (let v of data.news) {
+    if(v.date) v.date = moment(v.date).format('YYYY MMM DD ddd')
+
     if (!v.files) continue
     v.content += '<div class="file">'
     for (let f of v.files)
