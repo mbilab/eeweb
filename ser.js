@@ -14,21 +14,23 @@ const parseDropbox = (data, toFile=true) => {
 
   const news = []
   for (let v of data) {
-    let match = v.match(/^##\s*(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
+    let match = v.match(/^##\s*(\[.+?\])?(.+?)\s*\n\s*(.+?)\s*\n\s*([\s\S]+?)\s*$/)
     if (match.index)
       throw Error(`wrong format: ${v}`)
 
-    const title = match[1] // title
+    const tag = match[1] //content type
+
+    const title = match[2] // title
 
     // date {{{
-    let date = moment(match[2].substring(3))
+    let date = moment(match[3].substring(3))
     if (date.isValid())
       date = date.format()
     else
-      match[3] = `${match[2]}\n${match[3]}`
+      match[3] = `${match[3]}\n${match[4]}`
     // }}}
 
-    let content = match[3].replace(/\!\[(.*?)\]\((.*?)\)/g, '<img src="$2">') // images
+    let content = match[4].replace(/\!\[(.*?)\]\((.*?)\)/g, '<img src="$2">') // images
 
     // files {{{
     const regex = /https:\/\/www\.dropbox.*dl\=\d\n*/g
@@ -41,6 +43,7 @@ const parseDropbox = (data, toFile=true) => {
       date: date,
       files: files,
       index: news.length + 1,
+      tag: tag,
       title: title,
     })
   }
@@ -58,7 +61,7 @@ if ('get' === process.argv[2]) {
   fs.writeFileSync('./dist/data.txt', content)
   parseDropbox(content)
 } else if ('parse' === process.argv[2]) {
-  const content = fs.readFileSync('./dist/data.txt')
+  const content = fs.readFileSync('./dist/data.txt').toString()
   parseDropbox(content)
 } else { // {{{
   const refresh = () => {

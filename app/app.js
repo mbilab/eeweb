@@ -19,7 +19,14 @@ import './res/favicon.ico'
 $.get('data.json', data => {
   moment.locale('zh-tw')
 
+  const tag = []
+  $('.selector').children('.label').each( function() {
+    tag.push( $(this).text().replace('#','') )
+  })
   for (let v of data.news) {
+    if(!v.tag) v.tag = '其它'
+    else v.tag = v.tag.replace(/\[(.+?)\]/, '$1')
+
     if(v.date) v.date = moment(v.date).format('YYYY MMM DD ddd')
 
     if (!v.files) continue
@@ -92,6 +99,16 @@ $("#logo").click(() => {
   } else {
     $("body").attr("data-menued", "")
   }
+})
+
+$(".selector .label").click(function() {
+  let type = $(this).text().replace(/#/, '')
+
+  if (type !== '全部') {
+    $("#news > .item").hide()
+    $(`#news > .item[data-type='${type}']`).show()
+  }
+  else $("#news > .item").show()
 })
 
 $("#menu>a").click(() => {

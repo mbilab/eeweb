@@ -27,6 +27,7 @@ html
         .page-content(data-page-content="list" data-page-selection="")
           .selector
             div 篩選
+            .label #全部
             .label #講座資訊
             .label #活動公告
             .label #其它
@@ -34,8 +35,8 @@ html
           #news
           script(type="x-tmpl-mustache")
             |{{#news}}
-            .item(class=`{{type}}` id=`news-{{index}}`)
-              .date #[span.label 講座資訊]{{date}}
+            .item(data-type=`{{tag}}` id=`news-{{index}}`)
+              .date #[span.label {{tag}}]{{date}}
               .title {{title}}
               p {{{content}}}
             |{{/news}}
