@@ -4,6 +4,7 @@ const child_process = require('child_process')
 const config = require('./config.json')
 const dp = require('./lib/dropbox.js')(config)
 const fs = require('fs')
+const md5 = require('crypto-md5')
 const moment = require('moment')
 const sqlite3 = require('sqlite3').verbose()
 const urlencode = require('urlencode')
@@ -42,7 +43,7 @@ const parseDropbox = (data, toFile=true) => {
       content: content,
       date: date,
       files: files,
-      index: news.length + 1,
+      index: md5(v, 'hex'),
       tag: tag,
       title: title,
     })

@@ -67,7 +67,7 @@ $(window).resize(() => {
 
 window.onhashchange = () => {
   if(window.location.hash){
-    let [page, itemID] = window.location.hash.match(/(\w+)(?:-(\d+))?/).slice(1, 3)
+    let [page, itemID] = window.location.hash.match(/(\w+)(?:-(.*))?/).slice(1, 3)
     if ($(`.page[data-page-id=${page}]`)) {
       $('body').attr('data-page', page)
 
