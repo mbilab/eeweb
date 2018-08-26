@@ -17,6 +17,7 @@
     "@fortawesome/fontawesome-free": "^5.1.0",
     "autoprefixer": "^7.1.0",
     "body-parser": "^1.18.2",
+    "crypto-md5": "^1.0.0",
     "css-loader": "^0.28.7",
     "express": "^4.16.2",
     "extract-loader": "^1.0.1",
