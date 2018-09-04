@@ -2,6 +2,7 @@
 
 import moment from 'moment'
 import Mustache from 'mustache/mustache.min'
+import swal from 'sweetalert2'
 import urlencode from 'urlencode'
 
 const $ = require('jquery')
@@ -117,6 +118,13 @@ $("#menu>a").click(() => {
   } else {
     $("body").attr("data-menued", "")
   }
+})
+
+$("#contact").click(() => {
+  swal({
+    html: '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdJy30dkMASWvBryULvkATeUt584sc_JX9Qno94rcKjBi6u5Q/viewform?embedded=true" width="100%" height="75%" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0">載入中…</iframe>',
+    showConfirmButton: false,
+  })
 })
 
 $(".group").click( function(){

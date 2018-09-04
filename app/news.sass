@@ -7,6 +7,7 @@
   color: white
   flex-shrink: 0
   font: bold 14px 'inherit'
+  font-family: inherit
   +lp(height, 60px, 40px)
   letter-spacing: .5px
   +lp(margin-bottom, 10px, 2px)
@@ -39,6 +40,7 @@
 .selector > .back // {{{
   cursor: pointer
   font: bold 18px 'inherit'
+  font-family: inherit
 
   [data-page-content='list'] &
     display: none
@@ -82,6 +84,7 @@
   background-color: $gray-color
   color: $text-color
   font: 12px / 30px 'inherit'
+  font-family: inherit
   padding: 0 20px
 
   > .label
@@ -96,6 +99,7 @@
 .item > .title // {{{
   color: $bold-color
   font: bold 30px / normal 'inherit'
+  font-family: inherit
   +lp(padding, 40px 90px, 20px)
 
   [data-page-content='list'] &
@@ -142,11 +146,15 @@
     color: #03a9f4
     content: 'DOCX'
 
-  &[href$='mp3']:before
-    color: #ff9100
-    content: 'MP3'
+  &[href$='xlsx']:before
+    color: #00D875
+    content: 'XLSX'
 
   &[href$='pdf']:before
     color: #d50000
     content: 'PDF'
+
+  &[href$='ppt']:before
+    color: #FC925D
+    content: 'PPT'
 // }}}
