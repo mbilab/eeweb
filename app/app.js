@@ -66,6 +66,8 @@ $(window).resize(() => {
 
 // show content referred to url
 
+let scrollpos = 0
+
 window.onhashchange = () => {
   if(window.location.hash){
     let [page, itemID] = window.location.hash.match(/(\w+)(?:-(.*))?/).slice(1, 3)
@@ -76,9 +78,12 @@ window.onhashchange = () => {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', '')
         $('#news .item').removeClass('show')
         $(`#news .item#${page}-${itemID}`).addClass('show')
+        scrollpos = $("#news").scrollTop()
+        $("#news").scrollTop(0)
       } else {
         $(`.page[data-page-id=${page}] .page-content`).attr('data-page-content', 'list')
         $('#news .item').removeClass('show')
+        $('#news').scrollTop(scrollpos)
       }
     }
   }

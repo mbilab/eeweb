@@ -109,10 +109,13 @@ body // {{{
   font-size: 18px
   position: absolute
 
+  .close
+    color: #878787
+
   a
     display: block
 
-    &:hover
+    &:not(.close):hover
       color: $primary-color
     
     &:last-child //Contact
