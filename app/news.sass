@@ -11,7 +11,11 @@
   +lp(height, 60px, 40px)
   letter-spacing: .5px
   +lp(margin-bottom, 10px, 2px)
+  overflow-y: auto
   padding: 0 20px
+  
+  &::-webkit-scrollbar
+    dsiplay: none
 // }}}
 
 .selector > *
@@ -29,6 +33,7 @@
 
 .selector > .label // {{{
   cursor: pointer
+  white-space: nowrap
 
   &:hover
     color: $primary-color

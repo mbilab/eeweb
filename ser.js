@@ -66,36 +66,28 @@ if ('get' === process.argv[2]) {
   parseDropbox(content)
 } else { // {{{
   const refresh = () => {
-    let meta = JSON.parse(dp.getMetadataSync())
-    let current = moment(meta.last_updated_date).format('YYYY-MM-DD HH:MM:SS.SSS')
-    //open database
-    let db = new sqlite3.Database('./data.db', err => {
-      if (err)
-        return err.message
-    })
+    let tmp = dp.getSync()
+    if (tmp.split(/\n/)[2].match(/\w/)) { //detect [X] whether update or not 
+    
+      let oldContents = JSON.parse(fs.readFileSync('./dist/data.json'))
+      let newContents = parseDropbox(tmp, false)
+      let update_content = []
 
-    let sql = 'select * from meta'
-
-    db.get(sql, [], (err, row) => {
-      if (err)
-        return err.message
-
-      if( row.update_date != current){
-        db.run(`UPDATE meta SET update_date = "${current}"`, err => { //update update time
-          if (err)
-            return err.message
-        })
-
-        parseDropbox(dp.getSync()) // update content in front end
-
-        child_process.exec("php ./dist/chatbot.php post", (err, stdout, stderr) => { //sending message to subscriber
+      for (let i in newContents.news) {
+        for (let j in oldContents.news) {
+          if (newContents.news[i].index === oldContents.news[j].index) break
+          else if (j == oldContents.news.length - 1) update_content.push(newContents.news[i].index)
+        }
+      }
+     
+      if (update_content.length) {
+        //parseDropbox(tmp)
+        update_content = 'update[]=' + update_content.join('&update[]=')
+        child_process.exec(`php ./dist/chatbot.php '${update_content}'`, (err, stdout, stderr) => { //sending message to subscriber
           if (err) throw err
         })
-      }
-    })
-
-    // close the database connection
-    db.close()
+      }  
+    }
   }
 
   setInterval(refresh, config.refreshInterval)

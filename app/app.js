@@ -129,6 +129,7 @@ $("#contact").click(() => {
   swal({
     html: '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdJy30dkMASWvBryULvkATeUt584sc_JX9Qno94rcKjBi6u5Q/viewform?embedded=true" width="100%" height="75%" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0">載入中…</iframe>',
     showConfirmButton: false,
+    width: 'auto',
   })
 })
 
