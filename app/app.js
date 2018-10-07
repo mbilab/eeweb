@@ -56,6 +56,17 @@ $.get('data.json', data => {
 ///////////////////////////////////////////////////////
 
 // responsive logic
+$('.button-right').click(() => {
+  $('.button-left').addClass('buttonShow')
+  $('.selector').animate({ scrollLeft: 150 }, 300)
+  $('.button-right').removeClass('buttonShow')
+})
+
+$('.button-left').click(() => {
+  $('.button-right').addClass('buttonShow')
+  $('.selector').animate({ scrollLeft: 0 }, 300)
+  $('.button-left').removeClass('buttonShow')
+})
 
 $(window).resize(() => {
   let orientation = $(window).width() > $(window).height() ? 'landscape' : 'portrait'
@@ -110,7 +121,7 @@ $("#logo").click(() => {
 $(".selector .label").click(function() {
   let type = $(this).text().replace(/#/, '')
 
-  if (type !== '全部') {
+  if (type !== '全部公告') {
     $("#news > .item").hide()
     $(`#news > .item[data-type='${type}']`).show()
   }

@@ -28,13 +28,16 @@ html
         .page-content(data-page-content="list" data-page-selection="")
           .selector
             div 分類
-            .label #全部
+            .label #全部公告
             .label #活動消息
             .label #演講公告
             .label #獎助學金
             .label #海外交換
             .label #其它
             .back: a(href="#news") &#10094; 文章列表
+          .nav-button
+            .button-left &#10094;
+            .button-right.buttonShow &#10095;
           #news
           script(type="x-tmpl-mustache")
             |{{#news}}

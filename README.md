@@ -13,11 +13,14 @@ eeweb
 # update data
 * ./ser.js get
 
+# keep data refresh
+* ./ser.js
+
 # develop
 * yarn start
 
 # chatbot
-* node chatbot.js to activate the chatbot
+* chatbot.php is now on apache in ./dist
 
 # issue
 * [edit this doc] button # wait for designer
