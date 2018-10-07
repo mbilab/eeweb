@@ -69,23 +69,24 @@ if ('get' === process.argv[2]) {
     let tmp = dp.getSync()
     if (tmp.split(/\n/)[2].match(/\w/)) { //detect [X] whether update or not 
     
-      let oldContents = JSON.parse(fs.readFileSync('./dist/data.json'))
-      let newContents = parseDropbox(tmp, false)
+      let oldContents = JSON.parse(fs.readFileSync('./dist/data.json')).news
+      let newContents = parseDropbox(tmp, false).news
       let update_content = []
 
-      for (let i in newContents.news) {
-        for (let j in oldContents.news) {
-          if (newContents.news[i].index === oldContents.news[j].index) break
-          else if (j == oldContents.news.length - 1) update_content.push(newContents.news[i].index)
+      for (let i in newContents) {
+        for (let j in oldContents) {
+          if (newContents[i].index === oldContents[j].index) break
+          else if (j == oldContents.length - 1) update_content.push(newContents[i].index + "," + newContents[i].title)
         }
       }
      
       if (update_content.length) {
         //parseDropbox(tmp)
-        update_content = 'update[]=' + update_content.join('&update[]=')
-        child_process.exec(`php ./dist/chatbot.php '${update_content}'`, (err, stdout, stderr) => { //sending message to subscriber
-          if (err) throw err
-        })
+        for (update of update_content) {
+          child_process.exec(`php ./dist/chatbot.php '${update}'`, (err, stdout, stderr) => { //sending message to subscriber
+            if (err) throw err
+          })
+        }
       }  
     }
   }
