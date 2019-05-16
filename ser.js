@@ -24,7 +24,7 @@ const parseDropbox = (data, toFile=true) => {
     const title = match[2] // title
 
     // date {{{
-    let date = moment(match[3].substring(3))
+    let date = moment(match[3])
     if (date.isValid())
       date = date.format()
     else
@@ -73,20 +73,23 @@ if ('get' === process.argv[2]) {
       let newContents = parseDropbox(tmp, false).news
       let update_content = []
 
-      for (let i in newContents) {
-        for (let j in oldContents) {
-          if (newContents[i].index === oldContents[j].index) break
-          else if (j == oldContents.length - 1) update_content.push(newContents[i].index + "," + newContents[i].title)
+      if (newContents.length == oldContents.length){
+        for (let i in newContents) {
+          for (let j in oldContents) {
+            if (newContents[i].index === oldContents[j].index) break
+            else if (j == oldContents.length - 1) update_content.length = true
+            //else if (j == oldContents.length - 1) update_content.push(newContents[i].index + "," + newContents[i].title)
+          }
         }
-      }
-     
+      }else update_content.length = true
+
       if (update_content.length) {
-        //parseDropbox(tmp)
-        for (update of update_content) {
-          child_process.exec(`php ./dist/chatbot.php '${update}'`, (err, stdout, stderr) => { //sending message to subscriber
-            if (err) throw err
-          })
-        }
+        parseDropbox(tmp)
+        //for (update of update_content) {
+        //  child_process.exec(`php ./dist/chatbot.php '${update}'`, (err, stdout, stderr) => { //sending message to subscriber
+        //    if (err) console.log(err)
+        //  })
+        //}
       }  
     }
   }

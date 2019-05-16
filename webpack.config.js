@@ -1,6 +1,7 @@
 const autoprefixer = require('autoprefixer')
 const config = require('./config')
 const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin-legacy')
 
 module.exports = {
   devServer: {
@@ -24,6 +25,7 @@ module.exports = {
         { loader: 'postcss-loader', options: { plugins: [ autoprefixer ]}},
         'sass-loader',
       ]},
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
     ]
   },
   output: {
@@ -34,9 +36,12 @@ module.exports = {
 
 if ('production' === process.env.NODE_ENV) {
   module.exports.plugins = [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
-      output: { comments: false },
-    }),
+    new TerserPlugin({
+      terserOptions: {
+        output: {
+          comments: false
+        }
+      }
+    })
   ]
 }
