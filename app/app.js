@@ -13,7 +13,6 @@ import './app.sass'
 import './index.pug'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './res/favicon.ico'
-
 // dropbox paper
 
 //import data from '../dist/data.json'
@@ -44,7 +43,7 @@ $.get('data.json', data => {
 
   $('#news').html(html)
 
-  $("[data-page-content='list'] .item").click( function() {
+  $("[data-page-content] .item").click( function() { //!
     let id = $(this).attr("id")
     window.location.href = `./#${id}`
   })
@@ -54,17 +53,18 @@ $.get('data.json', data => {
 })
 
 ///////////////////////////////////////////////////////
-
 // responsive logic
 $('.button-right').click(() => {
   $('.button-left').addClass('buttonShow')
-  $('.selector').animate({ scrollLeft: 150 }, 300)
+  $('.selector').css('margin-left', '-200px')
+  //$('.selector').animate({ scrollLeft: 150 }, 300)
   $('.button-right').removeClass('buttonShow')
 })
 
 $('.button-left').click(() => {
   $('.button-right').addClass('buttonShow')
-  $('.selector').animate({ scrollLeft: 0 }, 300)
+  $('.selector').css('margin-left', '0')
+  //$('.selector').animate({ scrollLeft: 0 }, 300)
   $('.button-left').removeClass('buttonShow')
 })
 
@@ -138,14 +138,12 @@ $("#menu>a").click(() => {
 
 $("#contact").click(() => {
   swal({
-    html: '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdJy30dkMASWvBryULvkATeUt584sc_JX9Qno94rcKjBi6u5Q/viewform?embedded=true" width="100%" height="75%" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0">載入中…</iframe>',
+    html: '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdJgYj8H3P-aarZ-YPG9Xhx7iA20mViu8o4c1RnioPP4Fiqfw/viewform?embedded=true" width="100%" height="800px" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>' ,
     showConfirmButton: false,
-    width: 'auto',
   })
 })
 
-$(".group").click( function(){
+$(".group").click(() => {
   $(".lab_board").attr("data-status","member")
 })
-
 // vi:et:sw=2:ts=2
